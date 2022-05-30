@@ -1,0 +1,85 @@
+@import './../../assets/style/mixin.scss';
+.delivery-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 4rem #{var(--padding-horzi-nav)};
+
+    & .delivery-left {
+        margin-right: 5rem;
+        // width: calc(45% - 2.5rem);
+        flex: 1;
+        @include desktop-maxwidth {
+            justify-content: center;
+            text-align: center;
+        }
+        & .delevery-left__title {
+            color: 
+            #fbb403;
+            font-size: 1.8rem;
+            font-weight: 400;
+            padding: 5px 0;
+        }
+        & .delivery-left__heading {
+            padding: 10px 0;
+            font-size: 3.4rem;
+            color: #292929;
+            
+            & span {
+                color: #ff514e;
+            }
+        }
+        & .desc {
+            font-size: 1.5rem;
+            line-height: 1.5;
+            color: rgb(58, 56, 56)
+        }
+        & .delevery-left__order {
+            display: flex;
+            justify-content: flex-start;
+            // border: 1px solid red;
+            margin: 2.5rem 0;
+            align-items: center;
+            @include desktop-maxwidth {
+                justify-content: center;
+            }
+            & .info {
+                width: 80px;
+                margin-right: 1rem;
+                margin-left: 1rem;
+                & img {
+                    width: 100%;
+                    transform: scaleX(-1);
+                }
+            }
+            & .contact {
+                margin-right: 1rem;
+                font-size: 15px;
+               
+                & .contact-name {
+                    color: rgb(58, 56, 56);
+                }
+                & .contact-phone {
+                    font-weight: bolder;
+                    color: #ff514e;
+                }
+            }
+            & .btn {
+                margin-top: -20px;
+            }
+        
+            
+            
+           
+        }
+    }
+    & .delivery-right {
+        width: calc(55% - 5rem);
+        @include desktop-maxwidth {
+            display: none;
+        }
+        & img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}

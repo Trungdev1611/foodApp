@@ -1,0 +1,21 @@
+// mixin mobile
+@mixin mobile-maxwidth {
+    @media screen and (max-width: 575.98px) {
+        @content
+    }
+};
+
+// mixin tablet
+@mixin tablet-maxwidth {
+    @media screen and (max-width: 767.98px) {
+        @content
+    }
+};
+
+// mixin desktop
+// mixin tablet
+@mixin desktop-maxwidth {
+    @media screen and (max-width: 960.98px) {
+        @content
+    }
+};
