@@ -7,6 +7,11 @@ import lunch from './category-items/lunch.svg'
 import pork from './category-items/pork.svg'
 import delivery from './category-items/small-delivery.svg'
 import tea from './category-items/tea.svg'
+//product
+import product_img1 from './../assets/image/product-1.png'
+import product_img2 from './../assets/image/product-2.png'
+import product_img3 from './../assets/image/product-3.png'
+import product_img4 from './../assets/image/product-4.png'
 export const sliderData = [
     {
         id: 1,
@@ -48,4 +53,16 @@ export const categoryData = [
     { id: 7, product: pork },
     { id: 8, product: delivery },
     { id: 9, product: tea }
+]
+
+export const productsdata = [
+    { id: 1, heading: 'Crazy Burger', desc: 'Buarning do amet contur dicivt suia non nuameius velit', price: '$20', src: product_img1 },
+    { id: 2, heading: 'Bugout Burgers', desc: 'It is a long established fact that a reader will be distracted', price: '$28', src: product_img2 },
+    { id: 3, heading: 'The Crispy Bun', desc: 'It is a long established fact that a reader will be distracted', price: '$36', src: product_img3 },
+    { id: 4, heading: 'Beefcakes Burgers', desc: 'It is a long established fact that a reader will be distracted', price: '$15', src: product_img4 },
+    { id: 5, heading: 'Crazy Burger', desc: 'Buarning do amet contur dicivt suia non nuameius velit', price: '$30', src: product_img1 },
+    { id: 6, heading: 'Bugout Burgers', desc: 'It is a long established fact that a reader will be distracted', price: '$50', src: product_img4 },
+    { id: 7, heading: 'The Crispy Bun', desc: 'It is a long established fact that a reader will be distracted', price: '$60', src: product_img3 },
+    { id: 8, heading: 'Beefcakes Burgers', desc: 'It is a long established fact that a reader will be distracted', price: '$40', src: product_img2 }
+
 ]

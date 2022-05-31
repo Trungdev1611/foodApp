@@ -1,0 +1,125 @@
+@import './../../assets/style/mixin.scss';
+section.counter {
+       background-image: url('./../../assets/image/analysis-thumb.jpg');
+       background-repeat: no-repeat;
+       background-position: center;
+       background-size: cover;
+    //    border: 1px solid red;
+       position: relative;
+       height: 100vh;
+       & .counter-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        &:hover .counter-heart {
+            background-color: #ff514e;
+            & h3, h4 {
+                color: white;
+            }
+        }
+        &:hover .counter-effect span {
+            &.top-left {
+                 top: -20px;
+                 left: -20px;
+            }
+            &.bottom-left {
+                   top: 80%;
+                left: -30px;
+            }
+            &.top-right {
+                left: 80%;
+                top: 10px; }
+                &.bottom-right .arrow-icon {
+                    background-color: #fbb403;
+                }
+        }
+        & .counter-effect span {
+            background-color: #ff514e;
+            // border: 1px solid blue;
+            position: absolute;
+            border-radius: 50%;
+            top: 30%;
+            left: 30%;
+            z-index: -1;
+             transition: 0.7s;
+            
+            &.top-left {
+             width: 60px;
+             height: 60px;
+            }
+            &.bottom-left {
+                // bottom: -30px;
+                // left: -30px;
+                width: 40px;
+                height: 40px;
+            }
+            &.top-right {
+                // right: -60px;
+                // top: 10px;
+                width: 80px;
+                height: 80px;
+    
+            }
+            &.bottom-right {
+                left: calc(100% - 65px) ;
+                top: calc(100% - 65px);
+                width: 50px;
+                height: 50px;
+                z-index: 2;
+                cursor: pointer;
+                & .arrow-icon {
+                    color: white;
+                    font-size: 
+                    50px;
+                    border-radius: inherit;
+                transition: 0.7s;
+
+                }
+            }
+        }
+       }
+       & .counter-heart {
+           background-color: white;
+           width: 200px;
+           height: 200px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           flex-direction: column;
+           border-radius: 30% 70% 70% 30%/30% 30% 70% 70%;
+           z-index: 0;
+        transition: 0.7s;
+
+           & h3 {
+               font-size: 3rem;
+               color :
+               #a7a7a7;
+               transition: 0.7s;
+           }
+           & h4 {
+            padding: 5px;
+            font-size: 4rem;
+            color :#292929;
+            transition: 0.7s;
+
+           }
+         
+       }
+     
+}
+.video {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba($color: #161113, $alpha: 0.8);
+
+}
+iframe {
+    position: fixed;
+    top:-50%;
+    left: -110%;
+    z-index: 3;
+}

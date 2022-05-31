@@ -25,15 +25,25 @@ const Category = () => {
                 spaceBetween={40}
                 slidesPerView={2}
                 loop={true}
-                // speed={450}
+                // speed={450}  
                 breakpoints={{
+                    400: {
+                        // width: 400,
+                        slidesPerView: 3,
+                        spaceBetween: 40
+
+                    },
                     767: {
-                        width: 767,
-                        slidesPerView: 4
+                        // width: 767,
+                        slidesPerView: 4,
+                        spaceBetween: 40
+
                     },
                     960: {
-                        width: 960,
-                        slidesPerView: 7
+                        // width: 960,
+                        slidesPerView: 7,
+                        spaceBetween: 50
+
                     }
 
                 }
