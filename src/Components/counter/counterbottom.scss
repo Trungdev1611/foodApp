@@ -1,0 +1,32 @@
+@import './../../assets/style/mixin.scss';
+.counter-bottom {
+    background-color: #ff514e;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    padding: 10px 0;
+    min-height: 15rem;
+    // border: 3px solid yellow;
+    flex-wrap: wrap;
+    &__item {
+        text-align: center;
+        @include desktop-maxwidth {
+            width: 50%;
+          margin-bottom: 10px;
+            // border: 1px solid blue;
+        }
+    }
+    & h3 {
+        font-size: 3.5rem;
+        font-weight: 600;
+        padding: 10px 0;
+    }
+    & p {
+        font-size: 1.6rem;
+    }
+}
+
