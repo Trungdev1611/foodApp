@@ -12,6 +12,11 @@ import product_img1 from './../assets/image/product-1.png'
 import product_img2 from './../assets/image/product-2.png'
 import product_img3 from './../assets/image/product-3.png'
 import product_img4 from './../assets/image/product-4.png'
+
+// reviews src
+import user1 from './../assets/image/user-review-1.jpg';
+import user2 from './../assets/image/user-review-2.jpg';
+import user3 from './../assets/image/user-review-3.jpg';
 export const sliderData = [
     {
         id: 1,
@@ -64,5 +69,12 @@ export const productsdata = [
     { id: 6, heading: 'Bugout Burgers', desc: 'It is a long established fact that a reader will be distracted', price: '$50', src: product_img4 },
     { id: 7, heading: 'The Crispy Bun', desc: 'It is a long established fact that a reader will be distracted', price: '$60', src: product_img3 },
     { id: 8, heading: 'Beefcakes Burgers', desc: 'It is a long established fact that a reader will be distracted', price: '$40', src: product_img2 }
+
+]
+
+export const reviewsData = [
+    { id: 1, name: 'Mark Zukeberg', jobs: 'Co-founding Facebook, Inc', src: user1, desc: 'I chose food G because of their value And incredible superior customer Service they really awesome Food with quality service Ha of their value And incredible sup with quality' },
+    { id: 2, name: 'Rose', jobs: 'Main vocalist of Backpink group', src: user2, desc: 'Had dinner with girl friends. Menu is perfect, something for everyone. Service was awesome and Jason was very accommodating. Will be back definitely!' },
+    { id: 2, name: 'TimCook', jobs: 'CEO of Apple', src: user3, desc: 'I had lunch with some of my colleagues at Echo on Day 1. I had the wedge salad - it was delicious. On Night 2, I enjoyed a drink at the bar. I had a Margarita. The service was excellentHad dinner with girl friends. Menu is perfect, something for everyone. Service was awesome and Jason was very accommodating. Will be back definitely!' }
 
 ]

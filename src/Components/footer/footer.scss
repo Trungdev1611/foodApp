@@ -1,0 +1,117 @@
+@import './../../assets/style/mixin.scss';
+.footer {
+    padding: 6rem #{var(--padding-horzi-nav)};
+    @include desktop-maxwidth {
+       
+     padding: 6rem 2rem
+    }
+    background-color: 
+    #212121;
+    border: 1px solid blue;
+    color: white;
+    & .footer-wrapper-top {
+        display: flex;
+        @include desktop-maxwidth {
+       
+            flex-direction: column;
+        }
+        & .footer-time {
+            flex: 1;
+            margin-right: 50px;
+            // border: 1px solid red;
+            flex-wrap: wrap;
+            @include desktop-maxwidth {
+              margin-right: 0;
+              margin-bottom: 50px;
+            }
+            & table {
+                width: 100%;
+                font-weight: 500;
+                font-size: 1.8rem;
+           
+          
+                & tr,td {
+                    width: calc(100% /3 );
+                    // border: 1px solid blue;
+                    padding:10px 0px;
+                    padding-left: 15px;
+                  @include desktop-maxwidth {
+                      padding-left: 0;
+                  }
+                   & .color-hightligh {
+                    color: 
+                    #fbb403;
+                   }
+                   & .icon {
+                      font-size: 20px;
+               
+                   }
+                }
+            
+           
+            }
+
+        }
+        & .footer-address{
+            flex: 1;
+            // border: 1px solid red;
+            padding:10px 0;
+            & .heading {
+                font-size: 3rem;
+                margin-bottom: 20px;
+            }
+            & .info {
+                padding: 10px 0;
+                font-size: 1.8rem;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                & span {
+                width: 40px;
+                display: inline-block;
+
+                }
+                & .info-icon {
+                    font-size: 2.5rem;
+                    color: 
+                    #fbb403;
+
+                }
+            }
+            & .icon span {
+                display: inline-block;
+                padding: 10px;
+                & .logo-icon {
+                font-size: 3rem;
+                    &.facebook {
+                        margin-left: -10px;
+                        color: 
+                        #2d88ff;
+                    }
+                    &.twiter {
+                        color: #5da9dd
+                    }
+                    &.instagram {
+                        color: 
+                        #dc583c;
+                    }
+                    &.youtube {
+                        color :
+                        #ff0000
+                    }
+                }
+            }
+
+
+        }
+     
+    }
+    // & .footer-map {
+    //     & img {
+    //         // height: 400px;
+    //         width: 100%;
+    //         object-fit: cover;
+    //     }
+    // }
+
+}

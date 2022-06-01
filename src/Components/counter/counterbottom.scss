@@ -14,11 +14,7 @@
     flex-wrap: wrap;
     &__item {
         text-align: center;
-        @include desktop-maxwidth {
-            width: 50%;
-          margin-bottom: 10px;
-            // border: 1px solid blue;
-        }
+ 
     }
     & h3 {
         font-size: 3.5rem;

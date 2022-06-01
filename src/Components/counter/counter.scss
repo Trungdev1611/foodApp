@@ -13,6 +13,7 @@ section.counter {
         // top: 0;
         left: 50%;
         transform: translate(-50%, -50%);
+        overflow: hidden;
     
         &:hover .counter-heart {
             background-color: #ff514e;
@@ -117,13 +118,24 @@ section.counter {
     bottom: 0;
     right: 0;
     background-color: rgba($color: #161113, $alpha: 0.8);
+    z-index: 1
 
 }
 iframe {
     position: fixed;
     z-index: 3;
-    width: 90%;
-     height: calc(90% * 9 / 16);
+    height: 400px;
+    width: calc(400px * 16 / 9);
+   @include tablet-maxwidth {
+    height:300px;
+    width: calc(300px * 16 / 9);
+
+   }
+   @include mobile-maxwidth {
+    height:190px;
+    width: calc(190px * 16 / 9);
+
+   }
      top: 50%;
      left: 50%;
      transform: translate(-50%, -50%);
