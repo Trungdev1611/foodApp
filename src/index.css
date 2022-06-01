@@ -8,6 +8,7 @@
 }
 :root {
  --padding-horzi-nav: 6.5rem;
+ --height-video: 400px;
 }
 html {
   font-size: 62.5%;

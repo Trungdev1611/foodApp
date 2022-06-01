@@ -15,7 +15,7 @@ const Navbar = ({ setShowlistMenu, showlistMenu }) => {
         let distanceToTop = window.pageYOffset
         if (distanceToTop > 65) {
             console.log(distanceToTop)
-            document.querySelector('.navbar').style.backgroundColor = "rgba(0,0,0,.8)"
+            document.querySelector('.navbar').style.backgroundColor = "rgba(33,33,33, 0.8)"
             document.querySelector('.header').style.paddingTop = "0.7rem"
 
         }
