@@ -9,9 +9,11 @@ section.counter {
        height: 100vh;
        & .counter-content {
         position: absolute;
-        top: 50%;
+        top: calc(50% - 7.5rem);
+        // top: 0;
         left: 50%;
         transform: translate(-50%, -50%);
+    
         &:hover .counter-heart {
             background-color: #ff514e;
             & h3, h4 {
@@ -108,7 +110,7 @@ section.counter {
        }
      
 }
-.video {
+.modal-video {
     position: fixed;
     top: 0; 
     left: 0;
@@ -119,7 +121,28 @@ section.counter {
 }
 iframe {
     position: fixed;
-    top:-50%;
-    left: -110%;
     z-index: 3;
+    width: 90%;
+     height: calc(90% * 9 / 16);
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+animation: scalevideo 1s ease-in-out ;
+    transform-origin: center;
+}
+
+@keyframes scalevideo{
+    0% {
+      transform:  translate(-50%, -50%) scale(0);
+
+
+    //   width: 0;
+    //   transform-origin: center;
+    }
+    100% {
+       transform:  translate(-50%, -50%) scale(1);
+
+
+        // width: 100%;
+    }
 }
