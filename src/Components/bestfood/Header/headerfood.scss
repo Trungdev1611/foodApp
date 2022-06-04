@@ -1,0 +1,51 @@
+.headerfood {
+    background-image: url('./../../../assets/image/banner.jpg');
+    background-size: cover;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 40rem;
+    position: relative;
+    & .headerfood-content {
+        display: flex;
+        // justify-content: center;
+        align-items: center;
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        flex-direction: column;
+        width: 100%;
+        &__heading {
+            font-size: 3.7rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        & .hightlight {
+            color: 
+            #e92e20;
+        }
+        & .path {
+            display: flex;
+            
+            & div.path-item {
+                padding: 10px 0px;
+                display: flex;
+                font-size: 1.5rem;
+                // border: 1px solid red;
+                &:last-child {
+                    padding-left: -5px;
+                }
+                & .icon {
+                   margin: 0 1rem;
+                  align-self: end;;
+                    
+                    // border: 1px solid red;
+                }
+            }
+
+        }
+        
+    }
+}

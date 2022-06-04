@@ -1,0 +1,32 @@
+@import './../../../assets/style/mixin.scss';
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0;
+    color: rgba(0,0,0,0.6);
+    & .pagination-item {
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 3px;
+        background-color: white;
+        box-shadow: 0 0 3px #ccc;
+        -webkit-box-shadow: 5px 5px 6px 3px rgba(240,240,240,0.89); 
+box-shadow: 5px 5px 6px 3px rgba(240,240,240,0.89);
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        &.disable { 
+            color:rgb(216, 202, 202);
+            cursor: no-drop;
+        }
+    }
+    & .actived {
+        color: white;
+        background-color:  #ff514e ;
+    }
+ 
+}

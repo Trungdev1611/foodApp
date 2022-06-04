@@ -9,7 +9,6 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 
-import map from './../../assets/image/Untitled1.png'
 const Footer = () => {
   return (
     <div className='footer'>

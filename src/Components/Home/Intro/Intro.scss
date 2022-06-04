@@ -1,0 +1,75 @@
+@import './../../../assets/style/mixin.scss';
+.intro {
+    background-image: url('./../../../assets/image/ingredients.jpg');
+    // height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 50px 20px;
+    // padding-left: 20px;
+    // padding-right: 20px;
+    margin-top: 20px;
+    overflow: hidden;
+    // padding-bottom: 50px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 40rem);
+    grid-row-gap: 50px;
+    justify-content: space-between;
+    @include tablet-maxwidth {
+    grid-template-columns: repeat(1, 80%);
+        background-image: none;
+    }
+    @include mobile-maxwidth {
+        grid-template-columns: repeat(1, 100%);
+         
+        }
+    & .introcontent-item:first-child {
+        order: 1;
+        box-shadow: 1px 3px 20px rgba(0,0,0, 0.2);
+  
+     }
+    & .introcontent-item:nth-child(2) {
+       transform: translateX(5rem);
+       order: 3;
+    @include tablet-maxwidth {
+        order: 2;
+        box-shadow: 1px 3px 20px rgba(0,0,0, 0.2)
+    }
+    }
+    & .introcontent-item:nth-child(3) {
+        order: 5;
+        @include tablet-maxwidth {
+            order: 3;
+       box-shadow: 1px 3px 20px rgba(0,0,0, 0.2);
+
+        }
+     }
+     & .introcontent-item:nth-child(4) {
+        order: 2;
+        @include tablet-maxwidth {
+            order: 4;
+       box-shadow: 1px 3px 20px rgba(0,0,0, 0.2);
+
+        }
+     }
+    & .introcontent-item:nth-child(5) {
+        transform: translateX(-5rem);
+        order:4;
+        @include tablet-maxwidth {
+            order: 5;
+       box-shadow: 1px 3px 20px rgba(0,0,0, 0.2);
+
+        }
+    }
+    & .introcontent-item:nth-child(6) {
+        order:6;
+        @include tablet-maxwidth {
+            order: 6;
+       box-shadow: 1px 3px 20px rgba(0,0,0, 0.2);
+
+        }
+    }
+ 
+
+}

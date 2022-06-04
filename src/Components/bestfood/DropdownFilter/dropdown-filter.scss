@@ -1,0 +1,41 @@
+.dropdown-filter {
+    // border: 1px solid red;
+    font-size: 1.4rem;
+    color: rgba(0,0,0,.84);
+    position: relative;
+    z-index: 1;
+    width: 16rem;
+
+    & .selected {
+        padding: 10px 10px;
+        justify-content: space-between;
+        display: flex;
+        border: 1px solid #999999;
+        border-radius: 10px;
+        cursor: pointer;
+
+      
+
+    }
+    & .select-list {
+        position: absolute;
+    background-color: white;
+    margin-top: 10px;
+    // border: 1px solid red;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0 ,0,  0.15);
+
+    width: 100%;
+    & .select-list__item {
+        padding: 10px 10px;
+    padding-left: 20px;
+    cursor: pointer;
+        transition: 0.3s;
+        &:hover {
+            background-color: rgba(0,0,0,.08);
+        }
+
+    }
+
+    }
+}

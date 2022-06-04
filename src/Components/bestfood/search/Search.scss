@@ -1,0 +1,45 @@
+@import './../../../assets/style/mixin.scss';
+
+.search {
+    position: relative;
+    // border: 1px solid blue;
+    margin-right: 2rem;
+    flex: 1;
+    overflow: hidden;
+    & input {
+        padding: 10px 0 10px 15px;
+        width: 100%;
+        border-radius: 2rem;
+        overflow: hidden;
+        outline: none;
+        border: 1px solid #999999;
+        font-size: 1.4rem;
+        color: rgba(0,0,0,.6);
+        ::placeholder {
+            color: rgba(0,0,0,.6);
+
+        }
+
+        
+    }
+    & .search-icon {
+        position: absolute;
+        right:0px;
+        padding: 0 15px;
+        color: #999999;
+        border-radius: inherit;
+        
+        // top: 0.5em;
+        // font-size: 25px;
+        // background-color: white;
+        // border: 1px solid blue;
+        height: 100%;
+        width: 60px;
+        @include mobile-maxwidth {
+            width: 40px;
+            padding-right: 5px;
+        }
+
+
+    }
+}

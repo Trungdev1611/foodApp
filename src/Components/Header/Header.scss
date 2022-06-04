@@ -1,0 +1,109 @@
+@import './../../assets/style/mixin.scss';
+.header {
+    
+    height: 80rem;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    @include desktop-maxwidth {
+        height: 50rem;
+    }
+
+    & .header-content {
+        // background-color: white;
+        margin-left: #{var(--padding-horzi-nav)};;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width:700px;
+        @include desktop-maxwidth {
+            text-align: center ;
+            width: 70%    ;
+            }
+        // border: 1px solid red;
+        & p.title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: white
+        }
+        & .headeing-banner {
+            font-size: 7.2rem;
+            font-weight: 600;
+            color: white;
+            & span {
+                color: #ff514e;
+            }
+            @include desktop-maxwidth {
+            font-size: 5rem;
+
+            }
+        
+
+        }
+   
+    }
+   
+    
+}
+.bgImage {
+    background-image: url('./../../assets/image/banner-st.jpg');
+}
+.bgImage1 {
+    background-image: url('./../../assets/image/banner-rd.jpg');
+}
+.bgImage2 {
+    background-image: url('./../../assets/image/banner-nd.jpg');
+}
+//dots
+ul.dots-slide {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    & li {
+        display: inline-block;
+        width: 1.7rem;
+        height: 1.7rem;
+        border: 2px solid #fbb403;
+        border-radius: 50%;
+       
+        margin: 0 8px;
+        & button {
+            color: transparent;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            outline: none;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            padding: 0;
+            margin: 0;
+
+            }
+        &.slick-active {
+            background-color: #fbb403;
+      
+        }
+
+    }
+    & .active {
+        background-color: white;
+    }
+}
+
+
+// modal 
+.modal {
+    position: fixed;
+    background-color: rgba($color: #161113, $alpha: 0.2);
+    top: 0;
+    height: 100vh;
+    right: 0;
+    left: 0
+    ;
+    z-index: 200;
+}

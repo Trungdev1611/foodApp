@@ -1,0 +1,18 @@
+@import './../../../assets/style/mixin.scss';
+.sort-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2rem;
+    @include mobile-maxwidth {
+      display: none;
+    }
+    & .sort-item {
+        color: 
+        #8c8c8c;
+      & .sort-icon {
+        font-size: 30px;
+        // width: 30px;
+      }
+    }
+}
