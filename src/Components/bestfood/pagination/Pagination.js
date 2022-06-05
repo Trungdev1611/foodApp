@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import './pagination.scss'
 const Pagination = () => {
     const [pageselect, setPageselect] = useState(1)
-    const countPage = 10
+    const selector = useSelector(state => state.data)
+    const countPage = Math.ceil(selector.length / 16)
     const arrPage = []
+
 
     function renderPage() {
 
@@ -29,10 +33,10 @@ const Pagination = () => {
                 onClick={decreasePage}
             >&#60;</div>
             {arrPage.map((ele, index) => {
-                return <div key={index}
+                return <Link key={index} to={`page=${ele}`}
                     className={ele === pageselect ? "actived pagination-item" : "pagination-item"}
                     onClick={() => setPageselect(ele)}
-                >{ele}</div>
+                >{ele}</Link>
             })}
             <div className={pageselect === countPage ? 'pagination-item disable' : 'pagination-item'}
                 onClick={increasePage}
