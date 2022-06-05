@@ -12,12 +12,26 @@
         padding: 10px 5px;
         margin-bottom: 5px;
     }
+    & .active {
+        background-color: #E6E6FA;
+        border-radius: 5px;
+
+    }   
     &__item {
-        padding: 10px 5px;
+        padding: 6px 8px;
+        cursor: pointer;
+        // margin-bottom: 4px;
+        margin-top: 5px;
+
+        border-radius: 5px;
     // border: 1px solid red;
     display: flex;
     align-items: center;
     color: rgba(0,0,0,.84);
+    transition: 0.3s;
+    &:hover {
+        background-color: #E6E6FA;
+    }
         & span {
             display: inline-block;
             padding: 0 10px 0 0;

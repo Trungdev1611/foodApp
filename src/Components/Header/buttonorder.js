@@ -4,7 +4,7 @@ import './button.scss';
 import { Link } from 'react-router-dom';
 const Buttonorder = () => {
     return (
-        <Link to='/bestfood' >
+        <Link to='/listfood' >
             <button>
                 <ShoppingCartIcon className='icon-material' />Order Now
             </button>
