@@ -9,7 +9,6 @@ import Search from './search/Search'
 import DropdownFilter from './DropdownFilter/DropdownFilter'
 import Sort from './sort/Sort'
 import Footer from './../footer/Footer'
-import Pagination from './pagination/Pagination'
 
 const ProductList = () => {
 
@@ -34,7 +33,6 @@ const ProductList = () => {
 
 
                     </div>
-                    <Pagination />
                 </div>
             </div>
             <Footer />

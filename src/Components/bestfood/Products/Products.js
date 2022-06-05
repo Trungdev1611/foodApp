@@ -3,6 +3,8 @@ import ProductItem from './productItem/productItem'
 import { useSelector, useDispatch } from 'react-redux'
 import { actiongetFoodcreator, actionBurger, actionBread, actionSanwichs, actionDrinks, actionPizza } from './../../../redux/action/actioncreator'
 import { useLocation } from 'react-router-dom'
+import Pagination from './../pagination/Pagination'
+
 import './products.scss'
 const Products = () => {
     const dispatch = useDispatch()
@@ -40,17 +42,22 @@ const Products = () => {
         return <h1>Loading.....</h1>
     }
     return (
-        <div className='products-list'>
+        <div>
+            <div className='products-list'>
 
 
-            {selector.data.map((ele, index) => {
-                return <div className='product-list__item' key={index}>
-                    <ProductItem element={ele} />
-                </div>
+                {selector.data.map((ele, index) => {
+                    return <div className='product-list__item' key={index}>
+                        <ProductItem element={ele} />
+                    </div>
 
-            })}
+                })}
+
+            </div>
+            <Pagination />
 
         </div>
+
     )
 }
 
