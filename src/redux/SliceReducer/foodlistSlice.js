@@ -1,33 +1,31 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { actiongetFoodcreator, actionBurger, actionBread, actionSanwichs, actionPizza, actionDrinks } from "../action/actioncreator";
-const initialState = { data: [], loading: false }
+import * as actions from "../action/actioncreator";
+const initialState = { data: [], loading: false, countpage: 0, pageSelect: 1 }
 const foodListSlice = createSlice({
     initialState,
     name: 'foodlist',
     reducers: {
-        getTodo: (state, action) => {
+        resetPage: (state, action) => {
             console.log(action)
             return state
         }
     },
     extraReducers: (builder) => {  // keyworn addMatcher
         builder
-            .addCase(actionPizza.fulfilled, (state, action) => {
-                console.log('success pizza')
-                return { data: action.payload, loading: false }
-            })
+
             .addMatcher(
-                isAnyOf(actiongetFoodcreator.pending, actionBurger.pending, actionBread.pending, actionSanwichs.pending, actionPizza.pending, actionDrinks.pending),
+                isAnyOf(actions.actiongetFoodcreator.pending, actions.actionBurger.pending, actions.actionBread.pending, actions.actionSanwichs.pending, actions.actionPizza.pending, actions.actionDrinks.pending),
                 (state, action) => {
                     console.log('Loading...........')
                     state.loading = true
                     return state
                 })
             .addMatcher(
-                isAnyOf(actiongetFoodcreator.fulfilled, actionBurger.fulfilled, actionBread.fulfilled, actionSanwichs.fulfilled, actionPizza.fulfilled, actionDrinks.fulfilled),
+                isAnyOf(actions.actiongetFoodcreator.fulfilled, actions.actionBurger.fulfilled, actions.actionBread.fulfilled, actions.actionSanwichs.fulfilled, actions.actionPizza.fulfilled, actions.actionDrinks.fulfilled),
                 (state, action) => {
                     console.log('success')
-                    return { data: action.payload, loading: false }
+                    console.log(action)
+                    return { data: action.payload.data, loading: false, countpage: action.payload.countPage }
                 }
             )
 

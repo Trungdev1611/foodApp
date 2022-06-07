@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductItem from './productItem/productItem'
 import { useSelector, useDispatch } from 'react-redux'
 import { actiongetFoodcreator, actionBurger, actionBread, actionSanwichs, actionDrinks, actionPizza } from './../../../redux/action/actioncreator'
@@ -6,43 +6,62 @@ import { useLocation } from 'react-router-dom'
 import Pagination from './../pagination/Pagination'
 
 import './products.scss'
-const Products = () => {
+const Products = ({ pageselect, setPageselect, valueRadio }) => {
+    //pagination
+    const [countPage, setCountpage] = useState(0)
     const dispatch = useDispatch()
+    //lay duong dan hien tai URL
     const location = useLocation()
-    console.log(location)
-    useEffect(() => {
-        if (location.pathname.includes('/listfood/bestfood')) {
-            dispatch(actiongetFoodcreator())
-
-        }
-        if (location.pathname.includes('listfood/burgur')) {
-            dispatch(actionBurger())
-        }
-        if (location.pathname.includes('listfood/bread')) {
-            dispatch(actionBread())
-        }
-        if (location.pathname.includes('listfood/sandwiches')) {
-            dispatch(actionSanwichs())
-        }
-        if (location.pathname.includes('listfood/drinks')) {
-            dispatch(actionDrinks())
-        }
-        if (location.pathname.includes('listfood/pizza')) {
-            dispatch(actionPizza())
-        }
-
-    }, [dispatch, location.pathname])
-
-
-
 
     const selector = useSelector(state => state)
-    console.log(selector)
+
+
+
+
+    console.log('pageSelect', pageselect)
+    console.log('valueRadio', valueRadio)
+    //check link to get API
+    useEffect(() => {
+        function checkUrlcallApi() {
+            if (location.pathname.includes('/listfood/bestfood')) {
+                console.log('useEffect')
+                dispatch(actiongetFoodcreator({ limit: 16, offset: pageselect, price: valueRadio }))
+
+            }
+            if (location.pathname.includes('listfood/burgur')) {
+                dispatch(actionBurger({ limit: 16, offset: pageselect }))
+            }
+            if (location.pathname.includes('listfood/bread')) {
+                dispatch(actionBread({ limit: 16, offset: pageselect }))
+            }
+            if (location.pathname.includes('listfood/sandwiches')) {
+                dispatch(actionSanwichs({ limit: 16, offset: pageselect }))
+            }
+            if (location.pathname.includes('listfood/drinks')) {
+                dispatch(actionDrinks({ limit: 16, offset: pageselect }))
+            }
+            if (location.pathname.includes('listfood/pizza')) {
+                dispatch(actionPizza({ limit: 16, offset: pageselect }))
+            }
+            setCountpage(Math.ceil(selector.countpage / 16))
+        }
+        checkUrlcallApi()
+
+
+
+
+    }, [dispatch, location.pathname, selector.countpage, pageselect, valueRadio])
+
+
+
     if (selector.loading) {
         return <h1>Loading.....</h1>
     }
     return (
-        <div>
+
+        <div >
+            {console.log('render-Productlist')}
+            {console.log("countPage", selector.countpage / 16)}
             <div className='products-list'>
 
 
@@ -54,7 +73,11 @@ const Products = () => {
                 })}
 
             </div>
-            <Pagination />
+            <Pagination pageselect={pageselect}
+                setPageselect={setPageselect}
+                countPage={countPage}
+
+            />
 
         </div>
 

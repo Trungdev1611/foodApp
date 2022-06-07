@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Headerfood from './Header/Headerfood'
 import PopularList from './navmenu/PopularList'
 import Price from './price/price'
@@ -11,14 +11,16 @@ import Sort from './sort/Sort'
 import Footer from './../footer/Footer'
 
 const ProductList = () => {
+    const [pageSelect, setpageSelect] = useState(1)
+    const [valueRadio, setValueRadio] = useState("")
 
     return (
         <div >
             <Headerfood />
             <div className="bestfood-body">
                 <div className='nav-menu-list'>
-                    <PopularList />
-                    <Price />
+                    <PopularList data={() => setpageSelect(1)} />
+                    <Price set1={setValueRadio} />
                     <Starlist />
                 </div>
 
@@ -29,8 +31,8 @@ const ProductList = () => {
                         <Sort />
                     </div>
                     <div className="food-list">
-                        <Products />
-
+                        <Products pageselect={pageSelect} setPageselect={setpageSelect} valueRadio={valueRadio} />
+                        {console.log('index', pageSelect)}
 
                     </div>
                 </div>

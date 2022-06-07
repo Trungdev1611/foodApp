@@ -9,11 +9,11 @@ import { getData } from "../../api/api";
 
 
 // cac ation get data from aPI theo endpoint
-
-export const actiongetFoodcreator = createAsyncThunk('getfoodData', () => getData('best-foods', 16))
-export const actionBurger = createAsyncThunk('getburgur', () => getData('bbqs', 16))
-export const actionBread = createAsyncThunk('breads', () => getData('breads', 16))
-export const actionSanwichs = createAsyncThunk('sandwiches', () => getData('sandwiches', 16))
-export const actionDrinks = createAsyncThunk('drinks', () => getData('drinks', 16))
-export const actionPizza = createAsyncThunk('pizzas', () => getData('pizzas', 16))
+//pass multiparameter in createAsyncthunk thi ta chi co the pass object 
+export const actiongetFoodcreator = createAsyncThunk('getfoodData', (obj) => getData('best-foods', obj))
+export const actionBurger = createAsyncThunk('getburgur', (obj) => getData('bbqs', obj))
+export const actionBread = createAsyncThunk('breads', (obj) => getData('breads', obj))
+export const actionSanwichs = createAsyncThunk('sandwiches', (obj) => getData('sandwiches', obj))
+export const actionDrinks = createAsyncThunk('drinks', (obj) => getData('drinks', obj))
+export const actionPizza = createAsyncThunk('pizzas', (obj) => getData('pizzas', obj))
 

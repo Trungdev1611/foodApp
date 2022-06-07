@@ -1,3 +1,4 @@
+@import './../../../../assets/style/mixin.scss';
 .productfood-item {
     color: rgba(0,0,0,0.84);
     position: relative;
@@ -65,6 +66,10 @@
                 font-weight: bold;
                 font-size: 1.75rem;
                 padding-right: 10px;
+                @include desktop-maxwidth {
+                font-size: 1.55rem;
+
+                }
 
             }
 
