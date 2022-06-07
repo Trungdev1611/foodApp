@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import ProductItem from './productItem/productItem'
 import { useSelector, useDispatch } from 'react-redux'
 import { actiongetFoodcreator, actionBurger, actionBread, actionSanwichs, actionDrinks, actionPizza } from './../../../redux/action/actioncreator'
@@ -6,62 +6,62 @@ import { useLocation } from 'react-router-dom'
 import Pagination from './../pagination/Pagination'
 
 import './products.scss'
-const Products = ({ pageselect, setPageselect, valueRadio }) => {
+const Products = () => {
     //pagination
-    const [countPage, setCountpage] = useState(0)
     const dispatch = useDispatch()
     //lay duong dan hien tai URL
     const location = useLocation()
 
     const selector = useSelector(state => state)
+    const { pageselect, price_lte, price_gte } = selector
 
 
 
-
-    console.log('pageSelect', pageselect)
-    console.log('valueRadio', valueRadio)
+    // console.log('valueRadio', valueRadio)
     //check link to get API
+
     useEffect(() => {
         function checkUrlcallApi() {
+
             if (location.pathname.includes('/listfood/bestfood')) {
-                console.log('useEffect')
-                dispatch(actiongetFoodcreator({ limit: 16, offset: pageselect, price: valueRadio }))
+                // console.log('useEffect')
+                dispatch(actiongetFoodcreator({ _limit: 16, _page: pageselect, price_gte: price_gte, price_lte: price_lte }))
 
             }
             if (location.pathname.includes('listfood/burgur')) {
-                dispatch(actionBurger({ limit: 16, offset: pageselect }))
+                dispatch(actionBurger({ _limit: 16, _page: pageselect, price_gte: price_gte, price_lte: price_lte }))
             }
             if (location.pathname.includes('listfood/bread')) {
-                dispatch(actionBread({ limit: 16, offset: pageselect }))
+                dispatch(actionBread({ _limit: 16, _page: pageselect, price_gte: price_gte, price_lte: price_lte }))
             }
             if (location.pathname.includes('listfood/sandwiches')) {
-                dispatch(actionSanwichs({ limit: 16, offset: pageselect }))
+                dispatch(actionSanwichs({ _limit: 16, _page: pageselect, price_gte: price_gte, price_lte: price_lte }))
             }
             if (location.pathname.includes('listfood/drinks')) {
-                dispatch(actionDrinks({ limit: 16, offset: pageselect }))
+                dispatch(actionDrinks({ _limit: 16, _page: pageselect, price_gte: price_gte, price_lte: price_lte }))
             }
             if (location.pathname.includes('listfood/pizza')) {
-                dispatch(actionPizza({ limit: 16, offset: pageselect }))
+                dispatch(actionPizza({ _limit: 16, _page: pageselect, price_gte: price_gte, price_lte: price_lte }))
             }
-            setCountpage(Math.ceil(selector.countpage / 16))
+
         }
         checkUrlcallApi()
 
 
 
 
-    }, [dispatch, location.pathname, selector.countpage, pageselect, valueRadio])
+    }, [dispatch, location.pathname, selector.countpage, pageselect, price_gte, price_lte
+    ])
 
 
 
     if (selector.loading) {
         return <h1>Loading.....</h1>
     }
+
     return (
 
         <div >
-            {console.log('render-Productlist')}
-            {console.log("countPage", selector.countpage / 16)}
             <div className='products-list'>
 
 
@@ -73,9 +73,7 @@ const Products = ({ pageselect, setPageselect, valueRadio }) => {
                 })}
 
             </div>
-            <Pagination pageselect={pageselect}
-                setPageselect={setPageselect}
-                countPage={countPage}
+            <Pagination
 
             />
 

@@ -1,39 +1,52 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './pagination.scss'
-const Pagination = (props) => {
+import { useSelector, useDispatch } from 'react-redux'
+import { actionincreasePage, actionsetpageselect, actiondecreasePage } from './../../../redux/SliceReducer/foodlistSlice'
+import { useNavigate } from 'react-router-dom'
+const Pagination = () => {
 
     const arrPage = []
+    const selector = useSelector(state => state)
+    const dispatch = useDispatch()
+    const { countpage, pageselect } = selector
+    const pagetotal = Math.ceil(countpage / 16)
+    const navigate = useNavigate()
     function renderPage() {
 
-        for (let i = 1; i <= props.countPage; i++) {
+        for (let i = 1; i <= pagetotal; i++) {
             arrPage.push(i)
         }
         console.log(arrPage)
     }
     renderPage()
     function increasePage() {
-        if (props.pageselect !== props.countPage) {
-            props.setPageselect(prev => prev + 1)
+        if (pageselect !== pagetotal) {
+            // setPageselect(prev => prev + 1)
+            dispatch(actionincreasePage())
+            navigate(`?_page=${pageselect + 1}`)
         }
     }
     function decreasePage() {
-        if (props.pageselect !== 1) {
-            props.setPageselect(prev => prev - 1)
+        if (pageselect !== 1) {
+            dispatch(actiondecreasePage())
+            navigate(`?_page=${pageselect - 1}`)
+
+
         }
     }
     return (
         <div className='pagination'>
-            <div className={props.pageselect === 1 ? 'pagination-item disable' : 'pagination-item'}
+            <div className={pageselect === 1 ? 'pagination-item disable' : 'pagination-item'}
                 onClick={decreasePage}
             >&#60;</div>
             {arrPage.map((ele, index) => {
                 return <Link key={index} to={`?_page=${ele}`}
-                    className={ele === props.pageselect ? "actived pagination-item" : "pagination-item"}
-                    onClick={() => props.setPageselect(ele)}
+                    className={ele === pageselect ? "actived pagination-item" : "pagination-item"}
+                    onClick={() => dispatch(actionsetpageselect(ele))}
                 >{ele}</Link>
             })}
-            <div className={props.pageselect === props.countPage ? 'pagination-item disable' : 'pagination-item'}
+            <div className={pageselect === pagetotal ? 'pagination-item disable' : 'pagination-item'}
                 onClick={increasePage}
             >&#62;</div>
 

@@ -1,14 +1,43 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import * as actions from "../action/actioncreator";
-const initialState = { data: [], loading: false, countpage: 0, pageSelect: 1 }
+const initialState = {
+    data: [],
+    loading: false,
+    countpage: 0,
+    pageselect: 1,
+
+    price_lte: undefined,
+    price_gte: undefined,
+    _limit: 16,
+
+
+
+}
 const foodListSlice = createSlice({
     initialState,
     name: 'foodlist',
     reducers: {
-        resetPage: (state, action) => {
-            console.log(action)
+        //pagination
+        actionincreasePage: (state, action) => {
+            state.pageselect = state.pageselect + 1
             return state
-        }
+        },
+        actionsetpageselect: (state, action) => {
+            state.pageselect = action.payload
+            return state
+        },
+        actiondecreasePage: (state, action) => {
+            state.pageselect = state.pageselect - 1
+            return state
+        },
+        //filter by price
+        sortPrice: (state, action) => {
+            state.price_lte = action.payload.price_lte
+            state.price_gte = action.payload.price_gte
+            return state
+        },
+
+
     },
     extraReducers: (builder) => {  // keyworn addMatcher
         builder
@@ -24,8 +53,8 @@ const foodListSlice = createSlice({
                 isAnyOf(actions.actiongetFoodcreator.fulfilled, actions.actionBurger.fulfilled, actions.actionBread.fulfilled, actions.actionSanwichs.fulfilled, actions.actionPizza.fulfilled, actions.actionDrinks.fulfilled),
                 (state, action) => {
                     console.log('success')
-                    console.log(action)
-                    return { data: action.payload.data, loading: false, countpage: action.payload.countPage }
+                    // console.log(action)
+                    return { ...state, data: action.payload.data, loading: false, countpage: action.payload.countPage }
                 }
             )
 
@@ -36,5 +65,11 @@ const foodListSlice = createSlice({
 
 })
 
-export const getTodoaction = foodListSlice.actions.getTodo
+export const {
+    actionincreasePage,
+    actionsetpageselect,
+    actiondecreasePage,
+    sortPrice
+
+} = foodListSlice.actions
 export default foodListSlice.reducer
