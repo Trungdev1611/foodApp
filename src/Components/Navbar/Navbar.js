@@ -9,8 +9,11 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import Signin from '../Singn/Signin';
 import './Navbar.scss'
 import { Link } from 'react-router-dom';
-const Navbar = ({ setShowlistMenu, showlistMenu }) => {
-
+import { useSelector, useDispatch } from 'react-redux';
+import { togglelistMenuNav } from '../../redux/SliceReducer/foodlistSlice';
+const Navbar = () => {
+    const { showlistMenu } = useSelector(state => state)
+    const dispatch = useDispatch()
     function fixedTopNavbar() {
         let distanceToTop = window.pageYOffset
         if (distanceToTop > 65) {
@@ -40,11 +43,13 @@ const Navbar = ({ setShowlistMenu, showlistMenu }) => {
             window.removeEventListener('scroll', fixedTopNavbar)
         }
     })
+    // Toogle menu navbar
     function handleShowMenu() {
-        setShowlistMenu(!showlistMenu)
+        dispatch(togglelistMenuNav())
     }
     return (
         <nav className='navbar'>
+
 
             <div className={showlistMenu ? "nav-left showmenu" : 'nav-left'}>
                 <div className="logo-banner">
@@ -91,6 +96,9 @@ const Navbar = ({ setShowlistMenu, showlistMenu }) => {
                     <Signin />
                 </div>
             </div>
+            {showlistMenu ? <div className={'modal'}
+                onClick={() => dispatch(togglelistMenuNav())}
+            ></div> : ''}
         </nav>
     )
 }

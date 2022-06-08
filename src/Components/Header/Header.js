@@ -1,13 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Navbar from '../Navbar/Navbar'
 import Buttonorder from './buttonorder'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './Header.scss'
-
 import Slider from "react-slick";
 const Header = () => {
-  const [showlistMenu, setShowlistMenu] = useState(false)
 
   const settings = {
     dots: true,
@@ -22,7 +20,10 @@ const Header = () => {
     <div style={{ overflow: 'hidden' }}>
 
 
-      <Navbar showlistMenu={showlistMenu} setShowlistMenu={setShowlistMenu} />
+      <Navbar
+      // showlistMenu={showlistMenu}
+      //  setShowlistMenu={setShowlistMenu}
+      />
 
       <Slider {...settings}  >
 
@@ -57,7 +58,9 @@ const Header = () => {
 
         </header>
       </Slider>
-      {showlistMenu ? <div className={'modal'} onClick={() => setShowlistMenu(false)}  ></div> : ''}
+      {/* {showlistMenu ? <div className={'modal'}
+        onClick={() => dispatch(togglelistMenuNav())}
+      ></div> : ''} */}
 
 
 

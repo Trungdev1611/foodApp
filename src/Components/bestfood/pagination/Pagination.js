@@ -17,7 +17,6 @@ const Pagination = () => {
         for (let i = 1; i <= pagetotal; i++) {
             arrPage.push(i)
         }
-        console.log(arrPage)
     }
     renderPage()
     function increasePage() {

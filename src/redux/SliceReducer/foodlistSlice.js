@@ -8,8 +8,8 @@ const initialState = {
 
     price_lte: undefined,
     price_gte: undefined,
-    _limit: 16,
-
+    rate_like: undefined,
+    showlistMenu: false
 
 
 }
@@ -17,6 +17,12 @@ const foodListSlice = createSlice({
     initialState,
     name: 'foodlist',
     reducers: {
+        //List menu Nav
+        togglelistMenuNav: (state, action) => {
+            state.showlistMenu = !state.showlistMenu
+            return state
+        },
+
         //pagination
         actionincreasePage: (state, action) => {
             state.pageselect = state.pageselect + 1
@@ -32,10 +38,22 @@ const foodListSlice = createSlice({
         },
         //filter by price
         sortPrice: (state, action) => {
-            state.price_lte = action.payload.price_lte
-            state.price_gte = action.payload.price_gte
+            if (action.payload.price_gte === null && action.payload.price_gte === null) {
+                state.price_lte = undefined
+                state.price_gte = undefined
+            }
+            else {
+                state.price_lte = action.payload.price_lte
+                state.price_gte = action.payload.price_gte
+            }
             return state
         },
+
+        //filer by rate star
+        sortstar: (state, action) => {
+            state.rate_like = action.payload
+            return state
+        }
 
 
     },
@@ -69,7 +87,10 @@ export const {
     actionincreasePage,
     actionsetpageselect,
     actiondecreasePage,
-    sortPrice
+    sortPrice,
+    sortstar,
+    togglelistMenuNav,
+
 
 } = foodListSlice.actions
 export default foodListSlice.reducer

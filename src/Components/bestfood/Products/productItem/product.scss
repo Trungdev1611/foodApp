@@ -126,6 +126,20 @@
                 }
 
             }
+            &.star_rate {
+            //   background-color: red;
+              font-size:3rem;
+              top: 120px;
+              left: 10px;
+              color: white;
+              font-weight: 500;
+              & .star-icon {
+                  width: 20px;
+                  height: 20px;
+              }
+
+               
+            }
         }
     }
 }

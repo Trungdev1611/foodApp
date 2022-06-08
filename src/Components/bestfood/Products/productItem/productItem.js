@@ -3,6 +3,8 @@ import './product.scss'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined';
+
+import StarRateIcon from '@mui/icons-material/StarRate';
 const ProductItem = ({ element }) => {
 
 
@@ -30,6 +32,7 @@ const ProductItem = ({ element }) => {
                 <span className='icon-position favorite'>Favourite</span>
                 <span className='icon-position heart'><FavoriteBorderIcon /></span>
                 <span className='icon-position cart'><LocalGroceryStoreOutlinedIcon /></span>
+                <span className='icon-position star_rate'>{element.rate} <StarRateIcon className='star-icon' /></span>
 
 
             </div>
