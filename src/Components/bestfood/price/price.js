@@ -23,7 +23,7 @@ const Price = (props) => {
                         value='{"price_lte": null, "price_gte": null}'
                         onChange={handleChange}
                         checked={checkinput === '{"price_lte": null, "price_gte": null}'}
-                        id="price3" /><span>All Food</span>
+                        id="price3" /><span>All Price</span>
 
                 </li>
 

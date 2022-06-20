@@ -3,14 +3,18 @@ import './product.scss'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined';
-
+import { useSelector } from 'react-redux';
 import StarRateIcon from '@mui/icons-material/StarRate';
 const ProductItem = ({ element }) => {
-
+    const { changeView } = useSelector(state => state)
 
     return (
-        <div className='productfood-item'>
-            <div className="product-item__img">
+        <div className='productfood-item'
+            style={changeView ? { display: 'flex' } : null}
+        >
+            <div className="product-item__img"
+                style={changeView ? { width: '220px', marginRight: "2rem" } : null}
+            >
                 <img src={element.img
                 }
                     onError={({ currentTarget }) => {
@@ -19,14 +23,20 @@ const ProductItem = ({ element }) => {
                     }}
                     alt="loi anh" />
             </div>
-            <div className="product-item__bottom">
+            <div className="product-item__bottom"
+                style={changeView ? { marginTop: "10px" } : null}
+            >
                 <h4 className="item-heading">{element.name}</h4>
                 <p className='product-item__desc'>{element.dsc}</p>
-                <div className='product-item-info'>
+                <div className='product-item-info'
+                    style={changeView ? { flexDirection: 'column', alignItems: "flex-start" } : null}
+                >
                     <p className='info-city'>
                         <span><LocationOnIcon className='icon-location' /></span>
                         {element.country}</p>
-                    <p className="info-price">${element.price}</p>
+                    <p className="info-price"
+                        style={changeView ? { paddingLeft: '3px', marginTop: '5px' } : null}
+                    >${element.price}</p>
                 </div>
 
                 <span className='icon-position favorite'>Favourite</span>

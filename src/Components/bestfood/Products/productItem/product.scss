@@ -64,10 +64,9 @@
             & .info-price {
                 color: #ff514e ;
                 font-weight: bold;
-                font-size: 1.75rem;
                 padding-right: 10px;
                 @include desktop-maxwidth {
-                font-size: 1.55rem;
+                font-size: 1.75rem;
 
                 }
 
@@ -102,7 +101,7 @@
 
                 &:hover {
                     color: #ff514e;
-                    animation: showicon 0.5s ease-in-out;
+                    // animation: showicon 0.5s ease-in-out;
 
 
                 }

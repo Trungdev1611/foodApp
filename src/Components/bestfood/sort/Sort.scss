@@ -10,9 +10,14 @@
     & .sort-item {
         color: 
         #8c8c8c;
+    
       & .sort-icon {
-        font-size: 30px;
+        font-size: 35px;
         // width: 30px;
+        // color: inherit
       }
+    }
+    & .active-icon {
+      color: #ff514e !important;
     }
 }

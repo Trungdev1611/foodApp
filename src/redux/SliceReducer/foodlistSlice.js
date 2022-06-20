@@ -9,7 +9,12 @@ const initialState = {
     price_lte: undefined,
     price_gte: undefined,
     rate_like: undefined,
-    showlistMenu: false
+    showlistMenu: false,
+    name_like: undefined,
+    //sap xep gia theo thu tu tang hoac giam dan
+    _sort: undefined,
+    _order: undefined,
+    changeView: false
 
 
 }
@@ -53,6 +58,20 @@ const foodListSlice = createSlice({
         sortstar: (state, action) => {
             state.rate_like = action.payload
             return state
+        },
+        //filter by input Search
+        searchbyInput: (state, action) => {
+            state.name_like = action.payload
+        },
+        //sap xep gia tu thap den cao hoac nguoc lai
+        arrangementbyPrice: (state, action) => {
+            state._sort = action.payload.field
+            state._order = action.payload.order
+            return state
+        },
+        changeViewaction: (state, action) => {
+            state.changeView = !state.changeView
+            return state
         }
 
 
@@ -61,6 +80,11 @@ const foodListSlice = createSlice({
         builder
 
             .addMatcher(
+                //addMatcher cho phep khớp với các action đầu vào tự định nghĩa của riêng developper ==>return true thì thuc thi addMatcher
+                //VD:    kiem tra (action) => action.type.endsWith('/rejected') thi thuc thi function
+                //state ==tuy y
+
+                // isAnyOf - returns true when at least one of the conditions are met
                 isAnyOf(actions.actiongetFoodcreator.pending, actions.actionBurger.pending, actions.actionBread.pending, actions.actionSanwichs.pending, actions.actionPizza.pending, actions.actionDrinks.pending),
                 (state, action) => {
                     console.log('Loading...........')
@@ -90,7 +114,9 @@ export const {
     sortPrice,
     sortstar,
     togglelistMenuNav,
-
+    searchbyInput,
+    arrangementbyPrice,
+    changeViewaction
 
 } = foodListSlice.actions
 export default foodListSlice.reducer

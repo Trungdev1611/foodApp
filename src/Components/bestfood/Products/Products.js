@@ -13,7 +13,7 @@ const Products = () => {
     const location = useLocation()
 
     const selector = useSelector(state => state)
-    const { pageselect, price_lte, price_gte, rate_like } = selector
+    const { pageselect, price_lte, price_gte, rate_like, name_like, _sort, _order, changeView } = selector
 
     console.log(selector)
 
@@ -26,29 +26,33 @@ const Products = () => {
             if (location.pathname.includes('/listfood/bestfood')) {
                 // console.log('useEffect')
                 dispatch(actiongetFoodcreator(
-                    { _limit: 16, _page: pageselect, price_gte: price_gte, price_lte: price_lte, rate_like: rate_like }
+                    {
+                        _limit: 16, _page: pageselect, price_gte: price_gte,
+                        price_lte: price_lte, rate_like: rate_like,
+                        name_like: name_like
+                    }
                 ))
 
             }
             if (location.pathname.includes('listfood/burgur')) {
                 dispatch(actionBurger(
-                    { _limit: 16, _page: pageselect, price_gte: price_gte, price_lte: price_lte, rate_like: rate_like }))
+                    { _limit: 16, _page: pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order }))
             }
             if (location.pathname.includes('listfood/bread')) {
                 dispatch(actionBread(
-                    { _limit: 16, _page: pageselect, price_gte: price_gte, price_lte: price_lte, rate_like: rate_like }))
+                    { _limit: 16, _page: pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order }))
             }
             if (location.pathname.includes('listfood/sandwiches')) {
                 dispatch(actionSanwichs(
-                    { _limit: 16, _page: pageselect, price_gte: price_gte, price_lte: price_lte, rate_like: rate_like }))
+                    { _limit: 16, _page: pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order }))
             }
             if (location.pathname.includes('listfood/drinks')) {
                 dispatch(actionDrinks(
-                    { _limit: 16, _page: pageselect, price_gte: price_gte, price_lte: price_lte, rate_like: rate_like }))
+                    { _limit: 16, _page: pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order }))
             }
             if (location.pathname.includes('listfood/pizza')) {
                 dispatch(actionPizza(
-                    { _limit: 16, _page: pageselect, price_gte: price_gte, price_lte: price_lte, rate_like: rate_like }))
+                    { _limit: 16, _page: pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order }))
             }
 
         }
@@ -57,7 +61,8 @@ const Products = () => {
 
 
 
-    }, [dispatch, location.pathname, selector.countpage, pageselect, price_gte, price_lte, rate_like
+    }, [dispatch, location.pathname, selector.countpage,
+        pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order
     ])
 
 
@@ -71,7 +76,9 @@ const Products = () => {
     return (
 
         <div >
-            <div className='products-list'>
+            <div className='products-list'
+                style={changeView ? { gridTemplateColumns: "repeat(1, 1fr)" } : null}
+            >
 
 
                 {selector.data.map((ele, index) => {
