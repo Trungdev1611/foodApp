@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 import ProductItem from './productItem/productItem'
 import { useSelector, useDispatch } from 'react-redux'
 import { actiongetFoodcreator, actionBurger, actionBread, actionSanwichs, actionDrinks, actionPizza } from './../../../redux/action/actioncreator'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Pagination from './../pagination/Pagination'
+import queryString from 'query-string'
 
 import './products.scss'
 const Products = () => {
@@ -14,9 +15,8 @@ const Products = () => {
 
     const selector = useSelector(state => state)
     const { pageselect, price_lte, price_gte, rate_like, name_like, _sort, _order, changeView } = selector
-
     console.log(selector)
-
+    const navigate = useNavigate()
     // console.log('valueRadio', valueRadio)
     //check link to get API
 
@@ -27,32 +27,45 @@ const Products = () => {
                 // console.log('useEffect')
                 dispatch(actiongetFoodcreator(
                     {
-                        _limit: 16, _page: pageselect, price_gte: price_gte,
-                        price_lte: price_lte, rate_like: rate_like,
-                        name_like: name_like
+                        _limit: 16, _page: pageselect, price_gte,
+                        price_lte, rate_like,
+                        name_like, _sort, _order
                     }
                 ))
+                //dieu huong url den api dang goi
+                navigate(`?${queryString.stringify({ _limit: 16, _page: pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order })}`)
 
             }
             if (location.pathname.includes('listfood/burgur')) {
                 dispatch(actionBurger(
                     { _limit: 16, _page: pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order }))
+                //dieu huong url den api dang goi
+                navigate(`?${queryString.stringify({ _limit: 16, _page: pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order })}`)
+
             }
             if (location.pathname.includes('listfood/bread')) {
                 dispatch(actionBread(
                     { _limit: 16, _page: pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order }))
+                //dieu huong url den api dang goi
+                navigate(`?${queryString.stringify({ _limit: 16, _page: pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order })}`)
             }
             if (location.pathname.includes('listfood/sandwiches')) {
                 dispatch(actionSanwichs(
                     { _limit: 16, _page: pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order }))
+                //dieu huong url den api dang goi
+                navigate(`?${queryString.stringify({ _limit: 16, _page: pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order })}`)
             }
             if (location.pathname.includes('listfood/drinks')) {
                 dispatch(actionDrinks(
                     { _limit: 16, _page: pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order }))
+                //dieu huong url den api dang goi
+                navigate(`?${queryString.stringify({ _limit: 16, _page: pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order })}`)
             }
             if (location.pathname.includes('listfood/pizza')) {
                 dispatch(actionPizza(
                     { _limit: 16, _page: pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order }))
+                //dieu huong url den api dang goi
+                navigate(`?${queryString.stringify({ _limit: 16, _page: pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order })}`)
             }
 
         }
@@ -62,7 +75,7 @@ const Products = () => {
 
 
     }, [dispatch, location.pathname, selector.countpage,
-        pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order
+        pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order, navigate
     ])
 
 
