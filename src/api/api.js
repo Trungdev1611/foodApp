@@ -1,7 +1,7 @@
 import axios from "axios";
 //query string de chuyen doi object thanh quey
 import queryString from 'query-string'
-const baseUrl = 'https://fake-server-app16111994.herokuapp.com/';
+export const baseUrl = 'https://fake-server-app16111994.herokuapp.com/';
 
 export const getData = async (key, obj) => {
     try {

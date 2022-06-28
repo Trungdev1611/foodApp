@@ -1,0 +1,35 @@
+@import './../../../../assets/style/mixin.scss';
+.product-details {
+    font-size: 1.5rem;
+    color: rgba(0,0,0,.8);
+    & .product-details__info {
+        padding: 10rem #{var(--padding-horzi-nav)};
+        display: flex;
+        & .info-image {
+            flex: 1;
+            margin-right: 4rem;
+            & .img-large {
+                width: 100%;
+            }
+        }
+        & .info-content {
+            flex: 1;
+            &__heading {
+                font-size:2.8rem;
+                color: 
+                #292929;
+            }
+            &__star {
+                padding: 15px 0;
+            }
+            &__price {
+                color: #ff514e ;
+                font-weight: bold;
+                padding-right: 10px;
+                @include desktop-maxwidth {
+                font-size: 3rem;
+            }
+        }
+    }
+}
+}

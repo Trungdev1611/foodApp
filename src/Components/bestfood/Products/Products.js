@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import ProductItem from './productItem/productItem'
 import { useSelector, useDispatch } from 'react-redux'
 import { actiongetFoodcreator, actionBurger, actionBread, actionSanwichs, actionDrinks, actionPizza } from './../../../redux/action/actioncreator'
-import { setFoodDetailRender } from './../../../redux/SliceReducer/foodlistSlice'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Pagination from './../pagination/Pagination'
 import queryString from 'query-string'
@@ -81,8 +80,11 @@ const Products = () => {
 
     function detailsItem(ele) {
         console.log('testttttttttttttttttt')
-        navigate(`/food-items/${ele.id}`)
-        dispatch(setFoodDetailRender(ele))
+        let cutUrl = (location.pathname.replace('/listfood', ''))
+        let cutUrl2 = cutUrl.replace('bestfood', 'best-foods')
+        navigate(`/listfood/fooditem${cutUrl2}/${ele.id}`)
+
+
 
     }
 
