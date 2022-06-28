@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import ProductItem from './productItem/productItem'
 import { useSelector, useDispatch } from 'react-redux'
 import { actiongetFoodcreator, actionBurger, actionBread, actionSanwichs, actionDrinks, actionPizza } from './../../../redux/action/actioncreator'
+import { setFoodDetailRender } from './../../../redux/SliceReducer/foodlistSlice'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Pagination from './../pagination/Pagination'
 import queryString from 'query-string'
@@ -78,6 +79,12 @@ const Products = () => {
         pageselect, price_gte, price_lte, rate_like, name_like, _sort, _order, navigate
     ])
 
+    function detailsItem(ele) {
+        console.log('testttttttttttttttttt')
+        navigate(`/food-items/${ele.id}`)
+        dispatch(setFoodDetailRender(ele))
+
+    }
 
 
     if (selector.loading) {
@@ -95,8 +102,10 @@ const Products = () => {
 
 
                 {selector.data.map((ele, index) => {
-                    return <div className='product-list__item' key={index}>
-                        <ProductItem element={ele} />
+                    return <div className='product-list__item' key={index} onClick={() => detailsItem(ele)}>
+                        <ProductItem element={ele}
+
+                        />
                     </div>
 
                 })}

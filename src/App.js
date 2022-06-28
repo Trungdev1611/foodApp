@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Home from "./Components/Home";
 import ProductList from './Components/bestfood/index';
 import Notfound from './Components/NotFound/Notfound';
+import Productdetails from './Components/bestfood/Products/ProductDetails/Productdetails';
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
         <Route path='/listfood/sandwiches/*' element={<ProductList />} />
         <Route path='/listfood/drinks/*' element={<ProductList />} />
         <Route path='/listfood/pizzas/*' element={<ProductList />} />
-
+        <Route path='/food-items/:id' element={<Productdetails />} />
         {/* <Route path='/listfood/bestfood/*' element={<ProductList />} /> */}
         <Route path='*' element={<Notfound />} />
       </Routes>

@@ -1,7 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getData } from "../../api/api";
 
-
+// export const foodDetailRenderringAction = (payload) => {
+//     return {
+//         type: 'FOOD_DETAIL',
+//         payload
+//     }
+// }
 
 
 

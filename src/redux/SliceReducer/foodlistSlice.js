@@ -14,7 +14,10 @@ const initialState = {
     //sap xep gia theo thu tu tang hoac giam dan
     _sort: undefined,
     _order: undefined,
-    changeView: false
+    changeView: false,
+
+    //details food render
+    detailsfood: null
 
 
 }
@@ -72,6 +75,13 @@ const foodListSlice = createSlice({
         changeViewaction: (state, action) => {
             state.changeView = !state.changeView
             return state
+        },
+
+        // trang hien thi food chi tiet
+        setFoodDetailRender: (state, action) => {
+            console.log('detailsfooddetailsfooddetailsfooddetailsfooddetailsfooddetailsfood')
+            state.detailsfood = action.payload
+            return state
         }
 
 
@@ -116,7 +126,8 @@ export const {
     togglelistMenuNav,
     searchbyInput,
     arrangementbyPrice,
-    changeViewaction
+    changeViewaction,
+    setFoodDetailRender
 
 } = foodListSlice.actions
 export default foodListSlice.reducer
