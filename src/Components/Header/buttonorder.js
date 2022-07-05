@@ -1,5 +1,7 @@
 import React from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+
 import './button.scss';
 import { Link } from 'react-router-dom';
 const Buttonorder = () => {
@@ -13,4 +15,14 @@ const Buttonorder = () => {
     )
 }
 
+export const ButtonAddcart = () => {
+    return (
+        <Link to='/listfood' >
+            <button style={{ marginTop: 0, textAlign: 'center' }}>
+                <AddShoppingCartIcon className='icon-material' style={{ marginRight: '10px' }} />Order Now
+            </button>
+        </Link>
+
+    )
+}
 export default Buttonorder
