@@ -13,7 +13,7 @@ const Products = () => {
     //lay duong dan hien tai URL
     const location = useLocation()
 
-    const selector = useSelector(state => state)
+    const selector = useSelector(state => state.foodlistReducer)
     const { pageselect, price_lte, price_gte, rate_like, name_like, _sort, _order, changeView } = selector
     console.log(selector)
     const navigate = useNavigate()

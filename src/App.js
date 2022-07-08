@@ -3,6 +3,8 @@ import Home from "./Components/Home";
 import ProductList from './Components/bestfood/index';
 import Notfound from './Components/NotFound/Notfound';
 import Productdetails from './Components/bestfood/Products/ProductDetails/Productdetails';
+import Login from './Components/login/Login';
+import Register from './Components/login/Register';
 
 function App() {
 
@@ -17,6 +19,8 @@ function App() {
         <Route path='/listfood/*' element={<ProductList />} >
 
         </Route>
+        <Route path='/login' element={< Login />} />
+        <Route path='/register' element={<Register />} />
 
         {/* <Route path='/listfood/bestfood/*' element={<ProductList />} /> */}
         <Route path='*' element={<Notfound />} />

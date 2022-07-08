@@ -9,7 +9,7 @@ const Pagination = () => {
     const arrPage = []
     const selector = useSelector(state => state)
     const dispatch = useDispatch()
-    const { countpage, pageselect } = selector
+    const { countpage, pageselect } = selector.foodlistReducer
     const pagetotal = Math.ceil(countpage / 16)
     const navigate = useNavigate()
     function renderPage() {
