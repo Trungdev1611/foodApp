@@ -62,9 +62,9 @@
             @include desktop-maxwidth {
                 flex-direction: column;
                 // border: 1px solid red;
-
+                z-index: 300;
                 position: absolute;
-                width: 80%;
+                width: 60%;
                 left: 0;
                 top: 0;
                 // background-color: 
@@ -86,6 +86,17 @@
                 align-items: center;
                 padding: 0rem 1.5rem;
                 // border: 1px solid blue;
+                & .signin-mobile {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    // border: 1px solid red;
+                    overflow: hidden;
+                    & .info-user {
+                        margin-left: 0;
+                    }
+                }
                 @include desktop-maxwidth {
                    padding: 1.5rem 0;
                    margin: 0 0 0 1.5rem;
@@ -124,11 +135,13 @@
         justify-content: flex-end;
         // border: 1px solid red;
  
-        & .login {
+        & .signin-container{
             height: 4rem;
             display: flex;
             align-items: center;
             margin-left: 2.5rem;
+            font-size: 1.4rem;
+            flex-direction: row;
             @include desktop-maxwidth {
                 display: none;
             }

@@ -1,11 +1,12 @@
 @import './../../assets/style/mixin.scss';
 
-.login {
+.signin {
     height: 4rem;
     display: flex;
     align-items: center;
     margin-left: 3rem;
-    display: none;
+    // display: none;
+    flex-direction: row;
     font-size: 1.4rem;
     // border: 1px solid red;
     @include desktop-maxwidth {

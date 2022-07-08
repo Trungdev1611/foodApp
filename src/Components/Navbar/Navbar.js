@@ -11,8 +11,10 @@ import './Navbar.scss'
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { togglelistMenuNav } from '../../redux/SliceReducer/foodlistSlice';
+import { logout } from '../../redux/SliceReducer/AuthSlice';
 const Navbar = () => {
-    const { showlistMenu } = useSelector(state => state)
+    const { showlistMenu } = useSelector(state => state.foodlistReducer)
+    const selector = useSelector(state => state.AuthSliceReducer)
     const dispatch = useDispatch()
     function fixedTopNavbar() {
         let distanceToTop = window.pageYOffset
@@ -47,6 +49,7 @@ const Navbar = () => {
     function handleShowMenu() {
         dispatch(togglelistMenuNav())
     }
+
     return (
         <nav className='navbar'>
 
@@ -59,9 +62,11 @@ const Navbar = () => {
                     <Link to="/home" className='logo-link'><img src={logonav} alt="ko hien anh" /></Link>
                 </div>
                 <ul className='nav-list'>
-                    <li className='nav-list__item'>
-                        <Signin />
-                    </li>
+                    {showlistMenu && <li className='nav-list__item'>
+                        <div className='signin-mobile'><Signin /> {selector.username && <span onClick={() => dispatch(logout())}>Log out </span>}</div>
+
+                    </li>}
+
                     <li className='nav-list__item'>
                         <Link to='/home' className='link-list__item'>
                             <span><HomeOutlinedIcon className='icon-material' /></span>
@@ -69,8 +74,8 @@ const Navbar = () => {
                             <span>Home</span>
                         </Link >
                     </li>
-                    <li className='nav-list__item'>
-                        <Link to='/bestfood' className='link-list__item'>
+                    <li className='nav-list__item' onClick={() => dispatch(togglelistMenuNav(false))}>
+                        <Link to='/listfood' className='link-list__item'>
                             <span><RestaurantOutlinedIcon className='icon-material' /></span>
 
                             <span>Order Online</span>
@@ -92,7 +97,7 @@ const Navbar = () => {
                     <span><ShoppingCartIcon className='icon-material' /></span>
                     <span className='cart-count'>0</span>
                 </div>
-                <div className="login">
+                <div className="signin-container">
                     <Signin />
                 </div>
             </div>

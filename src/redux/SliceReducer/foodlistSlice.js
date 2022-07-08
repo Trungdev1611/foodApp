@@ -27,7 +27,13 @@ const foodListSlice = createSlice({
     reducers: {
         //List menu Nav
         togglelistMenuNav: (state, action) => {
-            state.showlistMenu = !state.showlistMenu
+            if (action.payload === undefined) {
+                state.showlistMenu = !state.showlistMenu
+
+            }
+            else {
+                state.showlistMenu = action.payload
+            }
             return state
         },
 

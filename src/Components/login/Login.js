@@ -7,18 +7,30 @@ import Footer from '../footer/Footer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
+import { loginSuccess, hideNotify } from '../../redux/SliceReducer/AuthSlice';
+import { useDispatch, useSelector } from 'react-redux';
 const Login = () => {
     const [error, setError] = useState({
         username1: '', password1: ''
     })
     console.log('error', error)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const selector = useSelector((state) => state.AuthSliceReducer)
     return (
 
 
         <>
             <div id="test"><Navbar /></div>
+
             <div className="logincomponent">
+                {selector.isShowToast && <div id="toast">
+                    <div className="toast-item">
+                        <span>Login success</span>
+                    </div>
+
+
+                </div>}
                 <div className='loginContent'>
                     <div className="image">
                         <img src={imglogin} alt="thumb" />
@@ -43,7 +55,11 @@ const Login = () => {
                                     setError({ username1: '', password1: '' })
                                     console.log(data)
                                     document.cookie = `accesstoken = ${data.data.accessToken}`
-
+                                    dispatch(loginSuccess({ username: values.username, isLogin: true, isShowToast: true }))
+                                    setTimeout(() => {
+                                        dispatch(hideNotify())
+                                        navigate('/home')
+                                    }, 1000)
 
 
                                 })

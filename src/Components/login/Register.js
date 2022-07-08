@@ -32,7 +32,7 @@ const Register = () => {
                                 validationSchema={Yup.object({
                                     username: Yup.string()
 
-                                        .required('This username is required'),
+                                        .required('This username is required').max(10),
                                     password: Yup.string().required('This password is required'),
                                     checkbox: Yup.boolean().oneOf([true], 'You must agree to our term & conditions')
 
