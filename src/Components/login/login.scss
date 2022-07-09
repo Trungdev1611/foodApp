@@ -109,24 +109,7 @@
 #test .navbar {
     background-color: rgba(33,33,33, 0.6) !important;
 }
-#toast {
-    position: fixed;
-    right: 32px;
-    top: 80px;
-    // height: 100vh;
-    border: 1px solid red;
-    & div {
-        padding: 35px 0;
-        color :red;
-        min-width: 300px;
-        margin-top: 10px;
-        background-color: yellow;
-        position: relative;
-        transform: translate(120%);
-        animation: toastmessage 0.5s forwards ;
-    }
-            
-}
+
 @keyframes toastmessage {
     from {
         transform: translate(120%);

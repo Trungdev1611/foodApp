@@ -7,6 +7,7 @@ import Footer from '../footer/Footer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
+import Toast from '../toast/Toast';
 import { loginSuccess, hideNotify } from '../../redux/SliceReducer/AuthSlice';
 import { useDispatch, useSelector } from 'react-redux';
 const Login = () => {
@@ -24,13 +25,7 @@ const Login = () => {
             <div id="test"><Navbar /></div>
 
             <div className="logincomponent">
-                {selector.isShowToast && <div id="toast">
-                    <div className="toast-item">
-                        <span>Login success</span>
-                    </div>
-
-
-                </div>}
+                {selector.isShowToast && <Toast />}
                 <div className='loginContent'>
                     <div className="image">
                         <img src={imglogin} alt="thumb" />
@@ -59,7 +54,7 @@ const Login = () => {
                                     setTimeout(() => {
                                         dispatch(hideNotify())
                                         navigate('/home')
-                                    }, 1000)
+                                    }, 2000)
 
 
                                 })
