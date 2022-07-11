@@ -11,6 +11,7 @@ const ProductItem = ({ element }) => {
     return (
         <div className='productfood-item'
 
+
             style={changeView ? { display: 'flex' } : null}
         >
             <div className="product-item__img"
@@ -47,6 +48,8 @@ const ProductItem = ({ element }) => {
 
 
             </div>
+
+
 
         </div>
     )

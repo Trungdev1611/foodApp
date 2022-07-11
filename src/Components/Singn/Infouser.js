@@ -2,10 +2,14 @@ import React from 'react'
 import './Infouser.scss'
 import { logout } from './../../redux/SliceReducer/AuthSlice'
 import { useDispatch } from 'react-redux'
+import Cookies from 'universal-cookie';
 const Infouser = (props) => {
+    const cookies = new Cookies();
     const dispatch = useDispatch()
     function handleLogout() {
         dispatch(logout())
+        cookies.remove('accessToken')
+
     }
 
     return (

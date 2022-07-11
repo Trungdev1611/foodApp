@@ -13,6 +13,7 @@ import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined
 import EventAvailableOutlinedIcon from '@mui/icons-material/EventAvailableOutlined';
 import TryOutlinedIcon from '@mui/icons-material/TryOutlined';
 import './ProductDetails.scss'
+import Modal from './../../../modal/Modal';
 import axios from 'axios'
 import FoodDesc from '../../description/FoodDesc';
 const Productdetails = () => {
@@ -134,6 +135,7 @@ const Productdetails = () => {
                 </div>
             }
             <Footer />
+            <Modal />
         </div>
     )
 }

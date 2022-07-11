@@ -110,13 +110,3 @@
     background-color: rgba(33,33,33, 0.6) !important;
 }
 
-@keyframes toastmessage {
-    from {
-        transform: translate(120%);
-        opacity: 0;
-    }
-    to {
-        transform: translate(0%);
-        opacity: 1;
-    }
-}

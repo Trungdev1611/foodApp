@@ -12,10 +12,12 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { togglelistMenuNav } from '../../redux/SliceReducer/foodlistSlice';
 import { logout } from '../../redux/SliceReducer/AuthSlice';
+import Cookies from 'universal-cookie';
 const Navbar = () => {
     const { showlistMenu } = useSelector(state => state.foodlistReducer)
     const selector = useSelector(state => state.AuthSliceReducer)
     const dispatch = useDispatch()
+    const cookies = new Cookies();
     function fixedTopNavbar() {
         let distanceToTop = window.pageYOffset
         if (distanceToTop > 65) {
@@ -63,7 +65,11 @@ const Navbar = () => {
                 </div>
                 <ul className='nav-list'>
                     {showlistMenu && <li className='nav-list__item'>
-                        <div className='signin-mobile'><Signin /> {selector.username && <span onClick={() => dispatch(logout())}>Log out </span>}</div>
+                        <div className='signin-mobile'><Signin /> {selector.username && <span onClick={() => {
+                            dispatch(logout())
+                            cookies.remove('accessToken')
+                        }
+                        }>Log out </span>}</div>
 
                     </li>}
 

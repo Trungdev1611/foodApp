@@ -10,6 +10,7 @@ import Navbar from '../Navbar/Navbar';
 import Toast from '../toast/Toast';
 import { loginSuccess, hideNotify } from '../../redux/SliceReducer/AuthSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import Cookies from 'universal-cookie';
 const Login = () => {
     const [error, setError] = useState({
         username1: '', password1: ''
@@ -18,6 +19,7 @@ const Login = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const selector = useSelector((state) => state.AuthSliceReducer)
+    const cookies = new Cookies();
     return (
 
 
@@ -49,7 +51,14 @@ const Login = () => {
                                 axios.post('http://localhost:3001/auth/login', values).then(data => {
                                     setError({ username1: '', password1: '' })
                                     console.log(data)
-                                    document.cookie = `accesstoken = ${data.data.accessToken}`
+                                    // document.cookie = `accesstoken = ${data.data.accessToken}`
+                                    cookies.set('accessToken', data.data.accessToken, {
+                                        path: '/', maxAge: 5 * 60,  //thoi gian het han sau 24h
+                                        //co cai http only nay thi khong nhin thay cookie trong trinh duyet duoc
+                                        // httpOnly: true
+
+                                    }
+                                    );
                                     dispatch(loginSuccess({ username: values.username, isLogin: true, isShowToast: true }))
                                     setTimeout(() => {
                                         dispatch(hideNotify())

@@ -1,0 +1,64 @@
+@import './../../assets/style/mixin.scss';
+
+.modalLogin-container {
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+
+    & .modalLogin {
+        min-width: 400px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        &-heading {
+            color: #292929;
+            font-size: 1.7rem;
+            font-weight: 600;
+        }
+        &-desc {
+            padding: 20px 0;
+            font-size: 1.4rem;
+            color: #aaaaaa;
+            margin-bottom: 20px;
+        }
+        &-btn {
+            display: flex;
+            justify-content: flex-end;
+
+            & span {
+                display: inline-block;
+                font-size: 1.5rem;
+                letter-spacing: 0.2px;
+                padding: 6px 8px;
+                border-radius: 5px;
+                font-weight: 500;
+                cursor: pointer;
+
+                &.gologin {
+                    background-color: #ff514e;
+                    color: white;
+                    margin-left: 10px;
+                    &:hover {
+                        background-color: rgb(162, 53, 56);
+                    }
+                  
+                }
+                &.cancel {
+                    color: #292929;
+                    &:hover {
+                        background-color: #eee;
+                    }
+                }
+            }
+        }
+    }
+}

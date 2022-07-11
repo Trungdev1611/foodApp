@@ -25,6 +25,7 @@
     "reduxjs-toolkit-persist": "^7.2.1",
     "slick-carousel": "^1.8.1",
     "swiper": "^8.1.6",
+    "universal-cookie": "^4.0.4",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },
