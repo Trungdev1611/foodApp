@@ -12,10 +12,13 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { togglelistMenuNav } from '../../redux/SliceReducer/foodlistSlice';
 import { logout } from '../../redux/SliceReducer/AuthSlice';
+import { cartDataActionCreator } from './../../redux/action/actioncreator'
 import Cookies from 'universal-cookie';
+import CartUser from '../CartUser/CartUser';
 const Navbar = () => {
     const { showlistMenu } = useSelector(state => state.foodlistReducer)
     const selector = useSelector(state => state.AuthSliceReducer)
+    const showCart = useSelector(state => state.CartReducer)
     const dispatch = useDispatch()
     const cookies = new Cookies();
     function fixedTopNavbar() {
@@ -52,6 +55,11 @@ const Navbar = () => {
         dispatch(togglelistMenuNav())
     }
 
+    //getData cart by user
+    function getDataCartUser() {
+        dispatch(cartDataActionCreator())
+    }
+
     return (
         <nav className='navbar'>
 
@@ -66,8 +74,9 @@ const Navbar = () => {
                 <ul className='nav-list'>
                     {showlistMenu && <li className='nav-list__item'>
                         <div className='signin-mobile'><Signin /> {selector.username && <span onClick={() => {
+                            cookies.remove('accessToken', { path: '/' })
+
                             dispatch(logout())
-                            cookies.remove('accessToken')
                         }
                         }>Log out </span>}</div>
 
@@ -99,7 +108,9 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="nav-right">
-                <div className="cart">
+                <div className="cart"
+                    onClick={getDataCartUser}
+                >
                     <span><ShoppingCartIcon className='icon-material' /></span>
                     <span className='cart-count'>0</span>
                 </div>
@@ -110,6 +121,8 @@ const Navbar = () => {
             {showlistMenu ? <div className={'modal'}
                 onClick={() => dispatch(togglelistMenuNav())}
             ></div> : ''}
+
+            {showCart.isShowCart && <CartUser />}
         </nav>
     )
 }

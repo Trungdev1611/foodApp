@@ -53,7 +53,7 @@ const Login = () => {
                                     console.log(data)
                                     // document.cookie = `accesstoken = ${data.data.accessToken}`
                                     cookies.set('accessToken', data.data.accessToken, {
-                                        path: '/', maxAge: 5 * 60,  //thoi gian het han sau 24h
+                                        path: '/', maxAge: 20 * 60,  //thoi gian het han sau 24h
                                         //co cai http only nay thi khong nhin thay cookie trong trinh duyet duoc
                                         // httpOnly: true
 

@@ -17,11 +17,11 @@ const Buttonorder = () => {
 
 export const ButtonAddcart = () => {
     return (
-        <Link to='/listfood' >
-            <button style={{ marginTop: 0, textAlign: 'center' }}>
-                <AddShoppingCartIcon className='icon-material' style={{ marginRight: '10px' }} />Order Now
-            </button>
-        </Link>
+
+        <button style={{ marginTop: 0, textAlign: 'center' }}>
+            <AddShoppingCartIcon className='icon-material' style={{ marginRight: '10px' }} />Order Now
+        </button>
+
 
     )
 }

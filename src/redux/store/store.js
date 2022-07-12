@@ -4,10 +4,13 @@ import storage from 'reduxjs-toolkit-persist/lib/storage' // defaults to localSt
 
 import foodlistReducer from './../SliceReducer/foodlistSlice'
 import AuthSliceReducer from "../SliceReducer/AuthSlice";
+import CartReducer from './../SliceReducer/CartUserSlice'
 
 const rootReducer = combineReducers({
     foodlistReducer,
-    AuthSliceReducer
+    AuthSliceReducer,
+    CartReducer
+
 })
 const persistConfig = {
     key: 'root',

@@ -8,7 +8,7 @@ const Infouser = (props) => {
     const dispatch = useDispatch()
     function handleLogout() {
         dispatch(logout())
-        cookies.remove('accessToken')
+        cookies.remove('accessToken', { path: '/' })
 
     }
 
