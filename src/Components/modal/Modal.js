@@ -22,7 +22,10 @@ const Modal = () => {
                         onClick={(e) => disableModel(e)}
                     >CANCEL</span>
                     <span className="modal-button__option gologin"
-                        onClick={(e) => navigate('/login')}
+                        onClick={(e) => {
+                            navigate('/login')
+                            dispatch(forcedLogin())
+                        }}
                     >LOGIN</span>
                 </div>
             </div>

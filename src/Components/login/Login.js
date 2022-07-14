@@ -7,10 +7,11 @@ import Footer from '../footer/Footer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
-import Toast from '../toast/Toast';
+import Toast from '../toast/ToastLogin';
 import { loginSuccess, hideNotify } from '../../redux/SliceReducer/AuthSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import Cookies from 'universal-cookie';
+
 const Login = () => {
     const [error, setError] = useState({
         username1: '', password1: ''
@@ -20,14 +21,13 @@ const Login = () => {
     const dispatch = useDispatch()
     const selector = useSelector((state) => state.AuthSliceReducer)
     const cookies = new Cookies();
+
     return (
-
-
         <>
             <div id="test"><Navbar /></div>
 
             <div className="logincomponent">
-                {selector.isShowToast && <Toast />}
+                {selector.isShowToast && <div id="toast"><Toast /></div>}
                 <div className='loginContent'>
                     <div className="image">
                         <img src={imglogin} alt="thumb" />
@@ -59,6 +59,8 @@ const Login = () => {
 
                                     }
                                     );
+
+
                                     dispatch(loginSuccess({ username: values.username, isLogin: true, isShowToast: true }))
                                     setTimeout(() => {
                                         dispatch(hideNotify())

@@ -5,17 +5,20 @@ import './Signin.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import Infouser from './Infouser'
 import { togglelistMenuNav } from './../../redux/SliceReducer/foodlistSlice'
+import Cookies from 'universal-cookie';
+
 const Signin = () => {
     const navigate = useNavigate()
     const selector = useSelector(state => state.AuthSliceReducer)
     const dispatch = useDispatch()
+    const cookies = new Cookies();
     function handleGoLogin() {
         dispatch(togglelistMenuNav(false))
         navigate('/login')
     }
     return (
         <>
-            {selector.username ? <Infouser name={selector.username} /> :
+            {(selector.username && cookies.get('accessToken')) ? <Infouser name={selector.username} /> :
                 <div className="signin" >
                     <img src={login} alt="" className='user-signin' onClick={handleGoLogin} />
 

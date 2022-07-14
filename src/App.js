@@ -5,6 +5,7 @@ import Notfound from './Components/NotFound/Notfound';
 import Productdetails from './Components/bestfood/Products/ProductDetails/Productdetails';
 import Login from './Components/login/Login';
 import Register from './Components/login/Register';
+import { ToastAddcart } from './Components/toast/ToastLogin';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         {/* <Route path='/listfood/bestfood/*' element={<ProductList />} /> */}
         <Route path='*' element={<Notfound />} />
       </Routes>
+      <ToastAddcart />
 
     </div>
   );

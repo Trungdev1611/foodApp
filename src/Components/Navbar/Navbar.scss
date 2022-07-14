@@ -93,8 +93,21 @@
                     width: 100%;
                     // border: 1px solid red;
                     overflow: hidden;
+                    & .signin {
+                        display: none;
+                        @include desktop-maxwidth {
+                            display: flex;
+                            // border: 1px solid red;
+                        }
+                        
+                    }
                     & .info-user {
+                        display: none;
                         margin-left: 0;
+                        @include desktop-maxwidth {
+                            display: flex;
+                            // border: 1px solid red;
+                        }
                     }
                 }
                 @include desktop-maxwidth {

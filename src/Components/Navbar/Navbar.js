@@ -15,10 +15,11 @@ import { logout } from '../../redux/SliceReducer/AuthSlice';
 import { cartDataActionCreator } from './../../redux/action/actioncreator'
 import Cookies from 'universal-cookie';
 import CartUser from '../CartUser/CartUser';
+import Modal from './../modal/Modal'
+import { forcedLogin } from '../../redux/SliceReducer/CartUserSlice';
 const Navbar = () => {
     const { showlistMenu } = useSelector(state => state.foodlistReducer)
-    const selector = useSelector(state => state.AuthSliceReducer)
-    const showCart = useSelector(state => state.CartReducer)
+    const selector = useSelector(state => state.CartReducer)
     const dispatch = useDispatch()
     const cookies = new Cookies();
     function fixedTopNavbar() {
@@ -56,8 +57,17 @@ const Navbar = () => {
     }
 
     //getData cart by user
-    function getDataCartUser() {
-        dispatch(cartDataActionCreator())
+    async function getDataCartUser() {
+        const token = cookies.get('accessToken')
+        if (token) {
+            dispatch(cartDataActionCreator(token))
+
+
+        }
+        else {
+            dispatch(forcedLogin())
+        }
+
     }
 
     return (
@@ -72,20 +82,22 @@ const Navbar = () => {
                     <Link to="/home" className='logo-link'><img src={logonav} alt="ko hien anh" /></Link>
                 </div>
                 <ul className='nav-list'>
-                    {showlistMenu && <li className='nav-list__item'>
-                        <div className='signin-mobile'><Signin /> {selector.username && <span onClick={() => {
-                            cookies.remove('accessToken', { path: '/' })
-
-                            dispatch(logout())
-                        }
-                        }>Log out </span>}</div>
+                    {<li className='nav-list__item'>
+                        <div className='signin-mobile'>
+                            <Signin />
+                            {
+                                //dang nhap roi thi hien thi user va logout; chua dang nhap thi hien thi sign in
+                                showlistMenu && cookies.get('accessToken') &&
+                                <span onClick={() => { cookies.remove('accessToken', { path: '/' }); dispatch(logout()) }}>
+                                    Log out </span>
+                            }
+                        </div>
 
                     </li>}
 
                     <li className='nav-list__item'>
                         <Link to='/home' className='link-list__item'>
                             <span><HomeOutlinedIcon className='icon-material' /></span>
-
                             <span>Home</span>
                         </Link >
                     </li>
@@ -112,7 +124,7 @@ const Navbar = () => {
                     onClick={getDataCartUser}
                 >
                     <span><ShoppingCartIcon className='icon-material' /></span>
-                    <span className='cart-count'>0</span>
+                    <span className='cart-count'>{selector.cartData.length}</span>
                 </div>
                 <div className="signin-container">
                     <Signin />
@@ -122,7 +134,8 @@ const Navbar = () => {
                 onClick={() => dispatch(togglelistMenuNav())}
             ></div> : ''}
 
-            {showCart.isShowCart && <CartUser />}
+            {selector.isShowCart && <CartUser />}
+            {selector.isModalLogin && <Modal />}
         </nav>
     )
 }

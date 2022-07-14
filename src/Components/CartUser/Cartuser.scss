@@ -2,7 +2,7 @@
     position: fixed;
     height: 100vh;
     width: 450px;
-    max-width: 100%;
+    max-width: 100vw;
     // border: 1px solid red;
     padding: 20px;
     right: 0px;
@@ -15,19 +15,40 @@
     &__heading {
         display: flex;
         justify-content: space-between;
-        padding: 20px 0;
+        padding: 10px 0;
         border-bottom: 1.5px solid #ccc;
         // border: 1px solid red;
         // align-items: center;
         font-size: 2rem;
+        height: 60px;
     }
     & .cart-close {
         // font-size: 30px;
         transform: scale(2);
+        cursor: pointer;
         
     }
     & .listproducts-cart {
         padding: 10px 0;
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        // text-align: center;
+        align-items: center;
+        overflow-y: auto;
+        height: calc(100vh - 240px);
+        & .empty-cart {
+            width: 70%;
+            flex: 1;
+            object-fit: contain;
+            // border: 1px solid red;
+        }
+        & h4 {
+            padding: 5px 0;
+            font-weight: bolder;
+            font-size: 2rem;
+            flex: 1;
+        }
 
     }
 
@@ -36,8 +57,9 @@
 .cart-item {
     display: flex;
     // border: 1px solid red;
-    margin: 20px 0;
+    margin: 5px 0;
     font-size: 1.4rem;
+    align-self: flex-start;
 
     & .cart-item__img {
         width: 80px;
@@ -95,15 +117,22 @@
 .cart-user::-webkit-scrollbar {
     display: none;
 }
+.listproducts-cart::-webkit-scrollbar {
+    display: none;
+}
 .cart-orderinfo {
     position: fixed;
     bottom: 0;
+    right: 0;
+    height: 180px;
     // border: 1px solid red;
     max-width: 100%;
-    width: 410px;
+    width: 450px;
+    max-width: 100vw;
     font-size: 1.6rem;
-    padding: 15px 10px;
+    padding: 20px 20px;
     box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+    background-color: white;
     & h4 {
         font-size: 2rem;
         font-weight: 600;
@@ -149,13 +178,24 @@
             align-items: center;
             justify-content: center;
             border-radius: 2rem;
+            letter-spacing: 0.3px;
+            & .cart-icon {
+                font-size: 2rem;
+                margin-right: 5px;
+            }
             &:first-child {
                 margin-right: 10px;
+                &:hover {
+                    background-color: #99100e;
+                }
             }
             &:last-child {
                 background-color: white;
                 color: inherit;
                 box-shadow: 3px 3px 15px rgba(0,0,0,0.1);
+                &:hover {
+                    background-color: rgb(233, 220, 220);
+                }
             }
         }
     }

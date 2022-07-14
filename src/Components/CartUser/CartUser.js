@@ -6,8 +6,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { hideCart } from '../../redux/SliceReducer/CartUserSlice';
 import StoreIcon from '@mui/icons-material/Store';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
+import CartEmpty from './../../assets/image/empty-cart.svg'
 const CartUser = () => {
     const selector = useSelector(state => state.CartReducer)
+    console.log('selector:::', selector)
     const dispatch = useDispatch()
     function handlehideCart(e) {
         console.log(e.target)
@@ -35,27 +37,33 @@ const CartUser = () => {
                             })
                         }
                     </div>}
-
+                {(selector.cartData && selector.cartData.length === 0) &&
+                    <div className="listproducts-cart">
+                        <img src={CartEmpty} alt="Empty cart" className='empty-cart' />
+                        <h4>Your Cart is Empty 🍔</h4>
+                    </div>
+                }
                 <div className="cart-orderinfo">
                     <h4>Order Info</h4>
-                    <div className='info-priceship'>
+                    {/* <div className='info-priceship'>
                         <span className='light'>Shipping Cost</span>
                         <span>Free</span>
                     </div>
                     <div className='info-voucher'>
                         <span className='light'>Voucher</span>
                         <span>None</span>
-                    </div>
+                    </div> */}
+
                     <div className="payment">
                         <h4 className="payment-name">Total</h4>
                         <span className="payment-price">$500</span>
                     </div>
                     <div className="cart-orderinfo__options">
                         <span className="checkout">
-                            <LocalGroceryStoreIcon />CHECKOUT
+                            <LocalGroceryStoreIcon className='cart-icon' />CHECK OUT
                         </span>
                         <span className="buymore">
-                            <StoreIcon />BUY MORE
+                            <StoreIcon className='cart-icon' />BUY MORE
                         </span>
                     </div>
                 </div>

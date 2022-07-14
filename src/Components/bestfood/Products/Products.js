@@ -7,6 +7,8 @@ import Pagination from './../pagination/Pagination'
 import queryString from 'query-string'
 
 import './products.scss'
+import ToastAddcart from '../../toast/ToastAddcart'
+
 const Products = () => {
     //pagination
     const dispatch = useDispatch()
@@ -16,9 +18,9 @@ const Products = () => {
     const selector = useSelector(state => state.foodlistReducer)
     const { pageselect, price_lte, price_gte, rate_like, name_like, _sort, _order, changeView } = selector
     console.log(selector)
+
     const navigate = useNavigate()
-    // console.log('valueRadio', valueRadio)
-    //check link to get API
+
 
     useEffect(() => {
         function checkUrlcallApi() {
@@ -79,13 +81,10 @@ const Products = () => {
     ])
 
     function detailsItem(ele) {
-        console.log('testttttttttttttttttt')
+
         let cutUrl = (location.pathname.replace('/listfood', ''))
         let cutUrl2 = cutUrl.replace('bestfood', 'best-foods')
         navigate(`/listfood/fooditem${cutUrl2}/${ele.id}`)
-
-
-
     }
 
 
@@ -101,21 +100,20 @@ const Products = () => {
             <div className='products-list'
                 style={changeView ? { gridTemplateColumns: "repeat(1, 1fr)" } : null}
             >
-
-
                 {selector.data.map((ele, index) => {
                     return <div className='product-list__item' key={index} onClick={() => detailsItem(ele)}>
                         <ProductItem element={ele}
 
                         />
+
                     </div>
 
                 })}
 
             </div>
-            <Pagination
 
-            />
+
+            <Pagination />
 
         </div>
 

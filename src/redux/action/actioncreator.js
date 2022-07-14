@@ -1,8 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { getData } from "../../api/api";
-import Cookies from 'universal-cookie'
-const cookies = new Cookies();
+import { forcedLogin } from "../SliceReducer/CartUserSlice";
+// import Cookies from 'universal-cookie'
+// const cookies = new Cookies();
 // export const foodDetailRenderringAction = (payload) => {
 //     return {
 //         type: 'FOOD_DETAIL',
@@ -25,20 +26,29 @@ export const actionDrinks = createAsyncThunk('drinks', (obj) => getData('drinks'
 export const actionPizza = createAsyncThunk('pizzas', (obj) => getData('pizzas', obj))
 
 
-export const cartDataActionCreator = createAsyncThunk('getCartInDB', async function () {
-    const token = cookies.get('accessToken')
-    let headers = {
-        "Content-Type": "application/json",
-        'Authorization': token
+export const cartDataActionCreator = createAsyncThunk('getCartInDB', async function (token, thunkAPI) {
+    if (token) {
+        let headers = {
+            "Content-Type": "application/json",
+            'Authorization': token
 
+        }
+
+        try {
+            let datacart = await axios.get('http://localhost:3001/cart/infocart', { headers: headers })
+            console.log('dataCart:::::', datacart)
+            return datacart.data
+        } catch (error) {
+            if (error.status === 422) {
+                return []
+            }
+            if (error.status === 401) {
+                thunkAPI.dispatch(forcedLogin())
+            }
+            console.log(error)
+            console.log('khong con token trong header')
+        }
     }
 
-    try {
-        let datacart = await axios.get('http://localhost:3001/cart/infocart', { headers: headers })
-        console.log('dataCart:::::', datacart)
-        return datacart.data
-    } catch (error) {
-        console.log(error)
-    }
 })
 

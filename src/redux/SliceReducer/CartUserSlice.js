@@ -3,7 +3,7 @@ import * as actions from "../action/actioncreator";
 const initialState = {
     isModalLogin: false,
     cartData: [],
-    isShowCart: false
+    isShowCart: false,
 
 
 
@@ -20,13 +20,17 @@ const CartSlice = createSlice({
         },
         updateCart: (state, action) => {
             state.cartData = [...state.cartData, action.payload]
+
             console.log(state.cartData)
             return state
         },
         hideCart: (state, action) => {
             state.isShowCart = !state.isShowCart
             return state
-        }
+        },
+
+
+
 
 
     },
@@ -42,6 +46,8 @@ const CartSlice = createSlice({
                 return state
             })
             .addCase(actions.cartDataActionCreator.rejected, (state, action) => {
+                state.isShowCart = true
+
                 console.log('loi reject cart')
                 return state
             }
@@ -55,6 +61,7 @@ export const {
     forcedLogin,
     updateCart,
     hideCart
+
 
 } = CartSlice.actions
 export default CartSlice.reducer
