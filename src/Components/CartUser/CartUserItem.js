@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from "prop-types";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { addCountItemCreator } from './../../redux/action/actioncreator'
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import { addCountItemCreator, deleteItemCreator } from './../../redux/action/actioncreator'
 import { useDispatch } from 'react-redux';
 // import { updatetotalPrice } from './../../redux/SliceReducer/CartUserSlice'
 const CartUserItem = (props) => {
@@ -10,22 +11,21 @@ const CartUserItem = (props) => {
     cartItem: PropTypes.object
   }
   const dispatch = useDispatch()
-  // console.log(props.cartItem)
+
   function incrementCountItem() {
     console.log('Incrementdata')
     dispatch(addCountItemCreator({ idproduct: props.cartItem.id, count: 1 }))
-    // dispatch(updatetotalPrice())
   }
   function decrementCountItem() {
     console.log('decrement')
-    if (parseInt(props.cartItem.quatityproduct) !== 1) {
+    if (parseInt(props.cartItem.quatityproduct) !== 1) { //neu so luong san pham con = 1 thi khong cho giam nua
       dispatch(addCountItemCreator({ idproduct: props.cartItem.id, count: -1 }))
-      // dispatch(updatetotalPrice())
-
-
-
-
     }
+  }
+
+  //function xoa item trong gio hang
+  function deleteItemcart() {
+    dispatch(deleteItemCreator(props.cartItem.id))
   }
   return (
     <div className='cart-item'>
@@ -44,6 +44,11 @@ const CartUserItem = (props) => {
             onClick={incrementCountItem}
           ><AddIcon /></div>
         </div>
+
+        <DeleteOutlineIcon className="deletecartitem"
+          onClick={deleteItemcart}
+        />
+
 
       </div>
 

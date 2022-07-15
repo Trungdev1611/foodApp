@@ -45,18 +45,10 @@ const CartUser = () => {
                 }
                 <div className="cart-orderinfo">
                     <h4>Order Info</h4>
-                    {/* <div className='info-priceship'>
-                        <span className='light'>Shipping Cost</span>
-                        <span>Free</span>
-                    </div>
-                    <div className='info-voucher'>
-                        <span className='light'>Voucher</span>
-                        <span>None</span>
-                    </div> */}
 
                     <div className="payment">
                         <h4 className="payment-name">Total</h4>
-                        <span className="payment-price">${selector.totalPrice}</span>
+                        <span className="payment-price">${selector.totalPrice || 0}</span>
                     </div>
                     <div className="cart-orderinfo__options">
                         <span className="checkout">

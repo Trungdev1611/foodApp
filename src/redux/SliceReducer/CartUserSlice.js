@@ -62,9 +62,8 @@ const CartSlice = createSlice({
                 return state
             }
             )
+            //addCase update count Item and update price
             .addCase(actions.addCountItemCreator.fulfilled, (state, action) => {
-
-
                 const findIndex = state.cartData.findIndex((ele, index) => {
                     return ele.id === action.payload.id
                 })
@@ -77,6 +76,21 @@ const CartSlice = createSlice({
                 state.totalPrice = totalPriceUpdate
                 return state
 
+            })
+            //addCase delete Item in cart and update price
+
+            .addCase(actions.deleteItemCreator.fulfilled, (state, action) => {
+                console.log('action.payload.id:::', action.payload.id)
+                const newCartData = state.cartData.filter((ele, index) => {
+                    return ele.id !== action.payload.id
+                })
+                state.cartData = newCartData
+                //cap nhat lai Price
+                let totalPriceUpdate = state.cartData.reduce((prev, current) => {
+                    return prev + parseInt(current.quatityproduct) * parseInt(current.price)
+                }, 0)
+                state.totalPrice = totalPriceUpdate
+                return state
             })
     }
 }

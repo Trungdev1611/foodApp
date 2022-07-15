@@ -73,3 +73,20 @@ export const addCountItemCreator = createAsyncThunk('addIteminCart', async ({ id
         }
     }
 })
+
+export const deleteItemCreator = createAsyncThunk('deleteItemCart', async (id) => {
+    if (token) {
+        let headers = {
+            "Content-Type": "application/json",
+            'Authorization': token
+
+        }
+        try {
+            let dataDelete = await axios.delete(`http://localhost:3001/cart/deletecart/${id}`, { headers })
+            return dataDelete.data.data
+        }
+        catch (error) {
+            console.log('deleteCart', error)
+        }
+    }
+})
