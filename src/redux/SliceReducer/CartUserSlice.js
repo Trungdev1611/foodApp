@@ -1,9 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 import * as actions from "../action/actioncreator";
 const initialState = {
     isModalLogin: false,
     cartData: [],
     isShowCart: false,
+    totalPrice: 0
 
 
 
@@ -28,9 +29,14 @@ const CartSlice = createSlice({
             state.isShowCart = !state.isShowCart
             return state
         },
-
-
-
+        // updatetotalPrice: (state, action) => {
+        //     console.log('aaaaaaaaaaaaa', current(state).cartData)
+        //     let totalPriceUpdate = state.cartData.reduce((prev, current) => {
+        //         return prev + parseInt(current.quatityproduct) * parseInt(current.price)
+        //     }, 0)
+        //     state.totalPrice = totalPriceUpdate
+        //     return state
+        // }
 
 
     },
@@ -40,18 +46,38 @@ const CartSlice = createSlice({
         })
             .addCase(actions.cartDataActionCreator.fulfilled, (state, action) => {
                 console.log('action Fullfill Cart:::', action.payload)
-                state.cartData = action.payload.data
-                state.isShowCart = true
-                console.log("state::::", state.cartData)
+                if (action.payload.data) {
+                    state.cartData = action.payload.data
+                    state.totalPrice = action.payload.totalPrice
+                    state.isShowCart = true
+
+                }
+
                 return state
             })
             .addCase(actions.cartDataActionCreator.rejected, (state, action) => {
-                state.isShowCart = true
+                // state.isShowCart = true
 
                 console.log('loi reject cart')
                 return state
             }
             )
+            .addCase(actions.addCountItemCreator.fulfilled, (state, action) => {
+
+
+                const findIndex = state.cartData.findIndex((ele, index) => {
+                    return ele.id === action.payload.id
+                })
+                state.cartData[findIndex] = action.payload
+                console.log(current(state))
+                //cap nhat lai Price
+                let totalPriceUpdate = state.cartData.reduce((prev, current) => {
+                    return prev + parseInt(current.quatityproduct) * parseInt(current.price)
+                }, 0)
+                state.totalPrice = totalPriceUpdate
+                return state
+
+            })
     }
 }
 
@@ -60,7 +86,8 @@ const CartSlice = createSlice({
 export const {
     forcedLogin,
     updateCart,
-    hideCart
+    hideCart,
+    // updatetotalPrice
 
 
 } = CartSlice.actions

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import logonav from './../../assets/image/logo.59e734ae.svg'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
@@ -16,12 +16,15 @@ import { cartDataActionCreator } from './../../redux/action/actioncreator'
 import Cookies from 'universal-cookie';
 import CartUser from '../CartUser/CartUser';
 import Modal from './../modal/Modal'
-import { forcedLogin } from '../../redux/SliceReducer/CartUserSlice';
+import axios from 'axios';
 const Navbar = () => {
     const { showlistMenu } = useSelector(state => state.foodlistReducer)
     const selector = useSelector(state => state.CartReducer)
     const dispatch = useDispatch()
     const cookies = new Cookies();
+    const [lengthCart, setLengthCart] = useState(0)
+    const token = cookies.get('accessToken')
+
     function fixedTopNavbar() {
         let distanceToTop = window.pageYOffset
         if (distanceToTop > 65) {
@@ -39,9 +42,6 @@ const Navbar = () => {
                 document.querySelector('.header').style.paddingTop = "1rem"
 
             }
-
-
-
         }
     }
     useEffect(() => {
@@ -51,6 +51,28 @@ const Navbar = () => {
             window.removeEventListener('scroll', fixedTopNavbar)
         }
     })
+    //length Cart
+    useEffect(() => {
+        if (token) {
+            console.log('chay lai if trong useEffect')
+            try {
+                let headers = {
+                    "Content-Type": "application/json",
+                    'Authorization': token
+                }
+                axios.get('http://localhost:3001/cart/lengthCart', { headers: headers }).then(data => setLengthCart(data.data.datalength))
+            }
+            catch (error) {
+                console.log(error)
+            }
+
+        }
+        else {
+            setLengthCart(0)
+        }
+    }, [token, selector.cartData.length])
+
+
     // Toogle menu navbar
     function handleShowMenu() {
         dispatch(togglelistMenuNav())
@@ -58,17 +80,17 @@ const Navbar = () => {
 
     //getData cart by user
     async function getDataCartUser() {
-        const token = cookies.get('accessToken')
-        if (token) {
-            dispatch(cartDataActionCreator(token))
-
-
-        }
-        else {
-            dispatch(forcedLogin())
-        }
+        dispatch(cartDataActionCreator())
 
     }
+
+    function handleLogout() {
+        dispatch(logout())
+        cookies.remove('accessToken', { path: '/' })
+        dispatch(togglelistMenuNav(false))
+        setLengthCart(0)
+    }
+    console.log(lengthCart)
 
     return (
         <nav className='navbar'>
@@ -87,10 +109,10 @@ const Navbar = () => {
                             <Signin />
                             {
                                 //dang nhap roi thi hien thi user va logout; chua dang nhap thi hien thi sign in
-                                showlistMenu && cookies.get('accessToken') &&
-                                <span onClick={() => { cookies.remove('accessToken', { path: '/' }); dispatch(logout()) }}>
-                                    Log out </span>
+                                (showlistMenu && cookies.get('accessToken')) &&
+                                <span onClick={handleLogout}>Log out </span>
                             }
+                            {console.log(showlistMenu, cookies.get('accessToken'))}
                         </div>
 
                     </li>}
@@ -124,10 +146,10 @@ const Navbar = () => {
                     onClick={getDataCartUser}
                 >
                     <span><ShoppingCartIcon className='icon-material' /></span>
-                    <span className='cart-count'>{selector.cartData.length}</span>
+                    <span className='cart-count'>{lengthCart}</span>
                 </div>
                 <div className="signin-container">
-                    <Signin />
+                    <Signin handleLogout={handleLogout} />
                 </div>
             </div>
             {showlistMenu ? <div className={'modal'}

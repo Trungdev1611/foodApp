@@ -2,17 +2,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { getData } from "../../api/api";
 import { forcedLogin } from "../SliceReducer/CartUserSlice";
-// import Cookies from 'universal-cookie'
-// const cookies = new Cookies();
-// export const foodDetailRenderringAction = (payload) => {
-//     return {
-//         type: 'FOOD_DETAIL',
-//         payload
-//     }
-// }
-
-
-
+import Cookies from 'universal-cookie'
+const cookies = new Cookies();
+const token = cookies.get('accessToken')
 
 
 
@@ -26,7 +18,10 @@ export const actionDrinks = createAsyncThunk('drinks', (obj) => getData('drinks'
 export const actionPizza = createAsyncThunk('pizzas', (obj) => getData('pizzas', obj))
 
 
-export const cartDataActionCreator = createAsyncThunk('getCartInDB', async function (token, thunkAPI) {
+export const cartDataActionCreator = createAsyncThunk('getCartInDB', async function (_, thunkAPI) {
+    const token = cookies.get('accessToken')
+    console.log('token in actioncreator', token)
+
     if (token) {
         let headers = {
             "Content-Type": "application/json",
@@ -39,16 +34,42 @@ export const cartDataActionCreator = createAsyncThunk('getCartInDB', async funct
             console.log('dataCart:::::', datacart)
             return datacart.data
         } catch (error) {
-            if (error.status === 422) {
-                return []
+            if (error.response.status === 422) {
+                console.log('aaaaaaaaaaaaa')
+                return { data: [] }
             }
-            if (error.status === 401) {
+            if (error.response.status === 401) {
                 thunkAPI.dispatch(forcedLogin())
             }
             console.log(error)
             console.log('khong con token trong header')
         }
     }
+    else {
+        console.log('elsessssss')
+        thunkAPI.dispatch(forcedLogin())
+        return []
+    }
 
 })
 
+
+
+export const addCountItemCreator = createAsyncThunk('addIteminCart', async ({ idproduct, count },) => {
+    if (token) {
+        let headers = {
+            "Content-Type": "application/json",
+            'Authorization': token
+
+        }
+
+        try {
+            let datacart = await axios.post('http://localhost:3001/cart/increment-item-incart', { idproduct: idproduct, count: count }, { headers: headers })
+            console.log('Addcountitem:::::', datacart)
+            return datacart.data.data
+        } catch (error) {
+            console.log(error)
+            console.log('khong con token trong header')
+        }
+    }
+})

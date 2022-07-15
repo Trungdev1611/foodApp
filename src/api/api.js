@@ -20,8 +20,6 @@ export const getData = async (key, obj) => {
 
         let countPage = await axios.get(queryUrL2)
 
-        // console.log(data1)
-        // console.log(countPage)
         return { data: data1.data, countPage: countPage.data.length }
 
     }

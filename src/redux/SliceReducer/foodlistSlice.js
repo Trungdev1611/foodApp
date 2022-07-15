@@ -1,4 +1,4 @@
-import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf, current } from "@reduxjs/toolkit";
 import * as actions from "../action/actioncreator";
 const initialState = {
     data: [],
@@ -80,6 +80,7 @@ const foodListSlice = createSlice({
         },
         changeViewaction: (state, action) => {
             state.changeView = !state.changeView
+            console.log(current(state))
             return state
         },
 

@@ -56,7 +56,7 @@ const CartUser = () => {
 
                     <div className="payment">
                         <h4 className="payment-name">Total</h4>
-                        <span className="payment-price">$500</span>
+                        <span className="payment-price">${selector.totalPrice}</span>
                     </div>
                     <div className="cart-orderinfo__options">
                         <span className="checkout">

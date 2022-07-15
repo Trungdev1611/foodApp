@@ -1,16 +1,9 @@
 import React from 'react'
 import './Infouser.scss'
-import { logout } from './../../redux/SliceReducer/AuthSlice'
-import { useDispatch } from 'react-redux'
-import Cookies from 'universal-cookie';
-const Infouser = (props) => {
-    const cookies = new Cookies();
-    const dispatch = useDispatch()
-    function handleLogout() {
-        dispatch(logout())
-        cookies.remove('accessToken', { path: '/' })
 
-    }
+const Infouser = (props) => {
+
+
 
     return (
         <div className="info-user" >
@@ -28,7 +21,7 @@ const Infouser = (props) => {
                 <li className="user-options__item">My acount</li>
                 <li className="user-options__item">My wishlist</li>
                 <li className="user-options__item"
-                    onClick={handleLogout}
+                    onClick={props.handleLogout}
                 >Log out</li>
 
             </ul>

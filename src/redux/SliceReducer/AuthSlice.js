@@ -18,7 +18,11 @@ const AuthSlice = createSlice({
         },
         logout: (state, action) => {
             console.log('logout:::', action)
-            return initialState
+            return {
+                isLogin: false,
+                username: null,
+                isShowToast: false
+            }
         },
         hideNotify: (state, action) => {
             state.isShowToast = false

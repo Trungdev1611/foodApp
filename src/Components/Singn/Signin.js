@@ -7,7 +7,7 @@ import Infouser from './Infouser'
 import { togglelistMenuNav } from './../../redux/SliceReducer/foodlistSlice'
 import Cookies from 'universal-cookie';
 
-const Signin = () => {
+const Signin = ({ handleLogout }) => {
     const navigate = useNavigate()
     const selector = useSelector(state => state.AuthSliceReducer)
     const dispatch = useDispatch()
@@ -18,7 +18,7 @@ const Signin = () => {
     }
     return (
         <>
-            {(selector.username && cookies.get('accessToken')) ? <Infouser name={selector.username} /> :
+            {(selector.username && cookies.get('accessToken')) ? <Infouser name={selector.username} handleLogout={handleLogout} /> :
                 <div className="signin" >
                     <img src={login} alt="" className='user-signin' onClick={handleGoLogin} />
 

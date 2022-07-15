@@ -14,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Toast from '../../../toast/ToastLogin';
 const ProductItem = ({ element }) => {
 
-    const { changeView } = useSelector(state => state)
+    const { changeView } = useSelector(state => state.foodlistReducer)
     const cookies = new Cookies();
     const dispatch = useDispatch()
     const typeCartSuccess = { background: 'success', contentHeading: "Success", contentDesc: "The product has been add to cart" }
@@ -41,12 +41,8 @@ const ProductItem = ({ element }) => {
             try {
                 let response = await axios.post("http://localhost:3001/cart/producttocart", JSON.stringify(dataPost),
                     { headers: headers })
-
                 dispatch(updateCart(response.data.data))
-
                 showToast(typeCartSuccess)
-
-
             }
             catch (error) {
                 dispatch(forcedLogin())
@@ -58,10 +54,6 @@ const ProductItem = ({ element }) => {
         // }
 
     }
-
-    // delete message addcard
-
-
 
     return (
         <div className='productfood-item'
