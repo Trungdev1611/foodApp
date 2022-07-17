@@ -5,56 +5,24 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined';
 import { useSelector } from 'react-redux';
 import StarRateIcon from '@mui/icons-material/StarRate';
-import Cookies from 'universal-cookie'
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { updateCart, forcedLogin } from '../../../../redux/SliceReducer/CartUserSlice';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Toast from '../../../toast/ToastLogin';
+import { showToast, typeWishlistSuccess } from '../../../../utils/staticData';
+import { postIteminCart } from '../../../../redux/action/actioncreator';
 const ProductItem = ({ element }) => {
-
     const { changeView } = useSelector(state => state.foodlistReducer)
-    const cookies = new Cookies();
     const dispatch = useDispatch()
-    const typeCartSuccess = { background: 'success', contentHeading: "Success", contentDesc: "The product has been add to cart" }
-    const typeWishlistSuccess = { background: 'wishlist', contentHeading: "Success", contentDesc: "The product has been add to wishlist" }
-    const showToast = (type) => toast(
-        <Toast type={type} />, {
-        className: type.background,
-
-    }
-    );
 
     async function handleUserbuyproduct(e) {
         e.stopPropagation();
-        const token = cookies.get('accessToken')
-        if (token) {
-
-            let headers = {
-                'Content-Type': 'application/json',
-                'Authorization': token
-            }
-            let { id, ...rest } = element//loai id ra khoi product
-            let dataPost = { ...rest, idproduct: element.id, quatityproduct: 1 }
-            console.log('dataPort:::', dataPost)
-            try {
-                let response = await axios.post("http://localhost:3001/cart/producttocart", JSON.stringify(dataPost),
-                    { headers: headers })
-                dispatch(updateCart(response.data.data))
-                showToast(typeCartSuccess)
-            }
-            catch (error) {
-                dispatch(forcedLogin())
-            }
-        }
-        else {
-            dispatch(forcedLogin())
-        }
-        // }
+        dispatch(postIteminCart({ postData: element, quatity: 1 }))
 
     }
+    function Addwishlist(e) {
+        e.stopPropagation()
+        showToast(typeWishlistSuccess)
 
+    }
     return (
         <div className='productfood-item'
             style={changeView ? { display: 'flex' } : null}
@@ -87,7 +55,9 @@ const ProductItem = ({ element }) => {
                 </div>
 
                 <span className='icon-position favorite'>Favourite</span>
-                <span className='icon-position heart'><FavoriteBorderIcon /></span>
+                <span className='icon-position heart'
+                    onClick={(e) => { Addwishlist(e) }}
+                ><FavoriteBorderIcon /></span>
                 <span className='icon-position cart'
                     onClick={(e) => { handleUserbuyproduct(e) }}
                 ><LocalGroceryStoreOutlinedIcon /></span>

@@ -7,6 +7,7 @@ import lunch from './category-items/lunch.svg'
 import pork from './category-items/pork.svg'
 import delivery from './category-items/small-delivery.svg'
 import tea from './category-items/tea.svg'
+
 //product
 import product_img1 from './../assets/image/product-1.png'
 import product_img2 from './../assets/image/product-2.png'
@@ -17,6 +18,12 @@ import product_img4 from './../assets/image/product-4.png'
 import user1 from './../assets/image/user-review-1.jpg';
 import user2 from './../assets/image/user-review-2.jpg';
 import user3 from './../assets/image/user-review-3.jpg';
+
+import Toast from '../Components/toast/ToastLogin';
+import { toast } from 'react-toastify';
+
+export const typeCartSuccess = { background: 'success', contentHeading: "Success", contentDesc: "The product has been add to cart" }
+export const typeWishlistSuccess = { background: 'wishlist', contentHeading: "Success", contentDesc: "The product has been add to wishlist" }
 export const sliderData = [
     {
         id: 1,
@@ -78,3 +85,10 @@ export const reviewsData = [
     { id: 2, name: 'TimCook', jobs: 'CEO of Apple', src: user3, desc: 'I had lunch with some of my colleagues at Echo on Day 1. I had the wedge salad - it was delicious. On Night 2, I enjoyed a drink at the bar. I had a Margarita. The service was excellentHad dinner with girl friends. Menu is perfect, something for everyone. Service was awesome and Jason was very accommodating. Will be back definitely!' }
 
 ]
+
+export const showToast = (type) => toast(
+    <Toast type={type} />, {
+    className: type.background,
+
+}
+);

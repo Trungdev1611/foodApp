@@ -16,12 +16,12 @@ import './ProductDetails.scss'
 import Modal from './../../../modal/Modal';
 import axios from 'axios'
 import FoodDesc from '../../description/FoodDesc';
-import Cookies from 'universal-cookie'
-import { forcedLogin, updateCart } from '../../../../redux/SliceReducer/CartUserSlice';
 import { useSelector, useDispatch } from 'react-redux';
-const cookies = new Cookies();
+import { postIteminCart } from '../../../../redux/action/actioncreator';
+
 const Productdetails = () => {
     const [changeviewImg, setChangeViewimg] = useState(false)
+    const [itembuy, setItembuy] = useState(1)
     const [detailsfood, setDetailsfood] = useState()
     const location = useLocation()
     const selector = useSelector(state => state.CartReducer)
@@ -39,34 +39,18 @@ const Productdetails = () => {
     }, [content])
 
     async function handleUserbuyproduct() {
-        console.log(detailsfood)
-        const token = cookies.get('accessToken')
-        console.log(token)
-        if (token) {
-
-            let headers = {
-                'Content-Type': 'application/json',
-                'Authorization': token
-            }
-            let { id, ...rest } = detailsfood //loai id ra khoi product
-            let dataPost = { ...rest, idproduct: detailsfood.id, quatityproduct: 1 }
-            try {
-                let response = await axios.post("http://localhost:3001/cart/producttocart", JSON.stringify(dataPost),
-                    { headers: headers })
-                console.log(response)
-                dispatch(updateCart(response.data.data))
-            }
-
-            catch (error) {
-                dispatch(forcedLogin())
-            }
-
-        }
-        else {
-            dispatch(forcedLogin())
-        }
+        dispatch(postIteminCart({ postData: detailsfood, quatity: itembuy }))
     }
 
+    function decrementCountIte() {
+        if (itembuy !== 1) {
+            setItembuy(prev => prev - 1)
+        }
+    }
+    function incrementCountItem() {
+        console.log('Incrementdata')
+        setItembuy(prev => prev + 1)
+    }
 
     return (
         <div>
@@ -132,9 +116,13 @@ const Productdetails = () => {
                                 </div>
                             </div>
                             <div className="addcart">
-                                <div className="addcart-minus"><RemoveIcon /></div>
-                                <div className="addcart-moutitem">1</div>
-                                <div className="addcart-plus"><AddIcon /></div>
+                                <div className="addcart-minus"
+                                    onClick={decrementCountIte}
+                                ><RemoveIcon /></div>
+                                <div className="addcart-moutitem">{itembuy}</div>
+                                <div className="addcart-plus"
+                                    onClick={incrementCountItem}
+                                ><AddIcon /></div>
                                 <div className="addcart-button" onClick={handleUserbuyproduct}>
 
                                     <ButtonAddcart />

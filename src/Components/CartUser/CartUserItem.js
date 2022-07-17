@@ -5,7 +5,6 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { addCountItemCreator, deleteItemCreator } from './../../redux/action/actioncreator'
 import { useDispatch } from 'react-redux';
-// import { updatetotalPrice } from './../../redux/SliceReducer/CartUserSlice'
 const CartUserItem = (props) => {
   CartUserItem.propTypes = {
     cartItem: PropTypes.object

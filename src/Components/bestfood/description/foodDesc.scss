@@ -1,15 +1,23 @@
 @import './../../../assets/style/mixin.scss';
 .fooddesc {
     padding: 5px 30px;
+    @include desktop-maxwidth {
+        flex-direction: column;
+        padding: 5px 10px ;
+    }
     & .desc {
         line-height: 1.6;
+        @include desktop-maxwidth {
+            flex-direction: column;
+            padding: 0rem 0rem ;
+        }
      
     } 
     & table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 30px;
-        & tr {}
+    
         & tr:first-child {
            & td {
             padding: 10px 0 25px ;

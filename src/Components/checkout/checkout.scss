@@ -1,0 +1,41 @@
+.checkout {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    & .checkout-icon {
+        
+        & .icon-succeed {
+            font-size: 5rem;
+            color: white;;
+            background-color: #43d787;
+        border-radius: 50%;
+
+           
+        }
+
+    }
+    & .checkout-msg {
+        font-size: 2.5rem;
+        padding: 10px 0;
+
+    }
+    & p {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        & span {
+            color: #ff514e ;
+            font-weight: bold;
+            font-size: 1.8rem;
+            margin-right: 5px;
+        }
+        & .icon-going {
+            font-size: 3rem;
+            color: #ff514e ;
+            font-weight: bold;
+            
+        }
+    }
+}

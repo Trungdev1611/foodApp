@@ -7,8 +7,13 @@ import { hideCart } from '../../redux/SliceReducer/CartUserSlice';
 import StoreIcon from '@mui/icons-material/Store';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import CartEmpty from './../../assets/image/empty-cart.svg'
+import { useNavigate } from 'react-router-dom'
+import { checkoutCreator } from '../../redux/action/actioncreator';
+
 const CartUser = () => {
     const selector = useSelector(state => state.CartReducer)
+
+    const navigate = useNavigate()
     console.log('selector:::', selector)
     const dispatch = useDispatch()
     function handlehideCart(e) {
@@ -19,6 +24,17 @@ const CartUser = () => {
 
         }
     }
+
+    async function handleCheckout(e) {
+        e.stopPropagation()
+        dispatch(hideCart())
+
+        dispatch(checkoutCreator())
+        navigate('/checkout')
+
+        console.log(1111)
+    }
+
     return (
         <div className="modal" onClick={(e) => handlehideCart(e)}>
             <div className='cart-user'>
@@ -51,10 +67,10 @@ const CartUser = () => {
                         <span className="payment-price">${selector.totalPrice || 0}</span>
                     </div>
                     <div className="cart-orderinfo__options">
-                        <span className="checkout">
+                        <span className="checkout-btn" onClick={(e) => handleCheckout(e)}>
                             <LocalGroceryStoreIcon className='cart-icon' />CHECK OUT
                         </span>
-                        <span className="buymore">
+                        <span className="buymore" onClick={(e) => { e.stopPropagation(); navigate('/listfood'); dispatch(hideCart()) }}>
                             <StoreIcon className='cart-icon' />BUY MORE
                         </span>
                     </div>

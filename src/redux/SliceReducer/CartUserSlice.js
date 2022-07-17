@@ -4,7 +4,8 @@ const initialState = {
     isModalLogin: false,
     cartData: [],
     isShowCart: false,
-    totalPrice: 0
+    totalPrice: 0,
+    loading: false
 
 
 
@@ -20,6 +21,7 @@ const CartSlice = createSlice({
             return state
         },
         updateCart: (state, action) => {
+
             state.cartData = [...state.cartData, action.payload]
 
             console.log(state.cartData)
@@ -29,15 +31,6 @@ const CartSlice = createSlice({
             state.isShowCart = !state.isShowCart
             return state
         },
-        // updatetotalPrice: (state, action) => {
-        //     console.log('aaaaaaaaaaaaa', current(state).cartData)
-        //     let totalPriceUpdate = state.cartData.reduce((prev, current) => {
-        //         return prev + parseInt(current.quatityproduct) * parseInt(current.price)
-        //     }, 0)
-        //     state.totalPrice = totalPriceUpdate
-        //     return state
-        // }
-
 
     },
     extraReducers: (builder) => {
@@ -50,7 +43,6 @@ const CartSlice = createSlice({
                     state.cartData = action.payload.data
                     state.totalPrice = action.payload.totalPrice
                     state.isShowCart = true
-
                 }
 
                 return state
@@ -64,6 +56,7 @@ const CartSlice = createSlice({
             )
             //addCase update count Item and update price
             .addCase(actions.addCountItemCreator.fulfilled, (state, action) => {
+                console.log('action.payload:::::', action.payload)
                 const findIndex = state.cartData.findIndex((ele, index) => {
                     return ele.id === action.payload.id
                 })
@@ -91,6 +84,17 @@ const CartSlice = createSlice({
                 }, 0)
                 state.totalPrice = totalPriceUpdate
                 return state
+            })
+            .addCase(actions.checkoutCreator.pending, (state, action) => {
+                console.log('pending.....')
+                state.loading = true
+                console.log(current(state))
+
+                return state
+            })
+            .addCase(actions.checkoutCreator.fulfilled, (state, action) => {
+
+                state.loading = false
             })
     }
 }

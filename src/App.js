@@ -6,6 +6,7 @@ import Productdetails from './Components/bestfood/Products/ProductDetails/Produc
 import Login from './Components/login/Login';
 import Register from './Components/login/Register';
 import { ToastAddcart } from './Components/toast/ToastLogin';
+import Checkout from './Components/checkout/Checkout';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         </Route>
         <Route path='/login' element={< Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/checkout' element={<Checkout />} />
 
         {/* <Route path='/listfood/bestfood/*' element={<ProductList />} /> */}
         <Route path='*' element={<Notfound />} />

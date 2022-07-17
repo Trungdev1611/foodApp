@@ -6,7 +6,7 @@ const FoodDesc = () => {
       <div className="desc">
         Although the legendary Double Burger really needs no introduction, please allow us… Tucked in between three soft buns are two all-beef patties, cheddar cheese, ketchup, onion, pickles and iceberg lettuce. Hesburger’s own paprika and cucumber mayonnaise add the crowning touch. Oh baby!
       </div>
-      <table>
+      <table className='tabledesc'>
         <tbody>
           <tr>
             <td><h4>Best Foods</h4><p>28 cm size</p></td>
