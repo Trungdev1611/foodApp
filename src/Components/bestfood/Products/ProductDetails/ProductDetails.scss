@@ -269,3 +269,9 @@
         display: none;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .addcart-plus, .addcart-favorite, .addcart-minus,.addcart-moutitem {
+        margin-right: 20px !important;
+    }
+}

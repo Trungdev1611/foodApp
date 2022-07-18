@@ -123,9 +123,10 @@ export const checkoutCreator = createAsyncThunk("checkout", async () => {
 
         }
         try {
-
+            
             await axios.delete('http://localhost:3001/cart/removecart', { headers: headers })
             console.log('success checkout')
+            
             return 'success checkout'
         } catch (error) {
             console.log(error)

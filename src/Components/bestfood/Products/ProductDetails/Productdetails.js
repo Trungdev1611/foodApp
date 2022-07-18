@@ -18,11 +18,13 @@ import axios from 'axios'
 import FoodDesc from '../../description/FoodDesc';
 import { useSelector, useDispatch } from 'react-redux';
 import { postIteminCart } from '../../../../redux/action/actioncreator';
+import Comments from '../../comments/Comments';
 
 const Productdetails = () => {
     const [changeviewImg, setChangeViewimg] = useState(false)
     const [itembuy, setItembuy] = useState(1)
     const [detailsfood, setDetailsfood] = useState()
+    const [showReview, setShowreview] = useState(false)
     const location = useLocation()
     const selector = useSelector(state => state.CartReducer)
     const dispatch = useDispatch()
@@ -150,12 +152,13 @@ const Productdetails = () => {
 
                     </section>
                     <div className="options">
-                        <button type='button' className='btn-active'>Description</button>
-                        <button type='button'>Review</button>
+                        <button type='button' className={!showReview ? 'btn-active' : ''} onClick={() => setShowreview(false)}>Description</button>
+                        <button type='button' className={showReview ? 'btn-active' : ''} onClick={() => setShowreview(true)}>Review</button>
                     </div>
                     <div className="contentshow">
-                        <FoodDesc />
+                        {showReview ? <Comments foodItem={detailsfood} /> : <FoodDesc />}
                     </div>
+
                 </div>
             }
             <Footer />

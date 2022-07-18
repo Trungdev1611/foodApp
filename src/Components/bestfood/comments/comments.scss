@@ -1,0 +1,51 @@
+@import './../../../assets/style/mixin.scss';
+
+.comments {
+    & h4 {
+        font-size: 2.5rem;
+        padding-bottom: 15px;
+        color: #292929;
+    }
+    & textarea {
+        width: 100%;
+        box-sizing: border-box;
+        height: 10rem;
+        padding: 15px 10px;
+        border: 1px solid #999999;
+        outline: none;
+        font-size: 1.6rem;
+        border-radius: 10px;
+        // overflow: hidden;
+        resize: none;
+    };
+    & .postcomment {
+        display: flex;
+        justify-content: flex-end;
+       margin-top: 20px;
+        & .info-user {
+            margin: 0;
+            & .avartar-user{
+                color: white;
+                width: 40px;
+                height: 40px;
+            }
+            & .user-name {
+                font-size: 1.7rem;
+                font-weight:500;
+            }
+
+        }
+    }
+    & span {
+        background-color: #ff514e;
+        color: white;
+        padding: 10px 0;
+        border-radius: 10px;
+        text-align: center;
+        min-width: 120px;
+        display: inline-block;
+        margin-left: 20px;
+        font-weight: bold;
+        font-size: 1.6rem;
+    }
+}
