@@ -4,10 +4,12 @@ import './comments.scss'
 import { useSelector, useDispatch } from 'react-redux'
 import { instance } from '../../../api/api'
 import { forcedLogin } from '../../../redux/SliceReducer/CartUserSlice'
+import CommentItem from './CommentItem'
 const Comments = ({ foodItem }) => {
     const [valuecomment, setValuecomment] = useState('')
     const [allcomments, setAllcomments] = useState([])
     const selector = useSelector(state => state.AuthSliceReducer)
+    const [sortCommentlike, setSortCommentlike] = useState(false)
     const dispatch = useDispatch()
     function handleChangeComment(e) {
         console.log(e.target.value)
@@ -37,22 +39,30 @@ const Comments = ({ foodItem }) => {
     //post comment
     async function handleSubmitComment() {
         console.log('foodItem', foodItem)
-        try {
-            let commentPost = await instance.post('/comments/postcomment', {
-                content: valuecomment,
-                idfooditem: foodItem.id
-            })
-            setAllcomments(prev => [commentPost.data.data, ...prev])
-        }
-        catch (error) {
-            console.log(error)
-            dispatch(forcedLogin())
+        if (valuecomment) {
+            try {
+                let commentPost = await instance.post('/comments/postcomment', {
+                    content: valuecomment,
+                    idfooditem: foodItem.id
+                })
+                setAllcomments(prev => [...prev, commentPost.data.data])
+            }
+            catch (error) {
+                console.log(error)
+                dispatch(forcedLogin())
+            }
+
+            setValuecomment('')
         }
 
-        setValuecomment('')
     }
     console.log(valuecomment)
-    console.log(allcomments)
+    console.log('allcoment:::', allcomments)
+    const allcommentCopy = [...allcomments].reverse()
+    // const allcommentCopy = [...allcomments]
+    console.log('copy.reserve()::', allcommentCopy)
+    console.log('allcoment2:::', allcomments)
+
     return (
         <div className='comments'>
             <h4>Reviews</h4>
@@ -73,16 +83,27 @@ const Comments = ({ foodItem }) => {
                     </div>
 
                 </div>}
-                <span onClick={handleSubmitComment} >Post Review</span>
+                <span onClick={handleSubmitComment} className='btn-postcomment'>Post Review</span>
             </div>
-            <div className="getcomments">
-                {(allcomments && allcomments.length > 0) ?
-                    allcomments.map((ele, index) => {
-                        return <div key={index} style={{ color: 'black' }}>
-                            <div>{ele.username}::::</div>
-                            <div>{ele.content}::::</div>
+            <div className="getcomments-container">
+                {(allcommentCopy && allcommentCopy.length > 0) ?
+                    <div className="getcomments">
+                        <div className="getcomments-filter">
+                            <span className={sortCommentlike ? '' : 'getcomments-filter__active'}
+                                onClick={() => setSortCommentlike(false)}
+                            >Latest first </span>
+                            <span className={!sortCommentlike ? '' : 'getcomments-filter__active'}
+                                onClick={() => setSortCommentlike(true)}
+                            >Highest rated</span>
                         </div>
-                    })
+                        {allcommentCopy.map((ele, index) => {
+                            console.log('ele:::', ele.content)
+                            return (
+                                < CommentItem element={ele} key={index} />
+                            )
+
+
+                        })} </div>
                     : null}
             </div>
         </div>

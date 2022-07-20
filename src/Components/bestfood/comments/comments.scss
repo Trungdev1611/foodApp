@@ -1,10 +1,11 @@
 @import './../../../assets/style/mixin.scss';
 
 .comments {
+   
     & h4 {
         font-size: 2.5rem;
         padding-bottom: 15px;
-        color: #292929;
+        color: #5d5d5d;
     }
     & textarea {
         width: 100%;
@@ -17,6 +18,9 @@
         border-radius: 10px;
         // overflow: hidden;
         resize: none;
+        &::placeholder {
+            font-size: 1.4rem
+        }
     };
     & .postcomment {
         display: flex;
@@ -36,7 +40,7 @@
 
         }
     }
-    & span {
+    & span.btn-postcomment {
         background-color: #ff514e;
         color: white;
         padding: 10px 0;
@@ -47,5 +51,119 @@
         margin-left: 20px;
         font-weight: bold;
         font-size: 1.6rem;
+        cursor: pointer;
+    }
+}
+
+//commentItem
+.getcomments-container {
+    font-size: 1.5rem;
+    & .getcomments {
+        & .getcomments-filter {
+            border-bottom: 1px solid #eee;
+            // padding: 10px 0;
+            color:rgb(148, 140, 140);
+            &__active {
+                border-bottom: 1px solid #ff514e;
+                color: #ff514e;
+                font-weight: 500;
+               
+            }
+            & span {
+                padding: 8px 3px;
+                font-size: 1.6rem;
+                letter-spacing: 0.3px;
+                cursor: pointer;
+                &:hover {
+                    color: #ff514e;
+                }
+                &:last-child{
+                    margin-left:  10px;
+                    // border: 1px solid red;
+                    height: 100%;
+                    box-sizing: border-box;
+                    display: inline-block;
+                    
+            }
+           
+            }
+        
+        }
+        & .comment-item {
+            padding: 10px 0;
+            display: flex;
+            & .comment-avartar {
+                width: 40px ;
+                height: 40px;
+                min-width: 40px;
+                background-color: #e5e5e5;
+                color: 
+                #b9c2cc;
+                font-weight: 500;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 20px;
+                font-size: 2rem;
+            }
+            & .comment-info {
+                width: 100%;
+            }
+            & .comment-info__content {
+                display: flex;
+                padding-top: 5px;;
+                & h5 {
+                    margin-right: 15px;
+                    font-size: 1.6rem;
+                    color: #222222;
+                    transition: 0.3s;
+                    display: inline-block;
+                    &:hover {
+                        color: #ff514e;
+                    }
+                }
+                & .comment-info__contentdetails {
+                    font-size: 1.5rem;
+                    line-height: 1.5;
+                }
+            }
+            & .comment-info__options {
+                display: flex;
+                align-items: center;
+                width: 80%;
+                & span.op-like.liked {
+                        color:
+                        #1976d2;
+
+                }
+                & span.op-like, .op-time {
+                    padding: 5px 0;
+                    display: inline-block;
+                    display: flex;
+                    align-items: flex-end;
+                    color: rgb(148, 140, 140);
+                    font-size: 1.4rem;
+                    margin-right: 40px;
+                    & .line-icon {
+                        font-size: 2rem;
+                        // padding: 5px;
+                        cursor: pointer;
+                        transition: 0.2s;
+                      
+                        &:hover, &:hover+span {
+                            color: #ff514e;
+                        }
+                    }
+                    & span {
+                        margin-left: 4px;
+                        font-size: 1.5rem;
+                        letter-spacing: 0;
+                       
+                    }
+                }
+             
+            }
+        }
     }
 }
