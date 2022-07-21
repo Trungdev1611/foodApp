@@ -1,4 +1,4 @@
-import { createSlice, isAnyOf, current } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import * as actions from "../action/actioncreator";
 const initialState = {
     data: [],
@@ -80,13 +80,12 @@ const foodListSlice = createSlice({
         },
         changeViewaction: (state, action) => {
             state.changeView = !state.changeView
-            console.log(current(state))
+            // console.log(current(state))
             return state
         },
 
         // trang hien thi food chi tiet
         setFoodDetailRender: (state, action) => {
-            console.log('detailsfooddetailsfooddetailsfooddetailsfooddetailsfooddetailsfood')
             state.detailsfood = action.payload
             return state
         }
@@ -104,14 +103,14 @@ const foodListSlice = createSlice({
                 // isAnyOf - returns true when at least one of the conditions are met
                 isAnyOf(actions.actiongetFoodcreator.pending, actions.actionBurger.pending, actions.actionBread.pending, actions.actionSanwichs.pending, actions.actionPizza.pending, actions.actionDrinks.pending),
                 (state, action) => {
-                    console.log('Loading...........')
+                    // console.log('Loading...........')
                     state.loading = true
                     return state
                 })
             .addMatcher(
                 isAnyOf(actions.actiongetFoodcreator.fulfilled, actions.actionBurger.fulfilled, actions.actionBread.fulfilled, actions.actionSanwichs.fulfilled, actions.actionPizza.fulfilled, actions.actionDrinks.fulfilled),
                 (state, action) => {
-                    console.log('success')
+                    // console.log('success')
                     // console.log(action)
                     return { ...state, data: action.payload.data, loading: false, countpage: action.payload.countPage }
                 }

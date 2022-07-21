@@ -1,11 +1,8 @@
 import { showToast, typeCartSuccess } from "../../utils/staticData";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 import { getData } from "../../api/api";
 import { forcedLogin, updateCart } from "../SliceReducer/CartUserSlice";
 import { instance } from "../../api/api";
-import Cookies from 'universal-cookie'
-const cookies = new Cookies();
 
 // cac ation get data from aPI theo endpoint
 //pass multiparameter in createAsyncthunk thi ta chi co the pass object 
@@ -21,7 +18,7 @@ export const cartDataActionCreator = createAsyncThunk('getCartInDB', async funct
 
     try {
         let datacart = await instance.get('/cart/infocart')
-        console.log('dataCart:::::', datacart)
+        // console.log('dataCart:::::', datacart)
         return datacart.data
     } catch (error) {
         if (error.response.status === 422) { //422 la gio hang empty
@@ -40,11 +37,9 @@ export const cartDataActionCreator = createAsyncThunk('getCartInDB', async funct
 export const postIteminCart = createAsyncThunk('postItemincart', async ({ postData, quatity }, thunkAPI) => {
     let { id, ...rest } = postData//loai id ra khoi product
     let dataPost = { ...rest, idproduct: postData.id, quatityproduct: quatity } //thay key idproduct bang key id
-    console.log(dataPost)
+    // console.log(dataPost)
     try {
-
         let response = await instance.post("http://localhost:3001/cart/producttocart", dataPost,
-
         )
         thunkAPI.dispatch(updateCart(response.data.data))
         showToast(typeCartSuccess)
@@ -53,13 +48,11 @@ export const postIteminCart = createAsyncThunk('postItemincart', async ({ postDa
         thunkAPI.dispatch(forcedLogin())
     }
 }
-
 )
 
 export const addCountItemCreator = createAsyncThunk('addIteminCart', async ({ idproduct, count },) => {
     try {
         let datacart = await instance.post('/cart/increment-item-incart', { idproduct: idproduct, count: count }
-
         )
         console.log('Addcountitem:::::', datacart)
         return datacart.data.data
@@ -77,26 +70,15 @@ export const deleteItemCreator = createAsyncThunk('deleteItemCart', async (id) =
         console.log('deleteCart', error)
     }
 }
-
 )
 
 export const checkoutCreator = createAsyncThunk("checkout", async () => {
-    const token = cookies.get('accessToken')
-    if (token) {
-        let headers = {
-            "Content-Type": "application/json",
-            'Authorization': token
-
-        }
-        try {
-
-            await axios.delete('http://localhost:3001/cart/removecart', { headers: headers })
-            console.log('success checkout')
-
-            return 'success checkout'
-        } catch (error) {
-            console.log(error)
-            console.log('khong con token trong header')
-        }
+    try {
+        await instance.delete('/cart/removecart')
+        return 'success checkout'
+    } catch (error) {
+        console.log(error)
+        console.log('khong con token trong header')
     }
+
 })

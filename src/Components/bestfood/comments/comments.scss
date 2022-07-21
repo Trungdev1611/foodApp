@@ -1,7 +1,17 @@
 @import './../../../assets/style/mixin.scss';
 
 .comments {
-   
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        margin-left: 50px;
+        box-sizing: border-box;
+        overflow: hidden;
+       
+        @include tablet-maxwidth {
+            width: 100%;
+            margin-left: inherit;
+        }
     & h4 {
         font-size: 2.5rem;
         padding-bottom: 15px;
@@ -12,12 +22,15 @@
         box-sizing: border-box;
         height: 10rem;
         padding: 15px 10px;
-        border: 1px solid #999999;
+        border: 1px solid #c5bdbd;
         outline: none;
         font-size: 1.6rem;
         border-radius: 10px;
         // overflow: hidden;
         resize: none;
+        &:focus {
+            border: 1px solid #928b8b;
+        }
         &::placeholder {
             font-size: 1.4rem
         }
@@ -136,7 +149,7 @@
             & .comment-info__options {
                 display: flex;
                 align-items: center;
-                width: 80%;
+                // width: 80%;
                 & span.op-like.liked {
                         color:
                         #1976d2;
@@ -148,6 +161,7 @@
                         color: #ff514e;
                     }
                 }
+            
                 & span.op-like, .op-time, .replycomment {
                     padding: 5px 0;
                     display: inline-block;
@@ -173,6 +187,11 @@
                        
                     }
                 }
+                & span.op-time {
+                    flex: 1;
+                  
+     
+                 }
              
             }
         }

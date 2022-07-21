@@ -10,7 +10,6 @@ const Toast = ({ type }) => {
     contentHeading: 'Welcome',
     contentDesc: 'Login successful'
   })
-  console.log(type)
   useEffect(() => {
     if (type) {
       setTypemessage(type)

@@ -11,7 +11,6 @@ const DropdownFilter = () => {
     const dispatch = useDispatch()
     // click ra ngoai man hinh tat dropdown
     function checkoutside() {
-        console.log('aaaaaaaaaaaaa')
         setShowbox(false)
     }
     useEffect(() => {

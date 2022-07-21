@@ -47,10 +47,10 @@ const Login = () => {
                             })}
                             onSubmit={(values) => {
 
-                                console.log(values)
+                                // console.log(values)
                                 axios.post('http://localhost:3001/auth/login', values).then(data => {
                                     setError({ username1: '', password1: '' })
-                                    console.log(data)
+                                    // console.log(data)
                                     // document.cookie = `accesstoken = ${data.data.accessToken}`
                                     cookies.set('accessToken', data.data.accessToken, {
                                         path: '/', maxAge: 20 * 60,  //thoi gian het han sau 24h

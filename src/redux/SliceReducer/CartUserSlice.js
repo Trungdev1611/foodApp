@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import * as actions from "../action/actioncreator";
 const initialState = {
     isModalLogin: false,
@@ -16,7 +16,6 @@ const CartSlice = createSlice({
     reducers: {
         forcedLogin: (state, action) => {
             state.isModalLogin = !state.isModalLogin
-            console.log(action.type)
 
             return state
         },
@@ -50,7 +49,7 @@ const CartSlice = createSlice({
             .addCase(actions.cartDataActionCreator.rejected, (state, action) => {
                 // state.isShowCart = true
 
-                console.log('loi reject cart')
+                // console.log('loi reject cart')
                 return state
             }
             )
@@ -61,7 +60,7 @@ const CartSlice = createSlice({
                     return ele.id === action.payload.id
                 })
                 state.cartData[findIndex] = action.payload
-                console.log(current(state))
+                // console.log(current(state))
                 //cap nhat lai Price
                 let totalPriceUpdate = state.cartData.reduce((prev, current) => {
                     return prev + parseInt(current.quatityproduct) * parseInt(current.price)
@@ -86,9 +85,9 @@ const CartSlice = createSlice({
                 return state
             })
             .addCase(actions.checkoutCreator.pending, (state, action) => {
-                console.log('pending.....')
+                // console.log('pending.....')
                 state.loading = true
-                console.log(current(state))
+                // console.log(current(state))
 
                 return state
             })

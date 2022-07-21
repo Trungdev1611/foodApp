@@ -8,6 +8,7 @@
     grid-gap: 15px;
     @include desktop-maxwidth {
     grid-template-columns: repeat(3, 1fr);
+    min-height: 600px;
 
     }
     @include mobile-maxwidth {

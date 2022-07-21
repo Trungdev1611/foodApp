@@ -15,7 +15,6 @@ const useCounter = (counterstart, inc, target) => {
 
 
     }, [target, inc, counter])
-    // console.log('counter', counter)
     return counter
 }
 
