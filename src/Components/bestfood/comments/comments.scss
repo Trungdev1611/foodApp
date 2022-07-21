@@ -92,6 +92,11 @@
         & .comment-item {
             padding: 10px 0;
             display: flex;
+            &.commentReply {
+                margin-left: 50px;
+                // border: 1px solid red;
+                padding-top: 0;
+            }
             & .comment-avartar {
                 width: 40px ;
                 height: 40px;
@@ -137,14 +142,20 @@
                         #1976d2;
 
                 }
-                & span.op-like, .op-time {
+                & .replycomment {
+                    cursor: pointer;
+                    &:hover {
+                        color: #ff514e;
+                    }
+                }
+                & span.op-like, .op-time, .replycomment {
                     padding: 5px 0;
                     display: inline-block;
                     display: flex;
                     align-items: flex-end;
                     color: rgb(148, 140, 140);
                     font-size: 1.4rem;
-                    margin-right: 40px;
+                    margin-right: 20px;
                     & .line-icon {
                         font-size: 2rem;
                         // padding: 5px;

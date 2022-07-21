@@ -43,6 +43,8 @@ export const instance = axios.create({
     // }
 })
 instance.interceptors.request.use(function (request) {
+    console.log(`${request.method} ${request.url}`);
+    console.log(request.data)
     let tokenaccess = cookies.get('accessToken')
     request.headers.Authorization = tokenaccess
     return request

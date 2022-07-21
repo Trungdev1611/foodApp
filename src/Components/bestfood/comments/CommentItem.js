@@ -4,6 +4,8 @@ import { instance } from '../../../api/api'
 import { forcedLogin } from '../../../redux/SliceReducer/CartUserSlice';
 import { useDispatch } from 'react-redux/es/exports';
 import axios from 'axios';
+import Cookies from 'universal-cookie'
+const cookies = new Cookies();
 const CommentItem = ({ element }) => {
     const [commentItem, setCommentItem] = useState(element)
     const [isLike, setIslike] = useState(false)
@@ -16,27 +18,29 @@ const CommentItem = ({ element }) => {
 
     // console.log('element:::', element) //element la comment item
     useEffect(() => {
+        if (cookies.get('accessToken')) { //neu chua dang nhap thi khong can check trang thai da like hay chua
+            async function checkLikeComment() { //data la comment item
+                try {
+                    let getlike = await instance.get(`/likes/getstatuslikes/${element.id}`)
+                    console.log('getLike:::', getlike)
+                    //user da like truoc do
+                    if (getlike.data.errCode === 1) {
+                        console.log(11111)
+                        setIslike(true)
+                    }
+                    //user chua like
+                    if (getlike.data.errCode === 0) {
+                        setIslike(false)
+                    }
+                } catch (error) {
 
-        async function checkLikeComment() { //data la comment item
-            try {
-                let getlike = await instance.get(`/likes/getstatuslikes/${element.id}`)
-                console.log('getLike:::', getlike)
-                //user da like truoc do
-                if (getlike.data.errCode === 1) {
-                    console.log(11111)
-                    setIslike(true)
                 }
-                //user chua like
-                if (getlike.data.errCode === 0) {
-                    setIslike(false)
-                }
-            } catch (error) {
 
             }
-
+            //function kiem tra xem user truoc do da like hay chua. goi moi khi idcommentitem thay doi
+            checkLikeComment()
         }
-        //function kiem tra xem user truoc do da like hay chua. goi moi khi idcommentitem thay doi
-        checkLikeComment()
+
     }, [element.id]
 
     )
@@ -88,8 +92,9 @@ const CommentItem = ({ element }) => {
         }
     }
 
+
     return (
-        <div className='comment-item'>
+        <div className='comment-item' >
             <div className="comment-avartar">
                 {commentItem.username[0].toUpperCase()}
             </div>
@@ -102,6 +107,9 @@ const CommentItem = ({ element }) => {
                     <span className={isLike ? 'op-like liked' : 'op-like'}
                         onClick={() => handleLike(commentItem)}
                     ><ThumbUpIcon className='line-icon' /> <span>{totalLike === 0 ? null : totalLike}</span></span>
+                    <span className='replycomment'>
+                        Reply
+                    </span>
                     <span className='op-time'>
                         {getDateData(commentItem.updatedAt)}
                     </span>

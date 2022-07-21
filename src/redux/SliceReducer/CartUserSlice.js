@@ -39,7 +39,7 @@ const CartSlice = createSlice({
         })
             .addCase(actions.cartDataActionCreator.fulfilled, (state, action) => {
                 console.log('action Fullfill Cart:::', action.payload)
-                if (action.payload.data) {
+                if (action.payload && action.payload.data) {
                     state.cartData = action.payload.data
                     state.totalPrice = action.payload.totalPrice
                     state.isShowCart = true

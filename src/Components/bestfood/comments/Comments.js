@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { instance } from '../../../api/api'
 import { forcedLogin } from '../../../redux/SliceReducer/CartUserSlice'
 import CommentItem from './CommentItem'
+import CommentReply from './CommentReply'
 const Comments = ({ foodItem }) => {
     const [valuecomment, setValuecomment] = useState('')
     const [allcomments, setAllcomments] = useState([])
@@ -35,7 +36,7 @@ const Comments = ({ foodItem }) => {
 
 
     }, [foodItem.id, dispatch])
-
+    console.log(allcomments)
     //post comment
     async function handleSubmitComment() {
         console.log('foodItem', foodItem)
@@ -99,7 +100,19 @@ const Comments = ({ foodItem }) => {
                         {allcommentCopy.map((ele, index) => {
                             console.log('ele:::', ele.content)
                             return (
-                                < CommentItem element={ele} key={index} />
+                                <div key={index}>
+
+                                    {/* comment Item parent */}
+                                    < CommentItem element={ele} />
+
+                                    {/* comment Reply */}
+
+                                    {(ele.Replycomments && ele.Replycomments.length > 0) &&
+                                        ele.Replycomments.map((replyItem, index) => {
+                                            return <CommentReply element={replyItem} key={index} />
+                                        })}
+                                </div>
+
                             )
 
 

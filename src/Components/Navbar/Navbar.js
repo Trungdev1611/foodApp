@@ -51,6 +51,8 @@ const Navbar = () => {
             window.removeEventListener('scroll', fixedTopNavbar)
         }
     })
+
+
     //length Cart
     useEffect(() => {
         if (token) {
