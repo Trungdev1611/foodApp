@@ -16,7 +16,7 @@ import { cartDataActionCreator } from './../../redux/action/actioncreator'
 import Cookies from 'universal-cookie';
 import CartUser from '../CartUser/CartUser';
 import Modal from './../modal/Modal'
-import axios from 'axios';
+import { instance } from '../../api/api';
 const Navbar = () => {
     const { showlistMenu } = useSelector(state => state.foodlistReducer)
     const selector = useSelector(state => state.CartReducer)
@@ -56,13 +56,9 @@ const Navbar = () => {
     //length Cart
     useEffect(() => {
         if (token) {
-            console.log('chay lai if trong useEffect')
+            // console.log('chay lai if trong useEffect')
             try {
-                let headers = {
-                    "Content-Type": "application/json",
-                    'Authorization': token
-                }
-                axios.get('http://localhost:3001/cart/lengthCart', { headers: headers }).then(data => setLengthCart(data.data.datalength))
+                instance.get('/cart/lengthCart').then(data => setLengthCart(data.data.datalength))
             }
             catch (error) {
                 console.log(error)
@@ -92,7 +88,7 @@ const Navbar = () => {
         dispatch(togglelistMenuNav(false))
         setLengthCart(0)
     }
-    console.log(lengthCart)
+    // console.log(lengthCart)
 
     return (
         <nav className='navbar'>
@@ -114,7 +110,6 @@ const Navbar = () => {
                                 (showlistMenu && cookies.get('accessToken')) &&
                                 <span onClick={handleLogout}>Log out </span>
                             }
-                            {console.log(showlistMenu, cookies.get('accessToken'))}
                         </div>
 
                     </li>}

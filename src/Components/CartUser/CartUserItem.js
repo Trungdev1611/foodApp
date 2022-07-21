@@ -12,11 +12,11 @@ const CartUserItem = (props) => {
   const dispatch = useDispatch()
 
   function incrementCountItem() {
-    console.log('Incrementdata')
+    // console.log('Incrementdata')
     dispatch(addCountItemCreator({ idproduct: props.cartItem.id, count: 1 }))
   }
   function decrementCountItem() {
-    console.log('decrement')
+    // console.log('decrement')
     if (parseInt(props.cartItem.quatityproduct) !== 1) { //neu so luong san pham con = 1 thi khong cho giam nua
       dispatch(addCountItemCreator({ idproduct: props.cartItem.id, count: -1 }))
     }

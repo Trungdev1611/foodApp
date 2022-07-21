@@ -14,25 +14,26 @@ const CartUser = () => {
     const selector = useSelector(state => state.CartReducer)
 
     const navigate = useNavigate()
-    console.log('selector:::', selector)
     const dispatch = useDispatch()
     function handlehideCart(e) {
-        console.log(e.target)
-        console.log(e.currentTarget)
+
         if (e.target === e.currentTarget) {
             dispatch(hideCart())
 
         }
     }
 
-    async function handleCheckout(e) {
-        e.stopPropagation()
-        dispatch(hideCart())
+    function handleCheckout(e) {
+        if (selector.cartData.length > 0) {
+            e.stopPropagation()
+            dispatch(hideCart())
 
-        dispatch(checkoutCreator())
-        navigate('/checkout')
+            dispatch(checkoutCreator())
+            navigate('/checkout')
 
-        console.log(1111)
+            console.log(1111)
+        }
+
     }
 
     return (

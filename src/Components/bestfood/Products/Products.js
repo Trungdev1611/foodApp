@@ -7,7 +7,6 @@ import Pagination from './../pagination/Pagination'
 import queryString from 'query-string'
 
 import './products.scss'
-import ToastAddcart from '../../toast/ToastAddcart'
 
 const Products = () => {
     //pagination
@@ -17,7 +16,6 @@ const Products = () => {
 
     const selector = useSelector(state => state.foodlistReducer)
     const { pageselect, price_lte, price_gte, rate_like, name_like, _sort, _order, changeView } = selector
-    console.log(selector)
 
     const navigate = useNavigate()
 
@@ -89,7 +87,7 @@ const Products = () => {
 
 
     if (selector.loading) {
-        return <h1>Loading.....</h1>
+        return <div className='products-list'><h1>Loading.....</h1></div>
     }
     if (selector.data.length === 0) {
         return <h1>No food is relevant to this case..</h1>

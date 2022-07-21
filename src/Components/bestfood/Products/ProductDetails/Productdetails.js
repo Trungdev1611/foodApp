@@ -50,7 +50,6 @@ const Productdetails = () => {
         }
     }
     function incrementCountItem() {
-        console.log('Incrementdata')
         setItembuy(prev => prev + 1)
     }
 

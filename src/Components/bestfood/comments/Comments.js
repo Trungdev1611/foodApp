@@ -1,26 +1,18 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import './comments.scss'
-import { useSelector, useDispatch } from 'react-redux'
 import { instance } from '../../../api/api'
-import { forcedLogin } from '../../../redux/SliceReducer/CartUserSlice'
 import CommentItem from './CommentItem'
 import CommentReply from './CommentReply'
-const Comments = ({ foodItem }) => {
-    const [valuecomment, setValuecomment] = useState('')
-    const [allcomments, setAllcomments] = useState([])
-    const selector = useSelector(state => state.AuthSliceReducer)
-    const [sortCommentlike, setSortCommentlike] = useState(false)
-    const dispatch = useDispatch()
-    function handleChangeComment(e) {
-        console.log(e.target.value)
-        if (!e.target.value) {
-            setValuecomment('')
-        }
-        setValuecomment(e.target.value)
+import Postcomponent from './Postcomponent'
 
-    }
-    //get commetns
+const Comments = ({ foodItem }) => {
+    const [allcomments, setAllcomments] = useState([])
+
+    const [sortCommentlike, setSortCommentlike] = useState(false)
+
+
+    //get commetns khi load page
     useEffect(() => {
         async function getComment() {
             try {
@@ -28,64 +20,28 @@ const Comments = ({ foodItem }) => {
                 setAllcomments(commentsDB.data.data)
             } catch (error) {
                 console.log(error)
-                // dispatch(forcedLogin())
+
             }
 
         }
         getComment()
 
 
-    }, [foodItem.id, dispatch])
-    console.log(allcomments)
-    //post comment
-    async function handleSubmitComment() {
-        console.log('foodItem', foodItem)
-        if (valuecomment) {
-            try {
-                let commentPost = await instance.post('/comments/postcomment', {
-                    content: valuecomment,
-                    idfooditem: foodItem.id
-                })
-                setAllcomments(prev => [...prev, commentPost.data.data])
-            }
-            catch (error) {
-                console.log(error)
-                dispatch(forcedLogin())
-            }
+    }, [foodItem.id])
 
-            setValuecomment('')
-        }
 
-    }
-    console.log(valuecomment)
-    console.log('allcoment:::', allcomments)
+    // console.log('allcoment:::', allcomments)
     const allcommentCopy = [...allcomments].reverse()
-    // const allcommentCopy = [...allcomments]
-    console.log('copy.reserve()::', allcommentCopy)
-    console.log('allcoment2:::', allcomments)
+
+    // console.log('copy.reserve()::', allcommentCopy)
+
 
     return (
         <div className='comments'>
             <h4>Reviews</h4>
-            <textarea name="commentInput" placeholder='Type your review here....' value={valuecomment}
-                onChange={handleChangeComment}
-                onKeyPress={(e) => { if (e.key === 'Enter') { e.preventDefault(); handleSubmitComment() } }}
-            ></textarea>
-            <div className="postcomment">
-                {selector.username && <div className="info-user">
 
-                    <div className="avartar-user">
-                        {selector.username[0].toUpperCase()}
-                    </div>
+            <Postcomponent foodItem={foodItem} setAllcomments={setAllcomments} show={true} isReply={false} />
 
-                    <div className='user-name'>
-                        {selector.username}
-
-                    </div>
-
-                </div>}
-                <span onClick={handleSubmitComment} className='btn-postcomment'>Post Review</span>
-            </div>
             <div className="getcomments-container">
                 {(allcommentCopy && allcommentCopy.length > 0) ?
                     <div className="getcomments">
@@ -98,15 +54,15 @@ const Comments = ({ foodItem }) => {
                             >Highest rated</span>
                         </div>
                         {allcommentCopy.map((ele, index) => {
-                            console.log('ele:::', ele.content)
+
                             return (
                                 <div key={index}>
 
                                     {/* comment Item parent */}
-                                    < CommentItem element={ele} />
+                                    < CommentItem element={ele} setAllcomments={setAllcomments} />
+
 
                                     {/* comment Reply */}
-
                                     {(ele.Replycomments && ele.Replycomments.length > 0) &&
                                         ele.Replycomments.map((replyItem, index) => {
                                             return <CommentReply element={replyItem} key={index} />

@@ -10,10 +10,9 @@ import { useNavigate } from 'react-router-dom';
 const Checkout = () => {
   const selector = useSelector(state => state.CartReducer)
   const navigate = useNavigate()
-  console.log('selectorloading:::', selector.loading)
+  // console.log('selectorloading:::', selector.loading)
   if (selector.loading) {
-    console.log("LOADDDDDDDDDDDD111")
-    return <h1>Loading...</h1>
+    return <div className="checkout"><h1>Loading...</h1></div>
   }
 
 

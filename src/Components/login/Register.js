@@ -39,7 +39,7 @@ const Register = () => {
                                 })}
                                 onSubmit={(values) => {
 
-                                    console.log(values)
+                                    // console.log(values)
                                     axios.post('http://localhost:3001/auth/register', values).then(data => {
                                         setRegister(true)
                                     })
