@@ -1,12 +1,21 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
+import React from 'react';
 import Home from "./Components/Home";
-import ProductList from './Components/bestfood/index';
-import Notfound from './Components/NotFound/Notfound';
-import Productdetails from './Components/bestfood/Products/ProductDetails/Productdetails';
-import Login from './Components/login/Login';
-import Register from './Components/login/Register';
+// import ProductList from './Components/bestfood/index';
+// import Notfound from './Components/NotFound/Notfound';
+// import Productdetails from './Components/bestfood/Products/ProductDetails/Productdetails';
+// import Login from './Components/login/Login';
+// import Register from './Components/login/Register';
 import { ToastAddcart } from './Components/toast/ToastLogin';
-import Checkout from './Components/checkout/Checkout';
+import ScrollTop from './Components/scrollTop/ScrollTop';
+// import Checkout from './Components/checkout/Checkout';
+// const Home = React.lazy(() => import('./Components/Home'))
+const ProductList = React.lazy(() => import('./Components/bestfood/index'))
+const Notfound = React.lazy(() => import('./Components/NotFound/Notfound'))
+const Productdetails = React.lazy(() => import('./Components/bestfood/Products/ProductDetails/Productdetails'))
+const Login = React.lazy(() => import('./Components/login/Login'))
+const Register = React.lazy(() => import('./Components/login/Register'))
+const Checkout = React.lazy(() => import('./Components/checkout/Checkout'))
 
 function App() {
 
@@ -17,18 +26,19 @@ function App() {
         <Route path='/' element={<Navigate to="/home" />} />
         <Route path='/home' element={<Home />} />
         <Route path='/listfood' element={<Navigate to="/listfood/bestfood?_limit=16" />} />
-        <Route path='/listfood/fooditem/*' element={<Productdetails />} />
-        <Route path='/listfood/*' element={<ProductList />} >
+        <Route path='/listfood/fooditem/*' element={<React.Suspense fallback='Loading...' ><Productdetails /></React.Suspense>} />
+        <Route path='/listfood/*' element={<React.Suspense fallback='Loading...' ><ProductList /></React.Suspense>} >
 
         </Route>
-        <Route path='/login' element={< Login />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/checkout' element={<Checkout />} />
+        <Route path='/login' element={<React.Suspense fallback='Loading...' >< Login /></React.Suspense>} />
+        <Route path='/register' element={<React.Suspense fallback='Loading...' ><Register /></React.Suspense>} />
+        <Route path='/checkout' element={<React.Suspense fallback='Loading...' ><Checkout /></React.Suspense>} />
 
         {/* <Route path='/listfood/bestfood/*' element={<ProductList />} /> */}
-        <Route path='*' element={<Notfound />} />
+        <Route path='*' element={<React.Suspense fallback='Loading...' ><Notfound /></React.Suspense>} />
       </Routes>
       <ToastAddcart />
+      < ScrollTop />
 
     </div>
   );

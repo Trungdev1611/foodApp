@@ -27,6 +27,9 @@ export const cartDataActionCreator = createAsyncThunk('getCartInDB', async funct
         if (error.response.status === 401) {//401 la unthorization
             thunkAPI.dispatch(forcedLogin())
         }
+        else {
+            thunkAPI.dispatch(forcedLogin())
+        }
 
     }
 }

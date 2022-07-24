@@ -47,28 +47,29 @@ const Login = () => {
                             })}
                             onSubmit={(values) => {
 
-                                // console.log(values)
-                                axios.post('http://localhost:3001/auth/login', values).then(data => {
-                                    setError({ username1: '', password1: '' })
-                                    // console.log(data)
-                                    // document.cookie = `accesstoken = ${data.data.accessToken}`
-                                    cookies.set('accessToken', data.data.accessToken, {
-                                        path: '/', maxAge: 20 * 60,  //thoi gian het han sau 24h
-                                        //co cai http only nay thi khong nhin thay cookie trong trinh duyet duoc
-                                        // httpOnly: true
+                                axios.post('http://localhost:3001/auth/login', values)
+                                    //login tra token ve client
+                                    .then(data => {
 
-                                    }
-                                    );
+                                        setError({ username1: '', password1: '' })
+                                        //set token vao cookie in client
+                                        cookies.set('accessToken', data.data.accessToken, {
+                                            path: '/', maxAge: 24 * 60 * 60,  //thoi gian het han sau 24h
+                                            //co cai http only nay thi khong nhin thay cookie trong trinh duyet duoc
+                                            // httpOnly: true
 
-
-                                    dispatch(loginSuccess({ username: values.username, isLogin: true, isShowToast: true }))
-                                    setTimeout(() => {
-                                        dispatch(hideNotify())
-                                        navigate('/home')
-                                    }, 2000)
+                                        }
+                                        );
 
 
-                                })
+                                        dispatch(loginSuccess({ username: values.username, isLogin: true, isShowToast: true }))
+                                        setTimeout(() => {
+                                            dispatch(hideNotify())
+                                            navigate('/home')
+                                        }, 2000)
+
+
+                                    })
                                     .catch(err => {
                                         console.log(err)
                                         if (err.response.data.error && err.response.data.error === 'Username') {

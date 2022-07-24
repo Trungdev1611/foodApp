@@ -2,16 +2,20 @@ import axios from "axios";
 //query string de chuyen doi object thanh quey
 import queryString from 'query-string'
 import Cookies from 'universal-cookie'
+// import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+// dotenv.config()
 const cookies = new Cookies();
+
 // const token = cookies.get('accessToken')
-export const baseUrl = 'https://fake-server-app16111994.herokuapp.com/';
+export const baseUrl = process.env.REACT_APP_BASEHEROKU;
 
 
-
+// console.log(process.env.REACT_APP_BASEHEROKU)
+// console.log(process.env.REACT_APP_BASEURLNODE)
 
 
 export const instance = axios.create({
-    baseURL: 'http://localhost:3001',
+    baseURL: process.env.REACT_APP_BASEURLNODE,
     timeout: 10000,
 
 })

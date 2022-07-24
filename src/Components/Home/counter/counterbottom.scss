@@ -14,6 +14,7 @@
     flex-wrap: wrap;
     &__item {
         text-align: center;
+        
  
     }
     & h3 {
@@ -26,3 +27,12 @@
     }
 }
 
+.counterup {
+    display: inline-block;
+}
+
+@media screen and (max-width:550px) {
+    .counter-bottom__item {
+        width: 50%;
+    }
+}

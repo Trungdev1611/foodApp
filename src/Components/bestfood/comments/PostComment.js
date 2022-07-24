@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import { instance } from '../../../api/api'
 import { forcedLogin } from '../../../redux/SliceReducer/CartUserSlice'
 import { useSelector, useDispatch } from 'react-redux'
-const Postcomponent = ({ foodItem, setAllcomments, show, marginleft, isReply, commentItem, setShowpostReply }) => {
+import Cookies from 'universal-cookie'
+const PostComment = ({ foodItem, setAllcomments, show, marginleft, isReply, commentItem, setShowpostReply }) => {
+    const cookies = new Cookies();
+    let tokenaccess = cookies.get('accessToken')
     const [valuecomment, setValuecomment] = useState('')
     const dispatch = useDispatch()
     const selector = useSelector(state => state.AuthSliceReducer)
@@ -92,18 +95,19 @@ const Postcomponent = ({ foodItem, setAllcomments, show, marginleft, isReply, co
                 onKeyPress={(e) => { if (e.key === 'Enter') { e.preventDefault(); handleSubmitComment() } }}
             ></textarea>
             <div className="postcomment">
-                {selector.username && <div className="info-user">
+                {selector.username && tokenaccess &&
+                    <div className="info-user">
 
-                    <div className="avartar-user">
-                        {selector.username[0].toUpperCase()}
-                    </div>
+                        <div className="avartar-user">
+                            {selector.username[0].toUpperCase()}
+                        </div>
 
-                    <div className='user-name'>
-                        {selector.username}
+                        <div className='user-name'>
+                            {selector.username}
 
-                    </div>
+                        </div>
 
-                </div>}
+                    </div>}
                 {!isReply && <span onClick={handleSubmitComment} className='btn-postcomment'>Post Review</span>}
                 {isReply && <span onClick={handleReplyComment} className='btn-postcomment' >Reply</span>}
             </div>
@@ -111,4 +115,4 @@ const Postcomponent = ({ foodItem, setAllcomments, show, marginleft, isReply, co
     )
 }
 
-export default Postcomponent
+export default PostComment

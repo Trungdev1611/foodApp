@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import './category.scss'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -9,11 +9,22 @@ import { categoryData } from '../../../utils/staticData'
 // install modult chay autoplay
 import SwiperCore, { Autoplay, Navigation } from 'swiper/core';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
+import gsap from "gsap/all";
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
+
 SwiperCore.use([Autoplay, Navigation]);
 
 const Category = () => {
+    const el = useRef()
+    const q = gsap.utils.selector(el);
+    useEffect(() => {
+        gsap.from(q(".category-title"), { x: 50, duration: 1, opacity: 0, delay: 1, scrollTrigger: { trigger: q(".category-title"), start: "-100 bottom" } });
+        gsap.from(q(".category-heading"), { x: -50, duration: 1, opacity: 0, delay: 1.5, scrollTrigger: { trigger: q(".category-heading"), start: "-100 bottom" } });
+        gsap.from(q(".swiper"), { y: -50, duration: 1, opacity: 0, delay: 2, scrollTrigger: { trigger: q(".swiper"), start: "-100 bottom" } });
+    }, [q])
     return (
-        <section className='category'>
+        <section className='category' ref={el}>
             <h4 className="category-title">
                 What we have?
             </h4>

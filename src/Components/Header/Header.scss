@@ -27,12 +27,15 @@
         & p.title {
             font-size: 1.8rem;
             font-weight: 600;
-            color: white
+            color: white;
+            animation: animationtest 1s  ease-in;
+
         }
         & .headeing-banner {
             font-size: 7.2rem;
             font-weight: 600;
             color: white;
+            animation: animationtest2 2s  ease-in;
             & span {
                 color: #ff514e;
             }
@@ -60,7 +63,7 @@
 //dots
 ul.dots-slide {
     position: absolute;
-    bottom: 20px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     & li {
@@ -106,4 +109,23 @@ ul.dots-slide {
     left: 0
     ;
     z-index: 200;
+}
+
+@keyframes animationtest {
+    from {
+        transform: translateX(-50px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+@keyframes animationtest2 {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
