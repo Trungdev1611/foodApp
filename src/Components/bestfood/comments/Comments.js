@@ -4,7 +4,7 @@ import './comments.scss'
 import { instance } from '../../../api/api'
 import CommentItem from './CommentItem'
 import CommentReply from './CommentReply'
-import Postcomponent from './Postcomponent'
+import PostComment from './PostComment'
 
 const Comments = ({ foodItem }) => {
     const [allcomments, setAllcomments] = useState([])
@@ -40,7 +40,7 @@ const Comments = ({ foodItem }) => {
         <div className='comments'>
             <h4>Reviews</h4>
 
-            <Postcomponent foodItem={foodItem} setAllcomments={setAllcomments} show={true} isReply={false} />
+            <PostComment foodItem={foodItem} setAllcomments={setAllcomments} show={true} isReply={false} />
 
             <div className="getcomments-container">
                 {(allcommentCopy && allcommentCopy.length > 0) ?

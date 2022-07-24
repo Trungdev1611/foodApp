@@ -1,0 +1,18 @@
+.show-scrolltop {
+    position: fixed;
+    color: #ff514e;
+    display: inline-block;
+    width: 50px !important;
+    height: 50px !important;
+    bottom: 20px;
+    right: 20px;
+    padding: 5px 0 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2.5px 10px rgba(0,0,0,0.3);
+    &:hover {
+        color: white;
+        background-color: #ff514e;
+    }
+}

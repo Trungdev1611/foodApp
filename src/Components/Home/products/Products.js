@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
@@ -6,9 +6,20 @@ import 'swiper/css';
 import ProductItem from './product/ProductItem';
 import { productsdata } from './../../../utils/staticData';
 import './products.scss'
+import gsap from "gsap/all";
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
 const Products = () => {
+  const el = useRef()
+  const q = gsap.utils.selector(el);
+  useEffect(() => {
+    gsap.from(q(".products-title"), { delay: 0.5, x: -50, duration: 1, stagger: 1, opacity: 0, scrollTrigger: { trigger: q(".products-title"), start: "-100 bottom" } });
+    gsap.from(q(".products-heading"), { delay: 0.5, x: 50, duration: 1, stagger: 1, opacity: 0, scrollTrigger: { trigger: q(".products-heading"), start: "-100 bottom" } });
+    gsap.from(q(".swiper"), { delay: 0.5, y: 50, duration: 1, stagger: 1, opacity: 0, scrollTrigger: { trigger: q(".swiper"), start: "-100 bottom" } });
+
+  }, [q])
   return (
-    <div className='products'>
+    <div className='products' ref={el}>
       <div className="products-title">
         Quality Products
       </div>

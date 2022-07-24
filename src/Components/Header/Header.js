@@ -5,7 +5,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './Header.scss'
 import Slider from "react-slick";
+import { useRef, useEffect } from 'react';
+import gsap from "gsap/all";
 const Header = () => {
+
 
   const settings = {
     dots: true,
@@ -16,6 +19,14 @@ const Header = () => {
     dotsClass: 'dots-slide'
   };
 
+  //gsap
+  const headingRef = useRef()
+  useEffect(() => {
+    const heading1 = headingRef.current
+    gsap.fromTo(heading1, { x: -100 }, { x: 0, duration: 2 })
+
+  })
+  //gsap
   return (
     <div style={{ overflow: 'hidden' }}>
 
@@ -28,11 +39,13 @@ const Header = () => {
       <Slider {...settings}  >
 
         <header className='header bgImage'>
-          <div className="header-content">
-            <p className='title'>ENJOY YOUR MEAL</p>
-            <div className="headeing-banner">
-              Good food is wise <span>medicine</span>
+          <div className="header-content" ref={headingRef} >
+            <p className='title' >ENJOY YOUR MEAL</p>
+            <div className="headeing-banner" ref={headingRef}>
+              Good food is wise <span >medicine</span>
             </div>
+
+
             <Buttonorder />
           </div>
 

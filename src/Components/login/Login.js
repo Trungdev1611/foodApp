@@ -54,7 +54,7 @@ const Login = () => {
                                         setError({ username1: '', password1: '' })
                                         //set token vao cookie in client
                                         cookies.set('accessToken', data.data.accessToken, {
-                                            path: '/', maxAge: 20 * 60,  //thoi gian het han sau 24h
+                                            path: '/', maxAge: 24 * 60 * 60,  //thoi gian het han sau 24h
                                             //co cai http only nay thi khong nhin thay cookie trong trinh duyet duoc
                                             // httpOnly: true
 

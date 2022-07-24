@@ -79,7 +79,7 @@ const Products = () => {
     ])
 
     function detailsItem(ele) {
-
+        //go to item detail page
         let cutUrl = (location.pathname.replace('/listfood', ''))
         let cutUrl2 = cutUrl.replace('bestfood', 'best-foods')
         navigate(`/listfood/fooditem${cutUrl2}/${ele.id}`)

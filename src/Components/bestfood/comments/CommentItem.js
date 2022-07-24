@@ -5,7 +5,7 @@ import { forcedLogin } from '../../../redux/SliceReducer/CartUserSlice';
 import { useDispatch } from 'react-redux/es/exports';
 import axios from 'axios';
 import Cookies from 'universal-cookie'
-import Postcomponent from './Postcomponent';
+import PostComment from './PostComment';
 const cookies = new Cookies();
 const CommentItem = ({ element, setAllcomments }) => {
     const [commentItem, setCommentItem] = useState(element)
@@ -122,7 +122,7 @@ const CommentItem = ({ element, setAllcomments }) => {
                 </div>
 
             </div>
-            <Postcomponent show={showpostReply} marginleft={'50px'} isReply={true} commentItem={commentItem} setAllcomments={setAllcomments} setShowpostReply={setShowpostReply} />
+            <PostComment show={showpostReply} marginleft={'50px'} isReply={true} commentItem={commentItem} setAllcomments={setAllcomments} setShowpostReply={setShowpostReply} />
         </div>
 
     )
