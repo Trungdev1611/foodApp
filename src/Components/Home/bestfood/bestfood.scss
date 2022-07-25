@@ -2,6 +2,7 @@
 
 .bestfood {
     text-align: center;
+    overflow-x: hidden;
     @include tablet-maxwidth {
         display: none;
     }

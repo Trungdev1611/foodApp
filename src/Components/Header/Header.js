@@ -23,7 +23,7 @@ const Header = () => {
   const headingRef = useRef()
   useEffect(() => {
     const heading1 = headingRef.current
-    gsap.fromTo(heading1, { x: -100 }, { x: 0, duration: 2 })
+    gsap.fromTo(heading1, { x: -100 }, { x: 0, duration: 1 })
 
   })
   //gsap

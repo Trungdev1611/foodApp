@@ -16,7 +16,7 @@ const Products = () => {
 
     const selector = useSelector(state => state.foodlistReducer)
     const { pageselect, price_lte, price_gte, rate_like, name_like, _sort, _order, changeView } = selector
-    console.log('rateLike', rate_like, pageselect, price_lte, price_gte, rate_like, name_like, _sort, _order, changeView)
+    // console.log('rateLike', rate_like, pageselect, price_lte, price_gte, rate_like, name_like, _sort, _order, changeView)
     const navigate = useNavigate()
 
 
@@ -80,10 +80,10 @@ const Products = () => {
 
     function detailsItem(ele) {
         //go to item detail page
-        console.log(ele)
-        console.log(location.pathname)
+        // console.log(ele)
+        // console.log(location.pathname)
         let cutUrl = (location.pathname.replace('/listfood', ''))
-        console.log(cutUrl)
+        // console.log(cutUrl)
         let cutUrl2 = cutUrl.replace('bestfood', 'best-foods')
         navigate(`/listfood/fooditem${cutUrl2}/${ele.id}`)
     }

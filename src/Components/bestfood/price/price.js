@@ -7,7 +7,7 @@ const Price = (props) => {
     const [checkinput, setCheckinput] = useState('{"price_lte": null, "price_gte": null}')
     const dispatch = useDispatch()
     function handleChange(e) {
-        console.log(JSON.parse(e.target.value))
+        // console.log(JSON.parse(e.target.value))
         setCheckinput(e.target.value)
         dispatch(sortPrice(JSON.parse(e.target.value)))
     }

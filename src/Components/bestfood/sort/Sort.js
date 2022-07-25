@@ -10,7 +10,7 @@ const Sort = () => {
     function handleChangeView() {
         dispatch(changeViewaction())
     }
-    console.log(changeView)
+    // console.log(changeView)
     return (
         <div className='sort-wrapper'>
             <div className={changeView ? "sort-item active-icon" : "sort-item"}

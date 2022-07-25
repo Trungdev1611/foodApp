@@ -16,7 +16,7 @@ const Login = () => {
     const [error, setError] = useState({
         username1: '', password1: ''
     })
-    console.log('error', error)
+    // console.log('error', error, process.env.REACT_APP_BASEURLNODE)
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const selector = useSelector((state) => state.AuthSliceReducer)
@@ -47,7 +47,7 @@ const Login = () => {
                             })}
                             onSubmit={(values) => {
 
-                                axios.post('http://localhost:3001/auth/login', values)
+                                axios.post(`${process.env.REACT_APP_BASEURLNODE}/auth/login`, values)
                                     //login tra token ve client
                                     .then(data => {
 
@@ -97,7 +97,7 @@ const Login = () => {
                                 </div>
 
                                 <label htmlFor="password">Password</label>
-                                <Field name="password" type="text" />
+                                <Field name="password" type="password" />
                                 <div className='error'>
                                     <ErrorMessage name="password" />
                                     <div> {error.password1 ? error.password1 : null}</div>

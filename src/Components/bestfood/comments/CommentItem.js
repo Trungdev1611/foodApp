@@ -50,7 +50,7 @@ const CommentItem = ({ element, setAllcomments }) => {
     useEffect(() => {
         async function getTotallike() {
             try {
-                let totallikeData = await axios.get(`http://localhost:3001/likes/getTotallike/${element.id}`)
+                let totallikeData = await axios.get(`${process.env.REACT_APP_BASEURLNODE}/likes/getTotallike/${element.id}`)
                 setTotallike(totallikeData.data.totallike)
             } catch (error) {
                 console.log("error in get totallike::", error)

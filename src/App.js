@@ -26,16 +26,16 @@ function App() {
         <Route path='/' element={<Navigate to="/home" />} />
         <Route path='/home' element={<Home />} />
         <Route path='/listfood' element={<Navigate to="/listfood/bestfood?_limit=16" />} />
-        <Route path='/listfood/fooditem/*' element={<React.Suspense fallback='Loading...' ><Productdetails /></React.Suspense>} />
-        <Route path='/listfood/*' element={<React.Suspense fallback='Loading...' ><ProductList /></React.Suspense>} >
+        <Route path='/listfood/fooditem/*' element={<React.Suspense fallback='' ><Productdetails /></React.Suspense>} />
+        <Route path='/listfood/*' element={<React.Suspense fallback='' ><ProductList /></React.Suspense>} >
 
         </Route>
-        <Route path='/login' element={<React.Suspense fallback='Loading...' >< Login /></React.Suspense>} />
-        <Route path='/register' element={<React.Suspense fallback='Loading...' ><Register /></React.Suspense>} />
-        <Route path='/checkout' element={<React.Suspense fallback='Loading...' ><Checkout /></React.Suspense>} />
+        <Route path='/login' element={<React.Suspense fallback='' >< Login /></React.Suspense>} />
+        <Route path='/register' element={<React.Suspense fallback='' ><Register /></React.Suspense>} />
+        <Route path='/checkout' element={<React.Suspense fallback='' ><Checkout /></React.Suspense>} />
 
         {/* <Route path='/listfood/bestfood/*' element={<ProductList />} /> */}
-        <Route path='*' element={<React.Suspense fallback='Loading...' ><Notfound /></React.Suspense>} />
+        <Route path='*' element={<React.Suspense fallback='' ><Notfound /></React.Suspense>} />
       </Routes>
       <ToastAddcart />
       < ScrollTop />

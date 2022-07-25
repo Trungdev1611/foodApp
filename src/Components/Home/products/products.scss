@@ -7,6 +7,8 @@
     background-color: white;
     @include desktop-maxwidth {
         padding: 1rem 2rem;
+        max-width: 100%;
+        overflow: hidden;
     }
     & .swiper {
         z-index: 0;
@@ -30,4 +32,10 @@
             font-weight:bold;
         }
     }
+}
+
+.swiper-wrapper {
+    max-width: 100%;
+    // overflow: hidden;
+    border: 1px solid red;
 }

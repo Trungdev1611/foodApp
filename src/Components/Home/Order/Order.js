@@ -19,9 +19,9 @@ const Order = () => {
     useEffect(() => {
         const heading = titleRef.current
 
-        gsap.fromTo(heading, { x: -100 }, { x: 0, y: 0, duration: 4, scrollTrigger: { trigger: heading, start: "-50 bottom" } })
-        gsap.fromTo(textRef.current, { x: 100 }, { x: 0, duration: 4, scrollTrigger: { trigger: heading, start: "-50 bottom" } })
-        gsap.from(q(".delivery"), { y: 100, duration: 2, stagger: 1, opacity: 0, scrollTrigger: { trigger: q(".delivery"), start: "-50 bottom" } });
+        gsap.fromTo(heading, { x: -100 }, { x: 0, y: 0, duration: 1.5, scrollTrigger: { trigger: heading, start: "-50 bottom" } })
+        gsap.fromTo(textRef.current, { x: 100 }, { x: 0, duration: 1.5, scrollTrigger: { trigger: heading, start: "-50 bottom" } })
+        gsap.from(q(".delivery"), { y: 100, duration: 1.5, stagger: 0.6, opacity: 0, scrollTrigger: { trigger: q(".delivery"), start: "-50 bottom" } });
     }, [q])
     return (
         <section className='order' style={{ marginTop: '7rem' }}>

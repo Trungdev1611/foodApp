@@ -6,6 +6,7 @@
     grid-template-columns: repeat(4, 1fr);
     width: 100%;
     grid-gap: 15px;
+    max-width: 100%;
     @include desktop-maxwidth {
     grid-template-columns: repeat(3, 1fr);
     min-height: 600px;

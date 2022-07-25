@@ -42,7 +42,7 @@ export const postIteminCart = createAsyncThunk('postItemincart', async ({ postDa
     let dataPost = { ...rest, idproduct: postData.id, quatityproduct: quatity } //thay key idproduct bang key id
     // console.log(dataPost)
     try {
-        let response = await instance.post("http://localhost:3001/cart/producttocart", dataPost,
+        let response = await instance.post(`${process.env.REACT_APP_BASEURLNODE}/cart/producttocart`, dataPost,
         )
         thunkAPI.dispatch(updateCart(response.data.data))
         showToast(typeCartSuccess)
@@ -57,7 +57,7 @@ export const addCountItemCreator = createAsyncThunk('addIteminCart', async ({ id
     try {
         let datacart = await instance.post('/cart/increment-item-incart', { idproduct: idproduct, count: count }
         )
-        console.log('Addcountitem:::::', datacart)
+        // console.log('Addcountitem:::::', datacart)
         return datacart.data.data
     } catch (error) {
         console.log(error)
@@ -66,11 +66,11 @@ export const addCountItemCreator = createAsyncThunk('addIteminCart', async ({ id
 
 export const deleteItemCreator = createAsyncThunk('deleteItemCart', async (id) => {
     try {
-        let dataDelete = await instance.delete(`http://localhost:3001/cart/deletecart/${id}`)
+        let dataDelete = await instance.delete(`${process.env.REACT_APP_BASEURLNODE}/cart/deletecart/${id}`)
         return dataDelete.data.data
     }
     catch (error) {
-        console.log('deleteCart', error)
+        // console.log('deleteCart', error)
     }
 }
 )
@@ -81,7 +81,7 @@ export const checkoutCreator = createAsyncThunk("checkout", async () => {
         return 'success checkout'
     } catch (error) {
         console.log(error)
-        console.log('khong con token trong header')
+        // console.log('khong con token trong header')
     }
 
 })

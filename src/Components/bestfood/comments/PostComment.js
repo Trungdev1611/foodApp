@@ -62,7 +62,7 @@ const PostComment = ({ foodItem, setAllcomments, show, marginleft, isReply, comm
                     //find Id object comment can cap nhat
                     // console.log(prev)
                     let findIndex = prev.findIndex(ele => ele.id === replyPost.data.data.commentId)
-                    console.log(findIndex, replyPost.data.data.commentId)
+                    // console.log(findIndex, replyPost.data.data.commentId)
                     //neu co key Reply comments trong phan tu findIndex can tim thi lay, khong thi cho prev[findIndex].Replycomments = []
                     prev[findIndex].Replycomments = prev[findIndex].Replycomments || []
                     //destructuring mang reply trong allcomment

@@ -12,6 +12,7 @@ const Register = () => {
     const [register, setRegister] = useState(false)
     const [error, setError] = useState('')
     const navigate = useNavigate()
+    // console.log(process.env.REACT_APP_BASEURLNODE)
     return (
         <>
 
@@ -40,7 +41,7 @@ const Register = () => {
                                 onSubmit={(values) => {
 
                                     // console.log(values)
-                                    axios.post('http://localhost:3001/auth/register', values).then(data => {
+                                    axios.post(`${process.env.REACT_APP_BASEURLNODE}/auth/register`, values).then(data => {
                                         setRegister(true)
                                     })
                                         .catch(err => setError(err.response.data.error))
@@ -61,7 +62,7 @@ const Register = () => {
                                     </div>
 
                                     <label htmlFor="password">Password</label>
-                                    <Field name="password" type="text" />
+                                    <Field name="password" type="password" />
                                     <div className='error'>
                                         <ErrorMessage name="password" />
                                     </div>

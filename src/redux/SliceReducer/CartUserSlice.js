@@ -23,7 +23,7 @@ const CartSlice = createSlice({
 
             state.cartData = [...state.cartData, action.payload]
 
-            console.log(state.cartData)
+            // console.log(state.cartData)
             return state
         },
         hideCart: (state, action) => {
@@ -37,7 +37,7 @@ const CartSlice = createSlice({
             console.log('Loading...........')
         })
             .addCase(actions.cartDataActionCreator.fulfilled, (state, action) => {
-                console.log('action Fullfill Cart:::', action.payload)
+                // console.log('action Fullfill Cart:::', action.payload)
                 if (action.payload && action.payload.data) {
                     state.cartData = action.payload.data
                     state.totalPrice = action.payload.totalPrice
@@ -55,7 +55,7 @@ const CartSlice = createSlice({
             )
             //addCase update count Item and update price
             .addCase(actions.addCountItemCreator.fulfilled, (state, action) => {
-                console.log('action.payload:::::', action.payload)
+                // console.log('action.payload:::::', action.payload)
                 const findIndex = state.cartData.findIndex((ele, index) => {
                     return ele.id === action.payload.id
                 })
@@ -72,7 +72,7 @@ const CartSlice = createSlice({
             //addCase delete Item in cart and update price
 
             .addCase(actions.deleteItemCreator.fulfilled, (state, action) => {
-                console.log('action.payload.id:::', action.payload.id)
+                // console.log('action.payload.id:::', action.payload.id)
                 const newCartData = state.cartData.filter((ele, index) => {
                     return ele.id !== action.payload.id
                 })

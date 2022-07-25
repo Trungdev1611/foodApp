@@ -31,16 +31,16 @@ instance.interceptors.request.use(function (request) {
 
 export const getData = async (key, obj) => {
     try {
-        console.log('obj', obj)
+        // console.log('obj', obj)
         let queryUrL = `${baseUrl}${key}?${queryString.stringify(obj)}`
-        console.log('query1', queryUrL)
+        // console.log('query1', queryUrL)
         let data1 = await axios.get(queryUrL)
 
         //lay so luong phan tu de tinh so page
         obj._limit = undefined // lay tat ca phan tu
         obj._page = undefined // lay tat ca cac trang
         let queryUrL2 = `${baseUrl}${key}?${queryString.stringify(obj)}`
-        console.log('query2', queryUrL2)
+        // console.log('query2', queryUrL2)
 
         let countPage = await axios.get(queryUrL2)
 
