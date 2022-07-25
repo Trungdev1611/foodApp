@@ -12,7 +12,7 @@ const Search = () => {
     function handleSearch() {
         if (inputValue.trim()) {
             dispatch(searchbyInput(inputValue))
-            // setInputValue('')
+            setInputValue('')
 
         }
     }

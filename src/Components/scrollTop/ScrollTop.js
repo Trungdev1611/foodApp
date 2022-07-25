@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import './scrolltop.scss'
 const ScrollTop = () => {
-    const [visible, setVisible] = useState(true)
+    const [visible, setVisible] = useState(false)
 
 
 
     function checkscrolldistance() {
         const scrolled = window.pageYOffset;
-        console.log(scrolled)
         if (scrolled > 500) {
             setVisible(true)
         }

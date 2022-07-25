@@ -7,7 +7,7 @@ import pizza from './../assets/image/pizza.svg'
 export const menuListdata = [
     {
         id: 1,
-        linkto: '/listfood/burgur?_limit=16',
+        linkto: '/listfood/bbqs?_limit=16',
         src: burger,
         name: 'Burgers'
 

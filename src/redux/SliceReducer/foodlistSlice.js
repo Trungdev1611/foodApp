@@ -65,6 +65,7 @@ const foodListSlice = createSlice({
 
         //filer by rate star
         sortstar: (state, action) => {
+            console.log(action)
             state.rate_like = action.payload
             return state
         },

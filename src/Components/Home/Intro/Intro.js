@@ -9,7 +9,7 @@ const Intro = () => {
     const el = useRef()
     const q = gsap.utils.selector(el);
     useEffect(() => {
-        gsap.from(q(".introcontent-item"), { y: 40, duration: 1, stagger: 1, opacity: 0, scrollTrigger: { trigger: q(".introcontent-item"), start: "-100 bottom" } });
+        gsap.from(q(".introcontent-item"), { y: 40, duration: 1, stagger: 1, opacity: 0, scrollTrigger: { trigger: q(".introcontent-item"), start: "-150 bottom" } });
     }, [q])
     return (
         <section className='intro' ref={el}>

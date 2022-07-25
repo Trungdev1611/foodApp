@@ -31,7 +31,9 @@ const Productdetails = () => {
     let content = location.pathname.replace('/listfood/fooditem/', '')
 
     useEffect(() => {
+        //details item dua tren Id
         async function fetchProductbyId(content) {
+            console.log('urllll:::', `${baseUrl}${content}`)
             await axios.get(`${baseUrl}${content}`).then(data => setDetailsfood(data.data))
         }
         fetchProductbyId(content)
