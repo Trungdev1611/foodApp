@@ -19,7 +19,7 @@
         }
     }
     & .product-item__bottom {
-        & .item-heading {
+        & h4.item-heading {
             font-size: 1.7rem;
             font-weight: bold;
             padding: 7px 0 5px 0;
@@ -32,7 +32,7 @@
                 color: #ff514e
             }
         }
-        & .product-item__desc {
+        & p.product-item__desc {
             font-size: 1.3rem;
             overflow: hidden;
             display: -webkit-box;

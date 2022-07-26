@@ -44,7 +44,7 @@ const Products = () => {
             spaceBetween: 40
 
           },
-          1000: {
+          1100: {
             // width: 960,
             slidesPerView: 4,
             spaceBetween: 50

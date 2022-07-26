@@ -4,11 +4,7 @@ import Cookies from 'universal-cookie'
 
 const cookies = new Cookies();
 
-
 export const baseUrl = process.env.REACT_APP_BASEHEROKU;
-
-
-
 
 
 export const instance = axios.create({

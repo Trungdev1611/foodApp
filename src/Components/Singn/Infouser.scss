@@ -47,6 +47,7 @@ ul.user-options__dropdown {
     font-size: 1.4rem;
     min-width: 110px;
     margin-top: 15px;
+    padding-left: 0;
     z-index: 1;
     right: 10px;
     color: rgb(39, 36, 36);
@@ -65,7 +66,7 @@ ul.user-options__dropdown {
 
     }
     
-    & li {
+    & li.user-options__item {
         margin: 4px 0;
         padding: 8px;
         transition: 0.3s;

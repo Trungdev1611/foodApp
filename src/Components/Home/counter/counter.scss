@@ -89,17 +89,18 @@ section.counter {
            z-index: 0;
         transition: 0.7s;
 
-           & h3 {
+           & h3.counter-heading {
                font-size: 3rem;
                color :
                #a7a7a7;
                transition: 0.7s;
            }
-           & h4 {
+           & h4.counter-price {
             padding: 5px;
             font-size: 4rem;
             color :#292929;
             transition: 0.7s;
+            margin: 0;
 
            }
          

@@ -27,13 +27,13 @@ div.toast-item {
             font-size: 2.5rem;
             cursor: pointer;
         }
-        & .toast-message {
+        & h3.toast-message {
             &__heading {
                 padding-bottom: 5px;
                 letter-spacing: 0.2px;
                 font-size: 1.8rem;
             }
-            & .toast-messgae__desc{
+            & p.toast-messgae__desc{
                 font-size: 1.4rem;
             }
        

@@ -22,6 +22,9 @@
         grid-template-columns: repeat(1, 100%);
          
         }
+    & .introcontent-item h3.introcontent-heading {
+        margin: 0;
+    }
     & .introcontent-item:first-child {
         order: 1;
         box-shadow: 1px 3px 20px rgba(0,0,0, 0.2);

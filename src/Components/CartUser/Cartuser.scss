@@ -38,7 +38,7 @@
             flex: 1;
             object-fit: contain;
         }
-        & h4 {
+        & h4.cart-orderinfo__heading {
             padding: 5px 0;
             font-weight: bolder;
             font-size: 2rem;
@@ -138,7 +138,7 @@
     padding: 20px 20px;
     box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
     background-color: white;
-    & h4 {
+    & h4.cart-orderinfo__heading {
         font-size: 2rem;
         font-weight: 600;
         padding: 6px 0;
@@ -162,7 +162,8 @@
         padding-top: 5px;
         display: flex;
         justify-content: space-between;
-        & span {
+        & span.checkout-btn,
+        & span.buymore  {
             flex: 1;
             text-align: center;
             background-color: #ff514e;

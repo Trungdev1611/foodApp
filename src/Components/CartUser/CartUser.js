@@ -60,7 +60,7 @@ const CartUser = () => {
                     </div>
                 }
                 <div className="cart-orderinfo">
-                    <h4>Order Info</h4>
+                    <h4 className="cart-orderinfo__heading" >Order Info</h4>
 
                     <div className="payment">
                         <h4 className="payment-name">Total</h4>

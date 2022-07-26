@@ -13,17 +13,17 @@
             color: white
         }
     }
-    & h3 {
-padding: 20px 0 10px;
-font-size: 2.5rem;
-color: #292929
+    & h3.introcontent-heading {
+    padding: 20px 0 10px;
+    font-size: 2.5rem;
+    color: #292929
     }
-    & p {
+    & p.introcontent-desc {
         font-size: 1.5rem;
         color: 
         #b5b5b5;
     }
-    & span {
+    & span.introcontent-id {    
         position: absolute;
         width: 5rem;
         height: 5rem;

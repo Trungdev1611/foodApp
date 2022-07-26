@@ -11,6 +11,7 @@
     border-radius: 50%;
     cursor: pointer;
     box-shadow: 0 2.5px 10px rgba(0,0,0,0.3);
+    box-sizing: border-box;
     &:hover {
         color: white;
         background-color: #ff514e;

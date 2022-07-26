@@ -17,8 +17,8 @@ const Counter = () => {
 
             <div className='counter-content'>
                 <div className="counter-heart">
-                    <h3>Sandwich</h3>
-                    <h4>$45</h4>
+                    <h3 className='counter-heading'>Sandwich</h3>
+                    <h4 className='counter-price'>$45</h4>
 
                 </div>
 
