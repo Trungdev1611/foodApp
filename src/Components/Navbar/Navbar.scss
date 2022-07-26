@@ -1,5 +1,7 @@
 @import './../../assets/style/mixin.scss';
-
+    body {
+        margin: 0;
+    }
 .navbar {
     display: flex;
     padding: 1rem  #{var(--padding-horzi-nav)};
