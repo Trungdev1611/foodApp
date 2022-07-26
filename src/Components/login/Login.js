@@ -16,7 +16,6 @@ const Login = () => {
     const [error, setError] = useState({
         username1: '', password1: ''
     })
-    // console.log('error', error, process.env.REACT_APP_BASEURLNODE)
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const selector = useSelector((state) => state.AuthSliceReducer)

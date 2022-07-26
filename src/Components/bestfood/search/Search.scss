@@ -2,7 +2,6 @@
 
 .search {
     position: relative;
-    // border: 1px solid blue;
     margin-right: 2rem;
     flex: 1;
     overflow: hidden;
@@ -29,10 +28,7 @@
         color: #999999;
         border-radius: inherit;
         
-        // top: 0.5em;
-        // font-size: 25px;
-        // background-color: white;
-        // border: 1px solid blue;
+ 
         height: 100%;
         width: 60px;
         @include mobile-maxwidth {

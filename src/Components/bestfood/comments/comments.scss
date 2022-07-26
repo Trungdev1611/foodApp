@@ -26,7 +26,6 @@
         outline: none;
         font-size: 1.6rem;
         border-radius: 10px;
-        // overflow: hidden;
         resize: none;
         &:focus {
             border: 1px solid #928b8b;
@@ -68,13 +67,11 @@
     }
 }
 
-//commentItem
 .getcomments-container {
     font-size: 1.5rem;
     & .getcomments {
         & .getcomments-filter {
             border-bottom: 1px solid #eee;
-            // padding: 10px 0;
             color:rgb(148, 140, 140);
             &__active {
                 border-bottom: 1px solid #ff514e;
@@ -92,7 +89,6 @@
                 }
                 &:last-child{
                     margin-left:  10px;
-                    // border: 1px solid red;
                     height: 100%;
                     box-sizing: border-box;
                     display: inline-block;
@@ -107,7 +103,6 @@
             display: flex;
             &.commentReply {
                 margin-left: 50px;
-                // border: 1px solid red;
                 padding-top: 0;
             }
             & .comment-avartar {
@@ -149,7 +144,6 @@
             & .comment-info__options {
                 display: flex;
                 align-items: center;
-                // width: 80%;
                 & span.op-like.liked {
                         color:
                         #1976d2;
@@ -172,7 +166,6 @@
                     margin-right: 20px;
                     & .line-icon {
                         font-size: 2rem;
-                        // padding: 5px;
                         cursor: pointer;
                         transition: 0.2s;
                       

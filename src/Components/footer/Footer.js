@@ -63,10 +63,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      {/* <div className="footer-map" >
 
-        <img src={map} alt="" />
-      </div> */}
     </div>
   )
 }

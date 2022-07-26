@@ -1,7 +1,6 @@
 @import './../../../assets/style/mixin.scss';
 .products-list {
-    // display: flex;
-    // // border: 1px solid blue;
+
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     width: 100%;
@@ -18,7 +17,6 @@
     }
     & .product-list__item {
         padding-bottom: 10px;
-        // border: 1px solid blue;
 
 -webkit-box-shadow: 3px 3px 9px -3px rgba(230,230,230,0.64); 
 box-shadow: 3px 3px 9px -3px rgba(230,230,230,0.64);

@@ -9,7 +9,6 @@
     }
     & .delivery-left {
         margin-right: 5rem;
-        // width: calc(45% - 2.5rem);
          max-width: 100%;
         overflow: hidden;
         flex: 1;
@@ -47,7 +46,6 @@
 
             display: flex;
             justify-content: flex-start;
-            // border: 1px solid red;
             margin: 2.5rem 0;
             align-items: center;
     flex-wrap: wrap;
@@ -56,7 +54,6 @@
                 justify-content: center;
          overflow: hidden;
          max-width: 100%;
-        //  border: 1px solid red;
 
             }
             & .info {
@@ -72,7 +69,6 @@
             & .contact {
                 margin-right: 1rem;
                 font-size: 15px;
-                // border: 1px solid red;
                
                 & .contact-name {
                     color: rgb(58, 56, 56);

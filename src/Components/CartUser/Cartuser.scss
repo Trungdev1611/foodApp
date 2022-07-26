@@ -3,7 +3,6 @@
     height: 100vh;
     width: 450px;
     max-width: 100vw;
-    // border: 1px solid red;
     padding: 20px;
     right: 0px;
     top: 0;
@@ -17,13 +16,11 @@
         justify-content: space-between;
         padding: 10px 0;
         border-bottom: 1.5px solid #ccc;
-        // border: 1px solid red;
-        // align-items: center;
+ 
         font-size: 2rem;
         height: 60px;
     }
     & .cart-close {
-        // font-size: 30px;
         transform: scale(2);
         cursor: pointer;
         
@@ -32,8 +29,7 @@
         padding: 10px 0;
         display: flex;
         flex-direction: column;
-        // justify-content: center;
-        // text-align: center;
+
         align-items: center;
         overflow-y: auto;
         height: calc(100vh - 240px);
@@ -41,7 +37,6 @@
             width: 70%;
             flex: 1;
             object-fit: contain;
-            // border: 1px solid red;
         }
         & h4 {
             padding: 5px 0;
@@ -56,11 +51,9 @@
 
 .cart-item {
     display: flex;
-    // border: 1px solid red;
     margin: 5px 0;
     font-size: 1.4rem;
     align-self: flex-start;
-    // border: 1px solid red;
     width: 100%;;
     position: relative;
     & .deletecartitem {
@@ -100,7 +93,6 @@
         color: #ff514e;
         font-weight: 600;
         font-size: 1.5rem;
-        // padding-top: 10px;
 
     }
     & .cart-content-count {
@@ -139,7 +131,6 @@
     bottom: 0;
     right: 0;
     height: 180px;
-    // border: 1px solid red;
     max-width: 100%;
     width: 450px;
     max-width: 100vw;
@@ -156,18 +147,7 @@
         color: 
         #adadad;
     }
-    // & .info-priceship{
-    //     display: flex;
-    //     justify-content: space-between;
-    //     padding: 6px 0;
-        
-    // }
-    // & .info-voucher {
-    //     display: flex;
-    //     justify-content: space-between;
-    //     padding: 6px 0;
-        
-    // }
+
     & .payment {
         display: flex;
         justify-content: space-between;

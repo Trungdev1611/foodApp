@@ -27,12 +27,10 @@
     }
     & .swiper {
        padding: 0 50px;
-    //    border: 1px solid red;
         background-color: white;
         z-index: 0;
     }
     & .swiper-slide {
-        // border: 1px solid red;
         height: 12rem;
         display: flex;
         align-items: center;
@@ -53,7 +51,6 @@
         width: 40px;
         z-index: 20;
         @include desktop-maxwidth {
-            // display: none;
         }
 
     }
@@ -67,7 +64,6 @@
         width: 40px;
         z-index: 100;
         @include desktop-maxwidth {
-            // display: none;
         }
     }
     & .swiper-button-next, .swiper-button-prev {

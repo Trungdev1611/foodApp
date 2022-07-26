@@ -58,11 +58,9 @@ const Comments = ({ foodItem }) => {
                             return (
                                 <div key={index}>
 
-                                    {/* comment Item parent */}
                                     < CommentItem element={ele} setAllcomments={setAllcomments} />
 
 
-                                    {/* comment Reply */}
                                     {(ele.Replycomments && ele.Replycomments.length > 0) &&
                                         ele.Replycomments.map((replyItem, index) => {
                                             return <CommentReply element={replyItem} key={index} />

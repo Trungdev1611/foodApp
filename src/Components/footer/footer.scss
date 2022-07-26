@@ -7,7 +7,6 @@
     }
     background-color: 
     #212121;
-    // border: 1px solid blue;
     color: white;
     & .footer-wrapper-top {
         display: flex;
@@ -18,7 +17,6 @@
         & .footer-time {
             flex: 1;
             margin-right: 50px;
-            // border: 1px solid red;
             flex-wrap: wrap;
             @include desktop-maxwidth {
               margin-right: 0;
@@ -32,7 +30,6 @@
           
                 & tr,td {
                     width: calc(100% /3 );
-                    // border: 1px solid blue;
                     padding:10px 0px;
                     padding-left: 15px;
                   @include desktop-maxwidth {
@@ -54,7 +51,6 @@
         }
         & .footer-address{
             flex: 1;
-            // border: 1px solid red;
             padding:10px 0;
             & .heading {
                 font-size: 3rem;
@@ -106,12 +102,6 @@
         }
      
     }
-    // & .footer-map {
-    //     & img {
-    //         // height: 400px;
-    //         width: 100%;
-    //         object-fit: cover;
-    //     }
-    // }
+ 
 
 }

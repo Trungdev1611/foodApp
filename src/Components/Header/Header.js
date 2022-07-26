@@ -71,9 +71,7 @@ const Header = () => {
 
         </header>
       </Slider>
-      {/* {showlistMenu ? <div className={'modal'}
-        onClick={() => dispatch(togglelistMenuNav())}
-      ></div> : ''} */}
+
 
 
 

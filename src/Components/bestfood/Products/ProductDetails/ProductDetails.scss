@@ -12,7 +12,6 @@
         & .info-image {
             flex: 1;
             margin-right: 4rem;
-            // border: 1px solid blue;
             @include desktop-maxwidth {
                 margin-right: 0rem;
             }
@@ -20,7 +19,6 @@
                 width: 100%;
             height: 400px;
             overflow: hidden;
-            // border: 1px solid blue;
 
         
                 & img {
@@ -63,7 +61,6 @@
                         z-index: 1;
                         width:100%;
                         height: 100%;
-                        // border: 1px solid red;
                         background-color: rgba(255,255,255,.5);
                         top: 0;
                         left: 0;
@@ -213,12 +210,10 @@
                 display: flex;
                 padding: 3px 8px 2px ;
                 margin: 6px 0;
-                // border-left: 3px solid #ff514e;
                 align-items: center;
                 & span {
                     display: inline-block;
                     
-                    // border: 1px solid blue;
                     & .icon {
                         font-size: 2.5rem;
                         margin-right: 10px;
@@ -240,7 +235,6 @@
 .product-details .options {
     display: flex;
     justify-content: center;
-    // border: 1px solid red;
     & button {
         border-radius: 10px;
         min-width: 150px;

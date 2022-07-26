@@ -10,7 +10,6 @@
     }
     & .price-list__item {
         padding: 10px 5px;
-        // border: 1px solid red;
         display: flex;
         align-items: center;
         color: rgba(0,0,0,.84);
@@ -19,8 +18,8 @@
             margin-right: 10px;
             border: 1px solid blue;
             font-size: 2rem;
-            -ms-transform: scale(1.2); /* IE 9 */
-            -webkit-transform: scale(1.2); /* Chrome, Safari, Opera */
+            -ms-transform: scale(1.2); 
+            -webkit-transform: scale(1.2); 
             transform: scale(1.2);
         }
         & span {

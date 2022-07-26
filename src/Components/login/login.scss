@@ -13,7 +13,6 @@
     max-width: 100%;
 }
 .loginContent {
-    // background-color: #f2f2f2;
     padding: 20px;
     align-items: center;
 
@@ -79,7 +78,6 @@
         & .btn-submit {
             display: flex;
             justify-content: center;
-            // border: 1px solid red;;
             & button {
                 justify-content: center;
                 min-width: 130px;
@@ -117,7 +115,6 @@
 padding: 20px;
 z-index: 1000;
 
-// border: 1px solid red;
 & div.toast-item {
     padding-top: 20px;
     padding-bottom: 40px;

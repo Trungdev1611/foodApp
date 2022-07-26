@@ -4,13 +4,11 @@ section.counter {
        background-repeat: no-repeat;
        background-position: center;
        background-size: cover;
-    //    border: 1px solid red;
        position: relative;
        height: 100vh;
        & .counter-content {
         position: absolute;
         top: calc(50% - 7.5rem);
-        // top: 0;
         left: 50%;
         transform: translate(-50%, -50%);
 
@@ -39,7 +37,6 @@ section.counter {
         }
         & .counter-effect span {
             background-color: #ff514e;
-            // border: 1px solid blue;
             position: absolute;
             border-radius: 50%;
             top: 30%;
@@ -52,14 +49,12 @@ section.counter {
              height: 60px;
             }
             &.bottom-left {
-                // bottom: -30px;
-                // left: -30px;
+             
                 width: 40px;
                 height: 40px;
             }
             &.top-right {
-                // right: -60px;
-                // top: 10px;
+            
                 width: 80px;
                 height: 80px;
     
@@ -148,13 +143,11 @@ animation: scalevideo 1s ease-in-out ;
       transform:  translate(-50%, -50%) scale(0);
 
 
-    //   width: 0;
-    //   transform-origin: center;
+
     }
     100% {
        transform:  translate(-50%, -50%) scale(1);
 
 
-        // width: 100%;
     }
 }

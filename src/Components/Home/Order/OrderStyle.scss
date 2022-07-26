@@ -1,8 +1,6 @@
 @import './../../../assets/style/mixin.scss';
 .order {
     text-align: center;
-    // margin-top: 6rem;
-    // border: 1px solid red;
     margin-bottom: 5rem;
     overflow: hidden;
     max-width: 100%;
@@ -33,7 +31,6 @@
     & .delivery {
         position: relative;
         display: inline-block;
-        // border: 1px solid red;
         &:hover span {
             background-color: white;
             border-color: #ff514e;
@@ -72,7 +69,6 @@
             position: absolute;
             top: 30%;
             left: 100%;
-            // border: 1px solid red;
             @include tablet-maxwidth {
                 display: none;
             }

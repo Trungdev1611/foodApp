@@ -47,11 +47,7 @@ const CommentReply = ({ element }) => {
                     <span className={isLike ? 'op-like liked' : 'op-like'}
                         onClick={() => handleLike(commentItem)}
                     ><ThumbUpIcon className='line-icon' /> </span>
-                    {/* <span className='replycomment'
-                    //   onClick={handleReply}
-                    >
-                        Reply
-                    </span> */}
+
                     <span className='op-time'>
                         {getDateData(commentItem.updatedAt)}
                     </span>

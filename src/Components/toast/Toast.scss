@@ -16,8 +16,6 @@ div.toast-item {
         transition: 0.2s;
         animation: showtoastmessage ease 0.3s forwards   ;
         border-radius: 5px;
-        // border: 1px solid red;
-        // height: 100%;
         & .toast-icon {
             font-size: 3rem;
           margin-right: 20px;;
@@ -45,7 +43,6 @@ div.toast-item {
         background-color: #43d787;
         color: white;
 
-        // color: red;
     }
     div.fdfddf {
         background-color: yellow;

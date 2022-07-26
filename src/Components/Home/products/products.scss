@@ -1,6 +1,5 @@
 @import './../../../assets/style/mixin.scss';
 
-//products 
 .products {
     padding: 10rem #{var(--padding-horzi-nav)};
     text-align: center;
@@ -36,6 +35,5 @@
 
 .swiper-wrapper {
     max-width: 100%;
-    // overflow: hidden;
     border: 1px solid red;
 }

@@ -1,17 +1,14 @@
 @import './../../../assets/style/mixin.scss';
 .intro {
     background-image: url('./../../../assets/image/ingredients.jpg');
-    // height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     padding: 50px 20px;
-    // padding-left: 20px;
-    // padding-right: 20px;
+
     margin-top: 20px;
     overflow: hidden;
     max-width: 100%;
-    // padding-bottom: 50px;
 
     display: grid;
     grid-template-columns: repeat(2, 40rem);

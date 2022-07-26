@@ -2,11 +2,9 @@
 
 .reviews {
     padding: 6rem 0;
-    // border: 1px solid red;
     overflow: hidden;
    & .review-item {
        display: flex;
-    //    justify-content: center;
        align-items: center;
        flex-direction: column;
        text-align: center;
@@ -18,7 +16,6 @@
            & .item-top__img {
             width: 250px;
             height: 250px;
-            // border: 1px solid red;
                & img {width: 250px;
                 height: 250px;
                 object-fit: cover;
