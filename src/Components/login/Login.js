@@ -88,7 +88,7 @@ const Login = () => {
                         >
                             <Form className='form'>
                                 <label htmlFor="username">User name</label>
-                                <Field name="username" type="text" />
+                                <Field name="username" type="text" autocomplete />
                                 <div className='error '>
                                     <ErrorMessage name="username" />
                                     <div> {error.username1 ? error.username1 : null}</div>
@@ -97,7 +97,7 @@ const Login = () => {
                                 </div>
 
                                 <label htmlFor="password">Password</label>
-                                <Field name="password" type="password" />
+                                <Field name="password" type="password" autocomplete />
                                 <div className='error'>
                                     <ErrorMessage name="password" />
                                     <div> {error.password1 ? error.password1 : null}</div>
