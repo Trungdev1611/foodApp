@@ -2,7 +2,7 @@
 
 .navbar {
     display: flex;
-    padding: 1rem #{var(--padding-horzi-nav)};
+    padding: 1rem  #{var(--padding-horzi-nav)};
     justify-content: space-between;
     align-items: center;
     color: white;
@@ -11,6 +11,9 @@
     top: 0;
     position: fixed;
     transition: 0.3s;
+    left: 0;
+    box-sizing: border-box;
+    max-width: 100%;
     & span {
         cursor: pointer;
         font-size: 1.4rem;
