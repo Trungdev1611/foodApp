@@ -37,7 +37,7 @@
             color: #ff514e;
             transition: 0.3s;
         }
-        & p {
+        & .delivery-desc {
             color: 
             #5a5a5a;
             font-size: 1.8rem;
@@ -48,7 +48,7 @@
                 color: #ff514e;
             }
         }
-        & span {
+        & span.delivery-step__number {
             width: 6.5rem;
             height: 6.5rem;
             background-color: #ff514e;

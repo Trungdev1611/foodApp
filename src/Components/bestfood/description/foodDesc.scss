@@ -18,12 +18,12 @@
         border-collapse: collapse;
         margin-top: 30px;
     
-        & tr:first-child {
-           & td {
+        & tr.tabledesc-row:first-child {
+           & td.tabledesc-cell {
             padding: 10px 0 25px ;
             text-align: center;
             border-bottom: 1px solid #ccc;
-            & h4 {
+            & h4.tabledesc-cell__heading {
                 font-size: 2.7rem;
                 padding-bottom: 5px;
             }
@@ -36,12 +36,12 @@
            }
 
         }
-        & tr:last-child {
-            & td {
+        & tr.tabledesc-row:last-child {
+            & td.tabledesc-cell {
                 padding: 15px 0 5px;
                 &:first-child {
                     border-right: 1px solid #ccc;
-                    & h4 {
+                    & .tabledesc-cell__heading {
                         font-size: 1.8rem;
                     }
                 }

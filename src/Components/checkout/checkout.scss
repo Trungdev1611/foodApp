@@ -21,11 +21,11 @@
         padding: 10px 0;
 
     }
-    & p {
+    & .checkout-buymore {
         display: flex;
         align-items: center;
         cursor: pointer;
-        & span {
+        & .checkout-buymore__btn {
             color: #ff514e ;
             font-weight: bold;
             font-size: 1.8rem;

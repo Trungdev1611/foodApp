@@ -23,7 +23,7 @@ const Checkout = () => {
       <div className="checkout">
         <div className="checkout-icon"><CheckIcon className='icon-succeed' /></div>
         <h4 className='checkout-msg'>Your purchase was successfull 🍔</h4>
-        <p onClick={() => navigate('/listfood')}><span>Buy more</span><CallMissedOutgoingIcon className='icon-going' /></p>
+        <p className="checkout-buymore" onClick={() => navigate('/listfood')}><span className='checkout-buymore__btn'>Buy more</span><CallMissedOutgoingIcon className='icon-going' /></p>
       </div>
       <Footer />
     </div>

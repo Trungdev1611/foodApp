@@ -38,7 +38,7 @@ const Comments = ({ foodItem }) => {
 
     return (
         <div className='comments'>
-            <h4>Reviews</h4>
+            <h4 className='comments-heading'>Reviews</h4>
 
             <PostComment foodItem={foodItem} setAllcomments={setAllcomments} show={true} isReply={false} />
 

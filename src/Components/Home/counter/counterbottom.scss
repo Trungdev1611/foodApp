@@ -16,12 +16,12 @@
         
  
     }
-    & h3 {
+    & h3.counter-bottom__number {
         font-size: 3.5rem;
         font-weight: 600;
         padding: 10px 0;
     }
-    & p {
+    & p.counter-bottom__desc {
         font-size: 1.6rem;
     }
 }

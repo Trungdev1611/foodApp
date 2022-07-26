@@ -33,8 +33,8 @@ const Order = () => {
                         <img src={step1} alt="order-step1" />
                         <img src={arrow1} alt="" className='arrow' />
 
-                        <p>Choose Your Favorite</p>
-                        <span>01<br></br>STEP</span>
+                        <p className='delivery-desc'>Choose Your Favorite</p>
+                        <span className='delivery-step__number'>01<br></br>STEP</span>
                     </div>
                 </div>
 
@@ -42,8 +42,8 @@ const Order = () => {
                     <div className="delivery">
                         <img src={step2} alt="order-step2" />
                         <img src={arrow2} alt="" className='arrow' />
-                        <p>We Deliver Your Meals</p>
-                        <span>02<br></br>STEP</span>
+                        <p className='delivery-desc'>We Deliver Your Meals</p>
+                        <span className='delivery-step__number'>02<br></br>STEP</span>
                     </div>
                 </div>
 
@@ -52,15 +52,15 @@ const Order = () => {
                         <img src={step3} alt="order-step3" />
                         <img src={arrow3} alt="" className='arrow' />
 
-                        <p>Cash on Delivery</p>
-                        <span>03<br></br>STEP</span>
+                        <p className='delivery-desc'>Cash on Delivery</p>
+                        <span className='delivery-step__number'>03<br></br>STEP</span>
                     </div>
                 </div>
                 <div>
                     <div className="delivery">
                         <img src={step4} alt="order-step4" />
-                        <p>Eat And Enjoy</p>
-                        <span>04<br></br>STEP</span>
+                        <p className='delivery-desc'>Eat And Enjoy</p>
+                        <span className='delivery-step__number'>04<br></br>STEP</span>
                     </div>
                 </div>
             </div>
