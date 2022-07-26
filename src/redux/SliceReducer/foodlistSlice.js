@@ -59,6 +59,8 @@ const foodListSlice = createSlice({
             else {
                 state.price_lte = action.payload.price_lte
                 state.price_gte = action.payload.price_gte
+                state.pageselect = 1
+
             }
             return state
         },
@@ -67,11 +69,14 @@ const foodListSlice = createSlice({
         sortstar: (state, action) => {
             // console.log(action)
             state.rate_like = action.payload
+            state.pageselect = 1
             return state
         },
         //filter by input Search
         searchbyInput: (state, action) => {
             state.name_like = action.payload
+            state.rate_like = undefined
+
         },
         //sap xep gia tu thap den cao hoac nguoc lai
         arrangementbyPrice: (state, action) => {
