@@ -15,7 +15,6 @@ export const instance = axios.create({
 instance.interceptors.request.use(function (request) {
 
     let tokenaccess = cookies.get('accessToken')
-
     request.headers.Authorization = tokenaccess
     return request
 })

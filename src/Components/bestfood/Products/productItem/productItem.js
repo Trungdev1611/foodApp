@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
 import { showToast, typeWishlistSuccess } from '../../../../utils/staticData';
 import { postIteminCart } from '../../../../redux/action/actioncreator';
-import palceholderimg from './../../../../assets/image/placeholder.jpg'
+import palceholderimg from './../../../../assets/image/img_pending_blur.jpg'
 import Cookies from 'universal-cookie'
 //lazyload img
 import { LazyLoadImage } from 'react-lazy-load-image-component';

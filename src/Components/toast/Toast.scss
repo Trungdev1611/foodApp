@@ -6,16 +6,15 @@
 }
 
 div.toast-item {
-   
-
         display: flex;
-        padding: 15px 10px;
+        padding: 10px 10px;
         min-width: 320px;
         position: relative;
         transform: translate(120%);
         transition: 0.2s;
         animation: showtoastmessage ease 0.3s forwards   ;
         border-radius: 5px;
+        min-height: 82px;
         & .toast-icon {
             font-size: 3rem;
           margin-right: 20px;;

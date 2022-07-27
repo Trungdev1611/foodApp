@@ -41,7 +41,7 @@ export const ToastAddcart = () => {
 
     <ToastContainer
       position='top-right'
-      autoClose={2000}
+      autoClose={1500}
 
       closeOnClick
       rtl={false}

@@ -19,6 +19,10 @@ import FoodDesc from '../../description/FoodDesc';
 import { useSelector, useDispatch } from 'react-redux';
 import { postIteminCart } from '../../../../redux/action/actioncreator';
 import Comments from '../../comments/Comments';
+import { showToast, typeWishlistSuccess } from '../../../../utils/staticData';
+import { forcedLogin } from '../../../../redux/SliceReducer/CartUserSlice';
+import Cookies from 'universal-cookie'
+
 
 const Productdetails = () => {
     const [changeviewImg, setChangeViewimg] = useState(false)
@@ -54,7 +58,19 @@ const Productdetails = () => {
     function incrementCountItem() {
         setItembuy(prev => prev + 1)
     }
+    function Addwishlist() {
 
+        const cookies = new Cookies();
+        let tokenaccess = cookies.get('accessToken')
+        if (tokenaccess) {
+            showToast(typeWishlistSuccess)
+        }
+        else {
+            dispatch(forcedLogin())
+        }
+
+
+    }
     return (
         <div>
             <Headerfood />
@@ -130,7 +146,8 @@ const Productdetails = () => {
 
                                     <ButtonAddcart />
                                 </div>
-                                <div className="addcart-favorite">
+                                <div className="addcart-favorite" onClick={Addwishlist}>
+
                                     <FavoriteBorderIcon />
                                 </div>
 

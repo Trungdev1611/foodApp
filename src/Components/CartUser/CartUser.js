@@ -56,7 +56,7 @@ const CartUser = () => {
                 {(selector.cartData && selector.cartData.length === 0) &&
                     <div className="listproducts-cart">
                         <img src={CartEmpty} alt="Empty cart" className='empty-cart' />
-                        <h4>Your Cart is Empty 🍔</h4>
+                        <h4 className='cart-message__heading'>Your Cart is Empty 🍔</h4>
                     </div>
                 }
                 <div className="cart-orderinfo">
