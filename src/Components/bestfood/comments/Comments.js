@@ -28,6 +28,16 @@ const Comments = ({ foodItem }) => {
 
 
     }, [foodItem.id])
+    function sortCommentByTime() {
+        setSortCommentlike(false)
+        setAllcomments([...allcomments].reverse())
+    }
+
+    function sortCommentByRate() {
+        setSortCommentlike(true)
+        //use Sort js return >0 sap xep tang dan, return <0 sap xep giam dan
+        setAllcomments([...allcomments].reverse())
+    }
 
 
     // console.log('allcoment:::', allcomments)
@@ -47,11 +57,11 @@ const Comments = ({ foodItem }) => {
                     <div className="getcomments">
                         <div className="getcomments-filter">
                             <span className={sortCommentlike ? '' : 'getcomments-filter__active'}
-                                onClick={() => setSortCommentlike(false)}
-                            >Latest first </span>
+                                onClick={sortCommentByTime}
+                            >Newest First </span>
                             <span className={!sortCommentlike ? '' : 'getcomments-filter__active'}
-                                onClick={() => setSortCommentlike(true)}
-                            >Highest rated</span>
+                                onClick={sortCommentByRate}
+                            >Oldest First</span>
                         </div>
                         {allcommentCopy.map((ele, index) => {
 
